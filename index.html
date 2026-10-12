@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexGen Signal Monitor · Poland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   EVALUESERVE BRAND TOKENS
+═══════════════════════════════════════ */
+:root{
+  --purple:   #43224d;
+  --purple-lt:#f4f0f6;
+  --purple-md:#6b3d7a;
+  --red:      #e0044e;
+  --red-lt:   #fce8ef;
+  --gray:     #000000;
+  --gray-lt:  #f5f5f5;
+  --gray-md:  #d0d0d0;
+  --gray-dim: #555556;
+  --white:    #ffffff;
+  --border:   #e2dfe5;
+
+  /* company palette — kept muted to sit under brand primaries */
+  --pge:    #1a5eb8;
+  --enea:   #c94a2e;
+  --energa: #1a8a5c;
+  --tauron: #6b3db5;
+
+  --r: 6px;
+  --shadow: 0 1px 4px rgba(67,34,77,.07), 0 4px 16px rgba(67,34,77,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--gray-lt);
+  color:var(--gray);
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:13px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-.01em;
+}
+/* faint Poland map watermark behind the whole dashboard */
+.map-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.map-bg svg{position:absolute;top:52%;left:60%;transform:translate(-50%,-50%);
+  height:132vh;width:auto;opacity:.05}
+.map-bg path{fill:var(--purple)}
+h1,h2,h3{font-family:'Crimson Text',Georgia,serif;color:#000;letter-spacing:-.03em}
+a{color:#000;text-decoration:none}
+a:hover{color:var(--red)}
+a:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+
+/* ── TOPBAR ── */
+.topbar{
+  background:var(--purple);
+  display:flex;align-items:center;flex-wrap:wrap;gap:16px;
+  padding:0 28px;height:56px;
+  position:sticky;top:0;z-index:30;
+  box-shadow:0 2px 8px rgba(67,34,77,.3)
+}
+.brand{display:flex;align-items:center;gap:14px}
+
+.brand-title{color:var(--white);font-family:'Poppins';font-size:19px;font-weight:600;letter-spacing:-.01em}
+.brand-sub{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.spacer{flex:1}
+.livebadge{
+  display:flex;align-items:center;gap:8px;
+  padding:5px 14px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08)
+}
+.livebadge .ld{width:7px;height:7px;border-radius:50%;background:#4ade80;position:relative;flex:none}
+.livebadge .ld::after{content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid #4ade80;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(2.1);opacity:0}}
+.livebadge span{font-size:11.5px;color:rgba(255,255,255,.92);font-weight:700;letter-spacing:.02em}
+
+/* ── LAYOUT ── */
+.body{display:grid;grid-template-columns:256px 1fr;min-height:calc(100vh - 56px)}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  background:var(--white);
+  border-right:1px solid var(--border);
+  padding:20px 0;
+  position:sticky;top:56px;
+  height:calc(100vh - 56px);
+  overflow-y:auto
+}
+.sb-section{padding:0 16px;margin-bottom:22px}
+.sb-label{
+  display:block;font-size:9px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gray-dim);margin-bottom:10px;
+  padding-bottom:6px;border-bottom:1px solid var(--border)
+}
+
+/* player chips */
+.pfil{display:flex;flex-direction:column;gap:2px}
+.pchip{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 11px;border-radius:var(--r);
+  border:1px solid transparent;
+  background:none;cursor:pointer;
+  font-family:'Poppins';font-size:12px;font-weight:500;color:#000;
+  transition:.14s;text-align:left;width:100%
+}
+.pchip .plogo{flex:1;display:flex;align-items:center;min-width:0;overflow:hidden}
+.pchip .plogo img{height:28px;width:auto;max-width:120px;object-fit:contain;display:block;filter:none;transition:.14s}
+.pchip.off .plogo img{opacity:.35;filter:grayscale(1)}
+.pchip .ccnt{font-size:10px;font-weight:600;color:var(--gray-dim);
+  background:var(--gray-lt);padding:2px 7px;border-radius:4px;min-width:24px;text-align:center}
+.pchip.on{background:var(--purple-lt);color:#000;border-color:rgba(67,34,77,.12)}
+.pchip.on .ccnt{background:rgba(67,34,77,.1);color:var(--purple)}
+.pchip:focus-visible{outline:2px solid var(--red)}
+
+/* category list */
+.catlist{display:flex;flex-direction:column;gap:1px}
+.catbtn{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 11px;border-radius:var(--r);
+  border:1px solid transparent;background:none;cursor:pointer;
+  font-family:'Poppins';font-size:12px;font-weight:400;color:var(--gray);
+  transition:.14s;text-align:left;width:100%
+}
+.catbtn .cico{width:20px;text-align:center;font-size:12px;flex:none;color:var(--gray-dim)}
+.catbtn .clabel{flex:1}
+.catbtn .ccnt{font-size:10px;color:var(--gray-dim);
+  background:var(--gray-lt);padding:2px 7px;border-radius:4px}
+.catbtn.on{background:var(--purple-lt);color:#000;font-weight:600;border-color:rgba(67,34,77,.12)}
+.catbtn.on .cico{color:var(--purple)}
+.catbtn.on .ccnt{background:rgba(67,34,77,.1);color:var(--purple)}
+.catbtn:focus-visible{outline:2px solid var(--red)}
+
+/* severity key */
+.sevleg{display:flex;flex-direction:column;gap:8px}
+.sevrow{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--gray)}
+.sevdot{width:9px;height:9px;border-radius:50%;flex:none}
+
+/* source list */
+.srclist{display:flex;flex-direction:column;gap:6px}
+.srccard{
+  padding:9px 11px;border-radius:var(--r);
+  border:1px solid var(--border);background:var(--gray-lt)
+}
+.srccard .sn{font-size:11px;font-weight:600;color:#000;margin-bottom:2px}
+.srccard .st{display:inline-block;font-size:9px;padding:2px 6px;border-radius:3px;
+  background:var(--purple-lt);color:var(--purple);letter-spacing:.05em;margin-bottom:5px}
+.srccard a{font-size:10px;color:var(--gray-dim);display:block;line-height:1.4;
+  word-break:break-all}
+.srccard a:hover{color:var(--red)}
+
+/* scrollbar */
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ── MAIN ── */
+.main{padding:24px 28px 48px;min-width:0}
+
+/* page header */
+.page-head{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:20px 24px;margin-bottom:18px;
+  display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.page-head>div{position:relative;z-index:1}
+.head-map{position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  height:170px;width:auto;opacity:.09;z-index:0;pointer-events:none}
+.head-map path{fill:var(--purple)}
+.page-head h1{font-family:'Crimson Text';font-size:24px;font-weight:600;
+  color:#000;line-height:1.2;margin-bottom:4px}
+.page-head p{font-size:12px;color:var(--gray-dim);max-width:none;line-height:1.6;white-space:nowrap}
+.head-stats{display:flex;gap:20px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.hstat{text-align:right}
+.hstat .hv{font-family:'Crimson Text';font-size:28px;font-weight:600;color:var(--red);line-height:1}
+.hstat .hl{font-size:10px;color:var(--gray-dim);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+
+/* controls */
+.cbar{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:12px 16px;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  box-shadow:var(--shadow)
+}
+.searchbox{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 12px;border-radius:var(--r);
+  border:1px solid var(--border);background:var(--gray-lt);
+  flex:1;max-width:300px;transition:.14s
+}
+.searchbox:focus-within{border-color:var(--purple);background:var(--white)}
+.searchbox input{background:none;border:0;outline:none;
+  color:var(--gray);font-size:12px;font-family:'Poppins';width:100%}
+.searchbox input::placeholder{color:var(--gray-dim)}
+.searchbox .si{color:var(--gray-dim);font-size:14px}
+.cinfo{font-size:11px;color:var(--gray-dim)}
+.cinfo b{color:#000;font-weight:600}
+.sb-spacer{flex:1}
+.sortbtn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 13px;border-radius:var(--r);
+  border:1px solid var(--border);background:var(--gray-lt);
+  color:var(--gray);font-size:11.5px;font-family:'Poppins';
+  font-weight:500;cursor:pointer;transition:.14s
+}
+.sortbtn.on{background:var(--purple);color:var(--white);border-color:var(--purple)}
+.sortbtn:focus-visible{outline:2px solid var(--red)}
+
+/* ── FEED ── */
+.feed{display:flex;flex-direction:column;gap:0}
+
+/* group header */
+.grp-head{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 20px 10px;margin-top:8px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-bottom:2px solid var(--purple);
+  border-radius:var(--r) var(--r) 0 0;
+  position:sticky;top:56px;z-index:5
+}
+.grp-head .gico{font-size:15px}
+.grp-head h2{font-family:'Crimson Text';font-size:18px;font-weight:600;color:#000}
+.grp-head .gcnt{
+  background:var(--red);color:var(--white);
+  font-size:10px;font-weight:600;padding:2px 8px;
+  border-radius:20px;margin-left:2px
+}
+.grp-head .gsrc{margin-left:auto;font-size:10px;color:var(--gray-dim)}
+
+/* signal card */
+.sig{
+  background:var(--white);
+  border:1px solid var(--border);border-top:0;
+  padding:16px 20px;
+  display:grid;
+  grid-template-columns:88px 110px 1fr;
+  gap:0 16px;align-items:start;
+  transition:.12s
+}
+.sig:last-child{border-radius:0 0 var(--r) var(--r)}
+.sig:hover{background:#faf9fb;z-index:2;position:relative;
+  box-shadow:0 0 0 1px rgba(67,34,77,.1)}
+/* ungrouped cards */
+.sig.card-solo{
+  border-radius:var(--r);border-top:1px solid var(--border);
+  margin-bottom:6px
+}
+.sig.card-solo.first-in-group{border-top:1px solid var(--border)}
+
+/* left border accent by company */
+.sig{border-left:3px solid transparent}
+
+/* date col */
+.sdate{padding-top:2px}
+.sdate .sd{font-size:11.5px;font-weight:500;color:#000}
+.sdate .sage{font-size:10px;color:var(--gray-dim);margin-top:2px}
+
+/* meta col */
+.smeta{}
+.sco{font-size:11px;font-weight:700;letter-spacing:.05em}
+.stype{font-size:10px;color:var(--gray-dim);margin-top:3px;line-height:1.3}
+
+/* body col */
+.sbody{}
+.stitle{font-family:'Crimson Text';font-size:16px;font-weight:600;
+  color:#000;line-height:1.3;margin-bottom:5px}
+.stitle a{color:#000}
+.stitle a:hover{color:var(--red)}
+.sdesc{font-size:11.5px;color:#000;line-height:1.6;margin-bottom:8px}
+.sunit{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:500;color:var(--gray-dim);
+  background:var(--purple-lt);padding:3px 9px;border-radius:4px;
+  margin-bottom:8px;letter-spacing:.02em
+}
+.slinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.slink{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10.5px;font-weight:500;
+  padding:4px 10px;border-radius:4px;
+  border:1px solid var(--border);background:var(--gray-lt);
+  color:var(--gray);transition:.13s
+}
+.slink:hover{border-color:var(--purple);background:var(--purple-lt);color:var(--purple)}
+.slink.filing{
+  border-color:rgba(26,94,184,.25);background:rgba(26,94,184,.05);color:#1a5eb8
+}
+.slink.filing:hover{background:rgba(26,94,184,.1);border-color:rgba(26,94,184,.4)}
+.slink.gov{
+  border-color:rgba(67,34,77,.2);background:var(--purple-lt);color:var(--purple)
+}
+.slink.gov:hover{background:rgba(67,34,77,.12)}
+.slink.official{
+  border-color:rgba(67,34,77,.25);background:var(--purple-lt);color:var(--purple);font-weight:600
+}
+.slink.official:hover{background:rgba(67,34,77,.14);border-color:var(--purple)}
+.slink.search{border-color:rgba(224,4,78,.22);background:var(--red-lt);color:var(--red);font-weight:600}
+.slink.search:hover{background:rgba(224,4,78,.12);border-color:var(--red)}
+.slink.red-link{
+  border-color:rgba(224,4,78,.2);background:var(--red-lt);color:var(--red)
+}
+.slink.red-link:hover{background:rgba(224,4,78,.12)}
+
+/* severity badge col */
+.sright{text-align:right;padding-top:2px}
+.sbadge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:4px;
+  font-size:10px;font-weight:600;letter-spacing:.06em;white-space:nowrap;
+  text-transform:uppercase
+}
+.badge-high{background:var(--red-lt);color:var(--red);border:1px solid rgba(224,4,78,.2)}
+.badge-med{background:#fff5e8;color:#b85c00;border:1px solid rgba(184,92,0,.2)}
+.badge-low{background:var(--gray-lt);color:var(--gray-dim);border:1px solid var(--border)}
+.badge-info{background:rgba(26,138,92,.08);color:#1a6645;border:1px solid rgba(26,138,92,.2)}
+
+/* empty state */
+.empty{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:60px 24px;text-align:center;color:var(--gray-dim)
+}
+.empty h2{font-family:'Crimson Text';font-size:22px;color:#000;margin-bottom:8px}
+.empty p{font-size:12px}
+
+/* horizontal rule between date-sorted signals */
+.date-divider{
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gray-dim);padding:12px 4px 5px;display:block
+}
+
+/* footer note */
+.footnote{
+  margin-top:28px;padding:14px 20px;
+  border-top:1px solid var(--border);border-radius:var(--r);
+  background:var(--white);font-size:10.5px;color:var(--gray-dim);line-height:1.6
+}
+.footnote b{color:#000;font-weight:600}
+
+@media(max-width:900px){
+  .body{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border)}
+  .sig{grid-template-columns:1fr auto;gap:8px}
+  .sdate,.smeta{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ── NEWSLETTER MODAL ── */
+.nl-btn{margin-left:0}
+.nl-overlay{position:fixed;inset:0;z-index:100;background:rgba(30,15,35,.55);
+  display:none;align-items:flex-start;justify-content:center;padding:32px 16px;overflow:auto}
+.nl-overlay.open{display:flex}
+.nl-modal{background:var(--white);border-radius:var(--r);width:100%;max-width:840px;
+  box-shadow:0 12px 48px rgba(30,15,35,.4);overflow:hidden}
+.nl-bar{display:flex;align-items:center;gap:12px;padding:14px 20px;background:var(--purple)}
+.nl-bar h2{font-family:'Crimson Text';font-size:19px;color:var(--white);flex:1}
+.nl-x{background:rgba(255,255,255,.15);border:0;color:var(--white);cursor:pointer;
+  width:28px;height:28px;border-radius:5px;font-size:13px;line-height:1}
+.nl-x:hover{background:rgba(255,255,255,.3)}
+.nl-controls{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end;
+  padding:16px 20px;border-bottom:1px solid var(--border);background:var(--gray-lt)}
+.nl-field{display:flex;flex-direction:column;gap:5px}
+.nl-field>label{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-dim)}
+.nl-field input[type=date],.nl-field select{font-family:'Poppins';font-size:12px;padding:6px 9px;
+  border:1px solid var(--border);border-radius:5px;background:var(--white);color:var(--gray)}
+.nl-check{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--gray);cursor:pointer}
+.nl-presets{display:flex;gap:6px;flex-wrap:wrap}
+.nl-preset{font-family:'Poppins';font-size:11px;padding:6px 12px;border-radius:20px;
+  border:1px solid var(--border);background:var(--white);color:var(--gray);cursor:pointer;transition:.13s}
+.nl-preset.on{background:var(--purple);color:var(--white);border-color:var(--purple)}
+.nl-gen{font-family:'Poppins';font-size:12px;font-weight:600;padding:9px 18px;border:0;
+  border-radius:5px;background:var(--red);color:var(--white);cursor:pointer;margin-left:auto}
+.nl-gen:hover{background:#c40344}
+.nl-actions{display:flex;gap:8px;padding:12px 20px;border-top:1px solid var(--border);
+  background:var(--gray-lt);flex-wrap:wrap;align-items:center}
+.nl-act{font-family:'Poppins';font-size:11.5px;font-weight:500;padding:7px 14px;border-radius:5px;
+  border:1px solid var(--border);background:var(--white);color:var(--purple);cursor:pointer;transition:.13s}
+.nl-act:hover{background:var(--purple-lt);border-color:var(--purple)}
+.nl-act-primary{background:var(--purple);color:var(--white);border-color:var(--purple);font-weight:600}
+.nl-act-primary:hover{background:var(--purple-md);color:var(--white);border-color:var(--purple-md)}
+.nl-msg{font-size:11px;color:var(--gray-dim);margin-left:auto}
+
+/* newsletter document */
+.nl-preview{padding:28px 34px;max-height:54vh;overflow:auto;background:var(--white)}
+.nl-doc .nl-mast{border-bottom:3px solid var(--purple);padding-bottom:14px;margin-bottom:20px}
+.nl-doc .nl-kicker{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.nl-doc h1{font-family:'Crimson Text';font-size:27px;color:var(--purple);line-height:1.15;margin:4px 0}
+.nl-doc .nl-range{font-size:11.5px;color:var(--gray-dim)}
+.nl-doc .nl-cat{font-family:'Crimson Text';font-size:17px;color:var(--purple);
+  margin:24px 0 12px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.nl-doc .nl-item{margin-bottom:16px;padding-left:13px;border-left:3px solid var(--gray-md)}
+.nl-doc .nl-h{font-family:'Crimson Text';font-size:15.5px;font-weight:600;color:var(--purple);line-height:1.3}
+.nl-doc .nl-meta{font-size:10px;color:var(--gray-dim);margin:3px 0 5px;letter-spacing:.02em}
+.nl-doc .nl-sum{font-size:12px;color:var(--gray);line-height:1.6}
+.nl-doc .nl-src{font-size:10.5px;margin-top:5px;color:var(--gray-dim)}
+.nl-doc .nl-src a{color:var(--purple-md)}
+.nl-doc .nl-empty{color:var(--gray-dim);font-size:13px;padding:24px 0;text-align:center}
+
+@media print{
+  body>*:not(.nl-overlay){display:none!important}
+  .nl-overlay{display:block!important;position:static;background:none;padding:0;overflow:visible}
+  .nl-overlay .nl-modal{max-width:none;box-shadow:none;border-radius:0}
+  .nl-bar,.nl-controls,.nl-actions{display:none!important}
+  .nl-preview{max-height:none;overflow:visible;padding:0}
+}
+
+.page-head p{white-space:normal}
+.cogrp{font-size:9.5px;font-weight:600;color:var(--purple);letter-spacing:.06em;text-transform:uppercase;margin:8px 0 3px 4px}
+.cogrp:first-child{margin-top:0}
+.ptxt{gap:7px;font-size:11.5px;font-weight:500;white-space:nowrap;text-overflow:ellipsis}
+.ptxt i{width:9px;height:9px;border-radius:2px;flex:none;display:inline-block}
+.pchip.off .ptxt{opacity:.45}
+.pall{display:flex;gap:6px;margin-top:8px}
+.pall button{flex:1;font-family:'Poppins';font-size:10.5px;padding:5px;border:1px solid var(--border);border-radius:5px;background:var(--gray-lt);cursor:pointer}
+.catbtn.pil{font-weight:600;margin-top:6px}
+.catbtn.sub{padding:5px 11px 5px 40px;font-size:11.5px}
+.sig{grid-template-columns:88px 130px 1fr}
+.fbar{display:flex;flex-direction:column;gap:10px}
+.fbar .sortbtn{justify-content:center;width:100%}
+.fsel{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fsel span{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-dim)}
+.fsel select{font-family:'Poppins';font-size:12px;padding:7px 9px;border:1px solid var(--border);border-radius:5px;background:var(--gray-lt);width:100%}
+.fsel select:focus{outline:2px solid var(--purple);background:#fff}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.fchip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;background:var(--purple);color:#fff;padding:4px 6px 4px 11px;border-radius:20px}
+.fchip button{background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:50%;width:18px;height:18px;font-size:9px;cursor:pointer}
+.stech{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
+.stech span{font-size:9px;background:var(--gray-lt);border:1px solid var(--border);border-radius:3px;padding:1px 5px;color:var(--gray-dim)}
+.assetpill{font-family:'Poppins';font-size:10px;font-weight:500;margin:0 0 8px 6px;padding:3px 9px;border-radius:4px;border:1px solid rgba(224,4,78,.25);background:var(--red-lt);color:var(--red);cursor:pointer}
+.src-intro{font-size:12px;color:var(--gray-dim);margin-bottom:14px;line-height:1.6}
+.src-grp h3{font-family:'Crimson Text';font-size:17px;color:var(--purple);margin:16px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.src-tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.src-tbl th{text-align:left;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-dim);padding:4px 6px}
+.src-tbl td{padding:6px;border-top:1px solid var(--border);vertical-align:top}
+.src-tbl td a{color:var(--purple);font-weight:600}
+.src-url{font-size:9.5px;color:var(--gray-dim);word-break:break-all}
+.src-n{text-align:center;font-weight:600;width:60px}
+.auto-tag{font-size:9px;font-weight:600;color:#1a6645;background:rgba(26,138,92,.08);border:1px solid rgba(26,138,92,.25);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<!-- POLAND MAP WATERMARK -->
+<div class="map-bg" aria-hidden="true">
+  <svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,142 L149,102 L209,99 L328,14 L468,37 L453,76 L527,76 L567,72 L736,76 L866,74 L935,129 L980,253 L945,345 L945,422 L995,615 L1000,638 L851,808 L876,885 L657,838 L577,869 L448,761 L289,749 L249,715 L90,623 L72,612 L60,515 L50,391 L3,314 L30,222 Z"/>
+  </svg>
+</div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="brand">
+    <div>
+      <div class="brand-title">FlexGen Signal Monitor · Poland</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="livebadge">
+    <span class="ld"></span>
+    <span id="clock">Updated as on …</span>
+  </div>
+</header>
+
+<div class="body">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <div class="sb-section">
+    <span class="sb-label">Filters</span>
+    <div class="fbar" id="fbar"></div>
+    <div class="fchips" id="fchips"></div>
+  </div>
+  <div class="sb-section">
+    <span class="sb-label">Core Monitoring Scope</span>
+    <div class="catlist" id="catlist"></div>
+  </div>
+  <div class="sb-section">
+    <span class="sb-label">Companies &amp; Investors</span>
+    <div class="pfil" id="pfil"></div>
+  </div>
+
+
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-head">
+    <div>
+      <h1>FlexGen Signal Monitor &middot; Poland</h1>
+      <p>Live news feed &amp; signals across three pillars: Policy &amp; Market Design · Thermal Generation &amp; Nuclear · Company &amp; Transaction Signals.</p>
+      <p>Polish primary sources first — government, URE, PSE/DSOs, companies, procurement &amp; permitting — complemented by specialist media.</p>
+    </div>
+    <div class="head-stats">
+      <div class="hstat"><div class="hv" id="hsTot">—</div><div class="hl">Signals</div></div>
+      <div class="hstat"><div class="hv" id="hsCos">—</div><div class="hl">Companies tracked</div></div>
+    </div>
+    <svg class="head-map" viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M15,142 L149,102 L209,99 L328,14 L468,37 L453,76 L527,76 L567,72 L736,76 L866,74 L935,129 L980,253 L945,345 L945,422 L995,615 L1000,638 L851,808 L876,885 L657,838 L577,869 L448,761 L289,749 L249,715 L90,623 L72,612 L60,515 L50,391 L3,314 L30,222 Z"/>
+    </svg>
+  </div>
+
+  <div class="cbar">
+    <div class="searchbox"><span class="si">⌕</span><input type="text" id="search" placeholder="Search e.g. OCGT TAURON, SMR CfD, Kozienice…" aria-label="Search signals"></div>
+    <div class="cinfo">Showing <b id="cnt">—</b> signals</div>
+    <div class="sb-spacer"></div>
+    <button class="sortbtn on" id="sortdate" aria-pressed="true">↓ Newest first</button>
+    <button class="sortbtn" id="sortcat" aria-pressed="false">↓ By category</button>
+    <button class="sortbtn" id="srcOpen">📚 Sources</button>
+    <button class="sortbtn nl-btn" id="nlOpen">📰 Newsletter</button>
+  </div>
+
+  <div class="feed" id="feed"></div>
+
+  <div class="footnote">
+    <b>Source note.</b> Every signal links directly to its source document. Polish primary sources come first — government, URE, PSE/DSOs/TGE, company disclosures (ESPI/EBI), procurement and permitting — complemented by selected established specialist media. ⊞ government/operator · 📋 company filing · 🌐 company newsroom · ↗ specialist media. Full list under <b>📚 Sources</b>.
+  </div>
+
+</main>
+</div>
+
+<div class="nl-overlay" id="srcOverlay" role="dialog" aria-modal="true" aria-label="Source list">
+  <div class="nl-modal">
+    <div class="nl-bar"><h2>📚 Source List</h2><button class="nl-x" id="srcX" aria-label="Close">✕</button></div>
+    <div class="nl-preview" id="srcBody" style="max-height:72vh"></div>
+  </div>
+</div>
+<!-- ═══ NEWSLETTER BUILDER MODAL ═══ -->
+<div class="nl-overlay" id="nlOverlay" role="dialog" aria-modal="true" aria-label="Create newsletter">
+  <div class="nl-modal">
+    <div class="nl-bar">
+      <h2>📰 Create Signal Newsletter</h2>
+      <button class="nl-x" id="nlX" aria-label="Close">✕</button>
+    </div>
+    <div class="nl-controls">
+      <div class="nl-field">
+        <label>Quick range</label>
+        <div class="nl-presets">
+          <button class="nl-preset" data-days="7">7 days</button>
+          <button class="nl-preset" data-days="30">30 days</button>
+          <button class="nl-preset" data-days="90">90 days</button>
+          <button class="nl-preset" data-days="mtd">Month to date</button>
+        </div>
+      </div>
+      <div class="nl-field"><label for="nlFrom">From</label><input type="date" id="nlFrom"></div>
+      <div class="nl-field"><label for="nlTo">To</label><input type="date" id="nlTo"></div>
+      <div class="nl-field"><label for="nlGroup">Group by</label>
+        <select id="nlGroup">
+          <option value="category">Category</option>
+          <option value="company">Company</option>
+          <option value="date">Date</option>
+        </select>
+      </div>
+      <div class="nl-field"><label>Scope</label>
+        <label class="nl-check"><input type="checkbox" id="nlRespect"> Apply sidebar filters</label>
+      </div>
+      <button class="nl-gen" id="nlGenBtn">Generate</button>
+    </div>
+    <div class="nl-preview" id="nlPreview"></div>
+    <div class="nl-actions">
+      <button class="nl-act nl-act-primary" id="nlWord">⭳ Word (.doc)</button>
+      <button class="nl-act nl-act-primary" id="nlPrint">🖨 PDF (Save as PDF)</button>
+      <button class="nl-act" id="nlCopy">⧉ Copy</button>
+      <button class="nl-act" id="nlDownload">⭳ HTML</button>
+      <span class="nl-msg" id="nlMsg"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   EVALUESERVE BRAND — DATA LAYER
+═══════════════════════════════════════ */
+const CO = {
+  PGE:    {c:'#1a5eb8', label:'PGE',    logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNzAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNTIiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJwZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTgzMTJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y3OTQxZCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBBcmMgbWFyayAtLT4KICA8cGF0aCBkPSJNMzAgNTIgUTQwIDEwIDgwIDggUTEyMCA2IDEzMiA0NCIgc3Ryb2tlPSJ1cmwoI3BnKSIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8IS0tIFBHRSB0ZXh0IC0tPgogIDx0ZXh0IHg9IjgwIiB5PSI2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjMDAzMDg3IiBsZXR0ZXItc3BhY2luZz0iMyI+UEdFPC90ZXh0Pgo8L3N2Zz4='},
+  ENEA:   {c:'#c94a2e', label:'Enea',   logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNDUiPgogIDwhLS0gU3dvb3NoIGFyYyBhYm92ZSAtLT4KICA8cGF0aCBkPSJNNDggMjIgUTgwIDQgMTEyIDIyIiBzdHJva2U9IiMwMDMwODciIHN0cm9rZS13aWR0aD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPCEtLSBFbmVhIHdvcmRtYXJrIC0tPgogIDx0ZXh0IHg9IjgwIiB5PSI0OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzAwMzA4NyIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtc3R5bGU9Iml0YWxpYyI+RW5lYTwvdGV4dD4KPC9zdmc+'},
+  ENERGA: {c:'#1a8a5c', label:'Energa', logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgNjAiIHdpZHRoPSIxNDAiIGhlaWdodD0iNDgiPgogIDwhLS0gUmVkIGNpcmNsZSBFIC0tPgogIDxjaXJjbGUgY3g9IjIwIiBjeT0iMzAiIHI9IjE0IiBmaWxsPSIjZTMwNjEzIi8+CiAgPHRleHQgeD0iMjAiIHk9IjM2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssQXJpYWwiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IndoaXRlIj5FPC90ZXh0PgogIDwhLS0gRW5lcmdhIHdvcmRtYXJrIC0tPgogIDx0ZXh0IHg9IjQyIiB5PSIzNCIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzAwMzA4NyI+RW5lcmdhPC90ZXh0PgogIDwhLS0gRGl2aWRlciAtLT4KICA8bGluZSB4MT0iMTEwIiB5MT0iMTgiIHgyPSIxMTAiIHkyPSI0MiIgc3Ryb2tlPSIjY2NjY2NjIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gR1JVUEEgT1JMRU4gLS0+CiAgPHRleHQgeD0iMTE4IiB5PSIyNiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSI5IiBmaWxsPSIjZTMwNjEzIj5HUlVQQTwvdGV4dD4KICA8dGV4dCB4PSIxMTgiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjExIiBmaWxsPSIjZTMwNjEzIj5PUkxFTjwvdGV4dD4KPC9zdmc+'},
+  TAURON: {c:'#6b3db5', label:'TAURON', logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgNjUiIHdpZHRoPSIxNDAiIGhlaWdodD0iNTAiPgogIDwhLS0gVGF1cm9uIHN3aXJsIG1hcmsgLSBzaW1wbGlmaWVkIDMtYmxhZGUgd2luZG1pbGwgaW4gbWFnZW50YSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMiwzMikiPgogICAgPHBhdGggZD0iTTAgMCBRLTYtMTQgMC0xOCBROC0xNCAxMiAwIFoiIGZpbGw9IiNkNDAwN2EiIHRyYW5zZm9ybT0icm90YXRlKDApIi8+CiAgICA8cGF0aCBkPSJNMCAwIFEtNi0xNCAwLTE4IFE4LTE0IDEyIDAgWiIgZmlsbD0iI2U4NTU5YSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwKSIvPgogICAgPHBhdGggZD0iTTAgMCBRLTYtMTQgMC0xOCBROC0xNCAxMiAwIFoiIGZpbGw9IiNjMDAwNmEiIHRyYW5zZm9ybT0icm90YXRlKDI0MCkiLz4KICAgIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIzLjUiIGZpbGw9IiNkNDAwN2EiLz4KICA8L2c+CiAgPCEtLSBUQVVST04gd29yZG1hcmsgLS0+CiAgPHRleHQgeD0iNDYiIHk9IjI4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssQXJpYWwiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiMxYTFhNmUiIGxldHRlci1zcGFjaW5nPSIxIj5UQVVST048L3RleHQ+CiAgPCEtLSBQT0xTS0EgRU5FUkdJQSBzdWIgLS0+CiAgPHRleHQgeD0iNDYiIHk9IjQ0IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhIiBmb250LXdlaWdodD0iNDAwIiBmb250LXNpemU9IjkuNSIgZmlsbD0iIzFhMWE2ZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlBPTFNLQSBFTkVSR0lBPC90ZXh0Pgo8L3N2Zz4='},
+  ALL:    {c:'#8a8a8b', label:'All',    logo:''}
+};
+/* official corporate newsrooms / investor-relations — appended as a source on every company signal */
+const OFFICIAL = {
+  PGE:    {label:'PGE — official site',          url:'https://www.gkpge.pl/'},
+  ENEA:   {label:'Enea — official press centre', url:'https://media.enea.pl/'},
+  ENERGA: {label:'Energa — press office',        url:'https://media.energa.pl/'},
+  TAURON: {label:'TAURON — official media',      url:'https://media.tauron.pl/'}
+};
+const SOURCES = [
+  ['Government & legislation','Ministry of Energy','Government','https://www.gov.pl/web/energia','gov.pl/web/energia'],
+  ['Government & legislation','Chancellery of the PM — legislative work list','Government','https://www.gov.pl/web/premier/wykaz-prac-legislacyjnych-i-programowych-rady-ministrow','gov.pl/web/premier'],
+  ['Government & legislation','Ministry of Climate and Environment','Government','https://www.gov.pl/web/climate','gov.pl/web/climate'],
+  ['Government & legislation','Ministry of State Assets','Government','https://www.gov.pl/web/aktywa-panstwowe','gov.pl/web/aktywa-panstwowe'],
+  ['Government & legislation','Sejm API & ELI (Dziennik Ustaw)','Parliament / official journal','https://api.sejm.gov.pl/','sejm.gov.pl'],
+  ['Regulators','URE — Energy Regulatory Office','Regulator','https://www.ure.gov.pl/','ure.gov.pl'],
+  ['Regulators','PAA — National Atomic Energy Agency','Nuclear regulator','https://www.gov.pl/web/paa','gov.pl/web/paa'],
+  ['Regulators','UOKiK — competition authority','Regulator','https://uokik.gov.pl/','uokik.gov.pl'],
+  ['Regulators','European Commission — energy / state aid','EU institution','https://energy.ec.europa.eu/','ec.europa.eu'],
+  ['Regulators','EUR-Lex — EU Official Journal','EU institution','https://eur-lex.europa.eu/','eur-lex.europa.eu'],
+  ['System operators & market','PSE — TSO & capacity market (incl. data API)','TSO','https://www.pse.pl/','pse.pl'],
+  ['System operators & market','TGE — Polish Power Exchange','Exchange','https://tge.pl/','tge.pl'],
+  ['System operators & market','PGE Dystrybucja','DSO','https://pgedystrybucja.pl/','pgedystrybucja.pl'],
+  ['System operators & market','Energa-Operator','DSO','https://energa-operator.pl/','energa-operator.pl'],
+  ['Company disclosures','PGE — current reports & press','Company / ESPI','https://www.gkpge.pl/en/for-investors/current-reports','gkpge.pl'],
+  ['Company disclosures','Enea — investor relations & press','Company / ESPI','https://ir.enea.pl/en','enea.pl'],
+  ['Company disclosures','Energa — press office','Company','https://media.energa.pl/','energa.pl'],
+  ['Company disclosures','ORLEN — press releases','Company / ESPI','https://www.orlen.pl/en/about-the-company/media/press-releases','orlen.pl'],
+  ['Company disclosures','TAURON — media','Company','https://media.tauron.pl/','tauron.pl'],
+  ['Company disclosures','ZE PAK — investor relations','Company / ESPI','https://ri.zepak.com.pl/en/','zepak.com.pl'],
+  ['Company disclosures','PEJ — Polskie Elektrownie Jądrowe','State nuclear developer','https://pej.pl/en/homepage/','pej.pl'],
+  ['Company disclosures','Polenergia · Fortum · Axpo · ENGIE Polska','Company newsrooms','https://www.polenergia.pl/','polenergia.pl|fortum.com|axpo.com|engie-polska.pl'],
+  ['Company disclosures','Partner / OEM releases (Ørsted, GE Vernova, Westinghouse, Valmet, Van Oord, DRI, Greenvolt)','Partner releases','https://orsted.com/en/media/news','orsted.com|gevernova.com|westinghousenuclear.com|valmet.com|vanoord.com|dri-energy.com|greenvolt.com'],
+  ['Procurement & permitting','TED — EU tenders (Search API v3)','Procurement','https://ted.europa.eu/','ted.europa.eu'],
+  ['Procurement & permitting','e-Zamówienia / BZP','Procurement','https://ezamowienia.gov.pl/','ezamowienia.gov.pl'],
+  ['Procurement & permitting','GDOŚ — environmental decisions','Permitting','https://www.gov.pl/web/gdos','gov.pl/web/gdos'],
+  ['Financing institutions','European Investment Bank','EU financing','https://www.eib.org/en/press/','eib.org'],
+  ['Financing institutions','US EXIM','Export credit agency','https://www.exim.gov/news','exim.gov'],
+  ['Financing institutions','EC Recovery & Resilience — Poland','EU financing','https://reforms-investments.ec.europa.eu/','reforms-investments.ec.europa.eu'],
+  ['Specialist media (complementary)','WNP.pl · WysokieNapięcie · Energetyka24','Polish trade press','https://www.wnp.pl/energia/','wnp.pl|wysokienapiecie.pl|energetyka24.com'],
+  ['Specialist media (complementary)','PAP Biznes · Bankier · Rzeczpospolita Energia','Newswire / business press','https://www.bankier.pl/','biznes.pap.pl|bankier.pl|rp.pl'],
+  ['Specialist media (complementary)','Reuters · Polskie Radio','Wire / public broadcaster','https://www.reuters.com/business/energy/','reuters.com|polskieradio.pl'],
+  ['Specialist media (complementary)','World Nuclear News','Nuclear trade press','https://www.world-nuclear-news.org/','world-nuclear-news.org'],
+  ['Specialist media (complementary)','Renewables Now · Enerdata · CEEnergyNews · Utility Dive','Energy trade press','https://renewablesnow.com/','renewablesnow.com|enerdata.net|ceenergynews.com|utilitydive.com'],
+  ['Specialist media (complementary)','ESS News · Energy-Storage.news · pv magazine','Storage & solar press','https://www.ess-news.com/','ess-news.com|energy-storage.news|pv-magazine.com'],
+  ['Analysis & legal briefings','Forum Energii · Dentons · CMS · SSW','Think tank / law firms','https://www.forum-energii.eu/en','forum-energii.eu|dentons.com|cms.law|ssw.solutions']
+];
+function srcCount(match){ const pats = match.split('|');
+  return SIGNALS.filter(s => (s.links||[]).some(l => pats.some(p => l.url.includes(p)))).length; }
+function openSources(){
+  const groups = [...new Set(SOURCES.map(x=>x[0]))];
+  nl('srcBody').innerHTML = `<p class="src-intro">The monitor prioritises Polish primary sources — government, regulators, PSE/DSOs/TGE, company disclosures, procurement and permitting — complemented by selected specialist media. Each signal links directly to its source document.</p>` +
+    groups.map(g => `<div class="src-grp"><h3>${g}</h3><table class="src-tbl"><thead><tr><th>Source</th><th>Type</th><th>Signals</th></tr></thead><tbody>` +
+      SOURCES.filter(x=>x[0]===g).map(x => `<tr><td><a href="${x[3]}" target="_blank" rel="noopener">${x[1]}</a><div class="src-url">${x[3].replace(/^https?:\/\//,'')}</div></td><td>${x[2]}</td><td class="src-n">${srcCount(x[4])||'—'}</td></tr>`).join('') +
+      `</tbody></table></div>`).join('');
+  nl('srcOverlay').classList.add('open');
+}
+let SIGNALS = [
+
+  {id:'x1',date:'2026-09-16',co:'ALL',cat:'regulatory',
+   unit:'URE / PSE \u2014 Capacity Market Rules',
+   title:'URE publishes approval of Capacity Market Rule update RRM/Z/16/2026',
+   desc:'URE published the decision approving changes set out in update card RRM/Z/16/2026. PSE announced the approval on 10 September 2026, making this the latest formal capacity-market rule update visible in the official register.',
+   links:[{label:'URE \u2014 Capacity Market Rules register',url:'https://bip.ure.gov.pl/bip/rynek-mocy/3674,Regulamin-rynku-mocy.html',type:'gov'},
+          {label:'PSE \u2014 Capacity Market news',url:'https://www.pse.pl/aktualnosci-rynku-mocy',type:'gov'}]},
+  {id:'x2',date:'2026-09-04',co:'ALL',cat:'ma',
+   unit:'ENGIE Zielona Energia \u2014 Tr\u0119baczew BESS',
+   title:'ENGIE acquires a 438 MW / 876 MWh battery-storage project in Poland',
+   desc:'ENGIE Zielona Energia acquired the special-purpose vehicle developing the Tr\u0119baczew battery project from Mithra Energy and Futureal Investment Partners. The project is expected to reach ready-to-build status in Q4 2026 and is planned for commissioning in Q1 2029.',
+   links:[{label:'Renewables Now — Engie acquires 438-MW project',url:'https://renewablesnow.com/news/engie-acquires-438-mw-battery-storage-project-in-poland-1300726/',type:'press'}]},
+  {id:'x3',date:'2026-07-29',co:'TAURON',cat:'polandeu',
+   unit:'EIB\u2013TAURON financing \u2014 Miejska G\u00f3rka wind farm',
+   title:'EIB signs more than \u20ac260m financing for TAURON\u2019s 190 MW Miejska G\u00f3rka wind farm',
+   desc:'The European Investment Bank signed financing of over \u20ac260 million (PLN 1.12 billion) for TAURON\u2019s 190 MW Miejska G\u00f3rka onshore wind farm in western Poland. TAURON plans to put the project into operation in 2027.',
+   links:[{label:'EIB \u2014 financing announcement',url:'https://www.eib.org/en/press/all/2026-264-eib-contributes-over-eur260-million-to-poland-s-second-largest-onshore-wind-farm',type:'gov'}]},
+  {id:'x4',date:'2026-07-16',co:'ALL',cat:'electricity',
+   unit:'TGE / DSOs \u2014 National flexibility-services platform',
+   title:'TGE, Enea Operator, Energa-Operator and PGE Dystrybucja agree national flexibility platform',
+   desc:'The parties signed a cooperation agreement to create a common platform through which distribution operators can procure flexibility from active consumers, storage assets, generators and aggregators, with the aim of supporting local constraint management and further connection of new resources.',
+   links:[{label:'Energa-Operator — press release',url:'https://energa-operator.pl/aktualnosci/873585/operatorzy-lacza-sily-wspolna-platforma-na-gieldzie-zmieni-zarzadzanie-siecia-energetyczna-w-polsce',type:'official'},
+          {label:'PGE Dystrybucja — press release',url:'https://pgedystrybucja.pl/o-spolce/aktualnosci/operatorzy-lacza-sily',type:'official'}]},
+  {id:'x5',date:'2026-07-13',co:'TAURON',cat:'regulatory',
+   unit:'Ministry of Energy\u2013TAURON strategic cooperation',
+   title:'Energy Ministry and TAURON sign strategic letter on large-scale energy storage',
+   desc:'The letter establishes a framework to develop regulatory, organisational and financial solutions intended to accelerate large-scale storage investments, including the Ro\u017cn\u00f3w II pumped-storage project.',
+   links:[{label:'Polish Government \u2014 official announcement',url:'https://www.gov.pl/web/energia/magazyny-energii-jednym-z-filarow-bezpieczenstwa-polski-minister-energii-milosz-motyka-podpisal-strategiczny-list-intencyjny-z-tauronem',type:'gov'}]},
+  {id:'x6',date:'2026-06-17',co:'ALL',cat:'polandeu',
+   unit:'European Commission \u2014 RRF impact in Poland',
+   title:'Commission sets out the energy impact of Poland\u2019s \u20ac54.7bn Recovery and Resilience Plan',
+   desc:'The Commission\u2019s RRF factsheet states that Poland\u2019s plan combines structural reforms with \u20ac54.7 billion of EU funding and allocates 40% of funding primarily to energy-related objectives.',
+   links:[{label:'European Commission \u2014 RRF energy factsheet',url:'https://reforms-investments.ec.europa.eu/publications-0/rrf-impact-energy-poland_en',type:'gov'}]},
+  {id:'x7',date:'2026-02-19',co:'ALL',cat:'regulatory',
+   unit:'URE \u2014 Electricity-storage consultation',
+   title:'URE finds no third-party investor interest in storage assets covered by system-service consultation',
+   desc:'URE reported that entities other than electricity-system operators did not express interest in investing in the storage facilities covered by the consultation to provide system services cost-effectively.',
+   links:[{label:'URE \u2014 Information 10/2026',url:'https://bip.ure.gov.pl/download/3/20535/InformacjaPrezesaURE102026.pdf',type:'gov'}]},
+  {id:'r1',date:'2026-01-07',co:'ALL',cat:'regulatory',
+   unit:'Energy Law amendment \u2014 grid connection overhaul',
+   title:'Polish government approves draft law reforming grid connection rules',
+   desc:'The government approved a draft Energy Law amendment requiring operators to publish available capacity, applications, statuses and rejections; extending cable pooling to storage and mixed-source facilities; introducing a \u201Cpower guard\u201D mechanism; raising the connection deposit from PLN 30 to PLN 60 per kW with a PLN 6m cap; shortening connection-condition validity from two years to one; allowing \u201Cno-connection zones\u201D; and piloting connection-capacity auctions for renewables until 2028. The Energy Minister said the reform incorporates ENTSO-E recommendations following the Iberian blackout.',
+   links:[{label:'Polskie Radio \u2014 grid connection reform approved',url:'https://www.polskieradio.pl/395/7786/Artykul/3630987,poland-approves-overhaul-of-power-grid-connection-rules',type:'press'}]},
+  {id:'r2',date:'2025-11-22',co:'ALL',cat:'regulatory',
+   unit:'Anti-blackout package \u2014 first act',
+   title:'Standing Committee adopts Energy Law amendment described as the first anti-blackout act',
+   desc:'The Standing Committee of the Council of Ministers adopted the UC84 Energy Law amendment — the first act of the anti-blackout package prepared by the Ministry of Energy with PSE. It streamlines grid-connection procedures, introduces flexible connection agreements, extends cable pooling to storage, and implements EU electricity-market-design and REMIT rules.',
+   links:[{label:'KPRM — UC84 legislative project page',url:'https://www.gov.pl/web/premier/projekt-ustawy-o-zmianie-ustaw--prawo-energetyczne-oraz-niektorych-innych-ustaw',type:'gov'},
+          {label:'PSE — anti-blackout package (press release)',url:'https://www.pse.pl/-/ministerstwo-energii-i-pse-przedstawiaja-pakiet-antyblackoutowy',type:'gov'}]},
+  {id:'r3',date:'2025-11-18',co:'ALL',cat:'regulatory',
+   unit:'RES Act amendment (UD332) \u2014 biomethane',
+   title:'Draft RES Act amendment introducing a biomethane support system enters the government work schedule',
+   desc:'The Government Work Planning Team approved a draft bill amending the Renewable Energy Sources Act and certain other acts (UD332), containing solutions intended primarily to introduce a support system for biomethane.',
+   links:[{label:'Ministry of Climate and Environment \u2014 announcement',url:'https://www.gov.pl/web/climate/another-draft-bill-on-renewable-energy-sources-included-in-the-council-of-ministers-work-schedule',type:'gov'}]},
+  {id:'r4',date:'2025-10-01',co:'ALL',cat:'regulatory',
+   unit:'RES Act amendment \u2014 RED II implementation',
+   title:'RES Act amendment enters into force, implementing a further part of RED II and adding URE duties',
+   desc:'URE stated that the amendment implements a further part of the RED II Directive covering support on both the electricity and heat markets, extends to renewable hydrogen and cooling, broadens the definition of modernisation of RES installations so support can function in practice, and imposes a number of new obligations on the President of URE.',
+   links:[{label:'URE \u2014 amendment of the RES Act',url:'https://www.ure.gov.pl/en/communication/news/359,Amendment-of-the-RES-Act-new-support-systems-material-solutions-for-local-power-.html',type:'gov'}]},
+  {id:'r5',date:'2025-08-11',co:'ALL',cat:'regulatory',
+   unit:'European Commission \u2014 capacity mechanism derogation',
+   title:'Commission grants Poland a derogation on the Polish capacity mechanism to 31 December 2028',
+   desc:'The Commission adopted a decision granting Poland a derogation from Article 22(4)(b) of Regulation (EU) 2019/943 as regards the Polish capacity mechanism, applying from 1 July 2025 to 31 December 2028. Poland submitted the request on 4 February 2025, the Commission published it for comment on 14 February 2025, and the decision was published in the Official Journal as Decision (EU) 2026/341.',
+   links:[{label:'EUR-Lex \u2014 Commission Decision (EU) 2026/341',url:'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:L_202600341',type:'gov'}]},
+  {id:'r6',date:'2025-06-26',co:'ALL',cat:'regulatory',
+   unit:'Energy-sector deregulation bill (UDER29)',
+   title:'Deregulation bill proposes new generation-licence rules and cable pooling for storage',
+   desc:'The governmental draft law on amending certain laws to deregulate the energy sector (UDER29) introduces new rules for obtaining electricity generation licences and expands the cable pooling formula to energy storage and other installations.',
+   links:[{label:'Dentons \u2014 deregulation in the energy sector',url:'https://www.dentons.com/en/insights/newsletters/2025/june/26/powered-by-dentons/powered-by-dentons-june-2025/deregulation-in-energy-sector-new-legislative-proposals',type:'press'}]},
+  {id:'r7',date:'2025-03-24',co:'ALL',cat:'regulatory',
+   unit:'Energy Law amendment \u2014 public consultation',
+   title:'Draft Energy Law amendment on connection fees and capacity blocking goes to public consultation',
+   desc:'The government submitted a draft amendment to the Energy Law and related acts for public consultation, focused on grid connection procedures and addressing \u201Ccapacity blocking\u201D. It doubles the connection-fee advance from PLN 30 to PLN 60 per kW and raises the maximum advance from PLN 3m to PLN 6m, adds a non-refundable application review fee above 1 kV, introduces mandatory financial security, and reduces the validity of connection conditions from two years to one.',
+   links:[{label:'CMS \u2014 draft law in public consultation',url:'https://cms.law/en/pol/legal-updates/polish-draft-law-proposing-significant-changes-to-energy-sector-regulations-in-public-consultation',type:'press'}]},
+  {id:'r8',date:'2025-02-24',co:'ALL',cat:'regulatory',
+   unit:'Capacity Market Act amendment',
+   title:'Poland extends capacity-market participation of units above 550 kg CO\u2082/MWh to the end of 2028',
+   desc:'Under European rules, from 1 July 2025 generation units emitting more than 550 kg of CO\u2082 per MWh lose eligibility for state aid under the capacity market. Recognising the role of such units in system stability, Poland decided to extend their participation until the end of 2028.',
+   links:[{label:'Dentons \u2014 amendments to the Capacity Market Act',url:'https://www.dentons.com/en/insights/newsletters/2025/february/24/powered-by-dentons/powered-by-dentons-february-2025/amendments-to-the-capacity-market-act-key-changes-and-implications',type:'press'}]},
+  {id:'p1',date:'2025-12-19',co:'ALL',cat:'polandeu',
+   unit:'EU Modernisation Fund \u2014 national storage programme',
+   title:'Poland finalises PLN 4.15bn storage support list covering ~3,900 MW / 14,500 MWh',
+   desc:'NFO\u015AiGW published the final ranking under the PLN 4.15bn programme financed from the EU Modernisation Fund, covering 172 storage facilities to be built by the end of 2028 with roughly 3,900 MW of power and about 14,500 MWh of capacity. Earlier in December it shortlisted 183 projects out of 480 positively evaluated applications; requested funding reached nearly PLN 28bn for more than 20 GW / 122 GWh, almost seven times the budget.',
+   links:[{label:'ESS-News \u2014 final subsidy list',url:'https://www.ess-news.com/2025/12/19/poland-allocates-subsidies-to-14-5-gwh-of-energy-storage-projects/',type:'press'},
+          {label:'ESS-News \u2014 183 projects shortlisted',url:'https://www.ess-news.com/2025/12/10/poland-selects-183-energy-storage-projects-under-1-billion-oversubscribed-subsidy-program/',type:'press'}]},
+  {id:'m1',date:'2026-06-26',co:'ALL',cat:'ma',
+   unit:'ENGIE \u2014 Tursko Wielkie BESS (250 MW / 1,000 MWh)',
+   title:'ENGIE agrees to acquire R.Power’s ready-to-build 250 MW / 1,000 MWh battery project at Tursko Wielkie',
+   desc:'ENGIE Zielona Energia agreed to acquire the Tursko Wielkie battery project (Osiek commune, Świętokrzyskie) from R.Power. The ready-to-build asset is expected to start construction in early 2027 and be commissioned in Q4 2028, connecting directly to the Połaniec substation to help manage regional power flows.',
+   links:[{label:'ENGIE Polska — press release',url:'https://engie-polska.pl/2026/06/26/engie-finalizuje-z-r-power-umowe-na-jeden-z-najwiekszych-magazynow-energii-w-kraju/',type:'official'}]},
+  {id:'m2',date:'2026-01-30',co:'ALL',cat:'ma',
+   unit:'Axpo \u2014 Nowa Sarzyna CCGT (116 MW)',
+   title:'Axpo completes purchase of the 116 MW Nowa Sarzyna CCGT after UOKiK clearance',
+   desc:'Axpo Polska received approval from the President of UOKiK to acquire 100% of the shares in Polenergia Elektrociep\u0142ownia Nowa Sarzyna and signed the final purchase agreement the same day. The CCGT plant in south-eastern Poland adds a flexible generation source to Axpo Polska\u2019s portfolio, with all current employees retained.',
+   links:[{label:'Axpo \u2014 acquisition approved',url:'https://www.axpo.com/pl/en/newsroom/media-releases/2026/axpo-purchase-of-ccgt-plant-in-poland-approved.html',type:'official'}]},
+  {id:'m3',date:'2025-12-18',co:'ALL',cat:'ma',
+   unit:'Axpo / Polenergia \u2014 Nowa Sarzyna CCGT',
+   title:'Axpo agrees to buy Polenergia\u2019s 116 MW Nowa Sarzyna gas plant',
+   desc:'Axpo agreed to acquire the 116 MW Nowa Sarzyna gas plant from Polenergia, subject to customary antimonopoly review with closing expected in early 2026. Polenergia framed the divestment as consistent with its strategy of focusing on major renewable projects and reallocating capital toward RES development.',
+   links:[{label:'Axpo \u2014 purchase announcement',url:'https://www.axpo.com/pl/en/newsroom/media-releases/2025/axpo-buys-gas-power-plant-in-nowa-sarzyna.html',type:'official'}]},
+  {id:'m4',date:'2025-12-11',co:'ALL',cat:'ma',
+   unit:'Axpo \u2014 Mazowieckie BESS (32 MW / 140 MWh)',
+   title:'Axpo acquires a standalone 32 MW / 140 MWh battery project in Mazowieckie',
+   desc:'Axpo acquired a large-scale standalone battery energy storage project with 32 MW of installed capacity and 140 MWh of storage capacity located in the Mazowieckie region, advised by SSW\u2019s energy and M&A teams.',
+   links:[{label:'SSW (deal counsel) — transaction release',url:'https://ssw.solutions/en/axpo-32-mw-battery-energy-storage-poland/',type:'press'}]},
+  {id:'m5',date:'2025-12-02',co:'ALL',cat:'ma',
+   unit:'Northland Power \u2014 Mieczys\u0142aw\u00F3w & Kamionka (300 MW / 1.2 GWh)',
+   title:'Northland Power buys two Polish BESS projects totalling 300 MW / 1.2 GWh from Greenvolt',
+   desc:'Northland Power acquired 100% of two pre-construction battery projects in western Poland from Greenvolt Power Group \u2014 Mieczys\u0142aw\u00F3w (200 MW / 800 MWh) and Kamionka (100 MW / 400 MWh), both four-hour duration. The investment is estimated at around \u20AC200 million, with financing and construction start expected in 2026 and revenue from 17-year inflation-indexed capacity market contracts plus arbitrage and ancillary services.',
+   links:[{label:'Energy-Storage.news \u2014 European BESS M&A round-up',url:'https://www.energy-storage.news/european-bess-m-a-and-financings-totalling-over-1gw/',type:'press'}]},
+  {id:'m6',date:'2025-11-26',co:'ENERGA',cat:'ma',
+   unit:'ORLEN \u2014 Energa minority buyout',
+   title:'ORLEN invites Energa shareholders to sell, seeking 100% ownership at PLN 18.87 per share',
+   desc:'ORLEN\u2019s Management and Supervisory Boards approved an invitation to all Energa shareholders to submit offers to sell 37,578,474 shares at PLN 18.87 per share, which together with ORLEN\u2019s existing holding would constitute 100% of Energa. Offers were accepted from 1 to 17 December 2025, with the option to buy shares on and off the regulated market from 27 November 2025.',
+   links:[{label:'ORLEN \u2014 regulatory announcement 65/2025',url:'https://www.orlen.pl/en/investor-relations/reports-and-publications/regulatory-announcements/2025/04/Regulatory-announcement-no-65-2025',type:'filing'},
+          {label:'Reuters \u2014 Orlen buyout of Energa minorities',url:'https://www.reuters.com/business/energy/polands-orlen-offers-buy-out-energa-minorities-take-full-control-2025-11-26/',type:'press'}]},
+  {id:'m7',date:'2025-09-26',co:'ALL',cat:'ma',
+   unit:'DRI (DTEK) \u2014 Kozienice BESS (112 MW / 448 MWh)',
+   title:'DRI acquires a ready-to-build 112 MW / 448 MWh battery project at Kozienice from Greenvolt',
+   desc:'DRI, a subsidiary of the DTEK Group, acquired rights to build a 112 MW / 448 MWh battery storage system at Kozienice from Greenvolt Power. The project is at ready-to-build stage with administrative approvals, permits and grid connection agreements in place, taking DRI\u2019s total storage capacity available to the Polish grid to 245 MW.',
+   links:[{label:'DRI — press release',url:'https://dri-energy.com/en/dri-acquires-112mw-battery-storage-project-poland-from-greenvolt/',type:'official'},
+          {label:'Greenvolt — press release',url:'https://greenvolt.com/greenvolt-sells-a-112mw-energy-storage-project-in-poland-to-dri/',type:'official'}]},
+  {id:'m8',date:'2025-07-01',co:'PGE',cat:'ma',
+   unit:'PGE / ZE PAK \u2014 PAK CCGT',
+   title:'ZE PAK withdraws from selling PAK CCGT, ending negotiations with PGE',
+   desc:'PGE announced that ZE PAK had withdrawn from its intention to sell 100% of the shares in PAK CCGT and that negotiations were terminated as of 30 June 2025. ZE PAK stated it would implement the CCGT project independently using other financing sources, while both parties declared an intention to continue talks on PGE PAK Energia J\u0105drowa.',
+   links:[{label:'PGE \u2014 current report 26/2025',url:'https://www.gkpge.pl/en/for-investors/current-reports/completion-of-negotiations-with-ze-pak-s.a.-regarding-the-potential-acquisition-of-shares-in-pak-ccgt-sp.-z-o.o.2',type:'filing'},
+          {label:'ZE PAK \u2014 current report 13/2025',url:'https://ri.zepak.com.pl/en/reports/current-reports/2078-updated-information-regarding-the-signing-of-a-term-sheet-document-with-pge-sa-regarding-the-potential-sale-of-shares-in-pak-ccgt-sp-z-oo-and-shares-in-pge-pak-energia-jadrowa-sa.html',type:'filing'}]},
+  {id:'m9',date:'2025-01-23',co:'PGE',cat:'ma',
+   unit:'PGE / ZE PAK \u2014 PAK CCGT term sheet',
+   title:'PGE signs a term sheet to acquire 100% of PAK CCGT and 50% of PGE PAK Energia J\u0105drowa',
+   desc:'PGE signed a term sheet with ZE PAK on the potential acquisition of 100% of the shares in PAK CCGT, which is building a 600 MWe-class CCGT unit holding a 17-year capacity contract for delivery year 2026 at 493 MW and PLN 400.39/kW/year, together with 50% of the shares in PGE PAK Energia J\u0105drowa. PGE received exclusivity for negotiations until 30 June 2025.',
+   links:[{label:'PGE \u2014 current report 3/2025',url:'https://www.gkpge.pl/en/for-investors/current-reports/signing-of-term-sheet-with-ze-pak-s.a.-on-potential-acquisition-of-shares-in-pak-ccgt-sp.-z-o.o.-and-in-pge-pak-energia-jadrowa-s.a',type:'filing'}]},
+  {id:'e1',date:'2026-09-15',co:'ENEA',cat:'financial',
+   unit:'Enea Group — H1 2026 results',
+   title:'Enea H1 2026: net profit falls to 1.50bn zł as EBITDA slips to 2.75bn on weaker generation',
+   desc:'Enea reported first-half 2026 revenue and other income of 12.82 billion zł with EBITDA of 2.75 billion zł (H1 2025: 3.39 billion) and net profit of 1.50 billion zł, down from 2.02 billion a year earlier as generation margins weakened; profit before tax reached 1.90 billion. The Group kept building its two Kozienice CCGT units, added renewable capacity, digitised the distribution grid and secured LNG access.',
+   links:[{label:'Enea IR — preliminary H1 2026 & Q2 2026 results',url:'https://ir.enea.pl/en/pr/875146/information-on-preliminary-financial-and-operating-results-for-h1-2026-and-q2-2026',type:'filing'},
+          {label:'Enea — official press centre',url:'https://media.enea.pl/',type:'official'}]},
+  {id:'e2',date:'2026-09-08',co:'ALL',cat:'capacity',
+   unit:'PSE Supplementary Auction — 2027 delivery year',
+   title:'Poland\'s 2027 supplementary auction contracts full 7.5 GW; clears at 325.55 PLN/kW-year',
+   desc:'PSE\'s supplementary capacity auction for 2027, held on 3 September 2026, contracted the full ~7.5 GW of demand (7,480.7 MW) and cleared at 325.55 PLN/kW/year after ending in round five. State utilities took the bulk: PGE secured no less than 1,859 MW, TAURON ~1,410 MW, Enea ~1,595 MW and ZE PAK 409 MW, mostly on existing conventional units.',
+   links:[{label:'PGE — investor current reports',url:'https://www.gkpge.pl/en/for-investors/current-reports',type:'filing'}]},
+  {id:'e3',date:'2026-09-08',co:'ENEA',cat:'capacity',
+   unit:'Enea — Kozienice capacity contracts (2027)',
+   title:'Enea locks ~1,595 MW in the 2027 supplementary auction, lifting 2027 capacity revenue to ~1.3bn zł',
+   desc:'Enea contracted no less than 1,595 MW in the 2027 supplementary auction at a 325.55 PLN/kW/year clearing price, worth about 519 million zł, with over 1,557 MW tied to Kozienice units 5, 6, 8, 9 and 10. Including earlier contracts, the Group now holds around 3,547 MW of 2027 capacity obligations and estimates total 2027 capacity-market revenue of roughly 1.3 billion zł.',
+   links:[{label:'Enea IR — preliminary 2027 auction outcome',url:'https://ir.enea.pl/en/pr/876432/information-on-the-preliminary-outcome-of-the-capacity-market-auction-for-2027-announced-by-pse-2026-09-08',type:'filing'},
+          {label:'Enea — investor relations',url:'https://ir.enea.pl/en',type:'filing'}]},
+  {id:'e4',date:'2026-04-17',co:'ENERGA',cat:'project',
+   unit:'CCGT Ostrołęka — schedule annex',
+   title:'Energa signs GE annex resetting Ostrołęka CCGT deadline to Q1 2027 to avoid capacity penalties',
+   desc:'Energa signed an annex with contractors GE Power and GE Vernova introducing stabilisation-mobilisation measures to bring the Ostrołęka CCGT to its operational milestone by March 2027 at the latest, safeguarding it against PSE capacity-market penalties. Energa earlier flagged that delays at Ostrołęka and Grudziądz were costing close to 2.5 million zł a month combined.',
+   links:[{label:'CEENERGYNEWS — Ostrołęka commissioning stage',url:'https://ceenergynews.com/oil-gas/ostroleka-ccgt-project-advances-to-commissioning-stage/',type:'press'},
+          {label:'Energa — official site',url:'https://grupa.energa.pl/',type:'official'}]},
+  {id:'g1',date:'2026-03-11',co:'PGE',cat:'strategy',
+   unit:'PGE Dystrybucja — grid modernisation (KPO)',
+   title:'PGE Dystrybucja signs ~PLN 1.4bn KPO grants to modernise grids and add 541 MW of connection capacity',
+   desc:'On 11 March 2026 PGE Dystrybucja signed seven grant agreements worth nearly PLN 1.4bn (€327m) with the eco-fund NFOŚiGW under the National Recovery Plan, funding the rebuild of 504 substations, over 177 km of lines and ~58,000 smart meters, and lifting renewable connection capacity by 541 MW. PGE plans to spend about PLN 75bn over ten years digitising and expanding its distribution network.',
+   links:[{label:'Renewables Now — PGE gets €326m for grid upgrade',url:'https://renewablesnow.com/news/polands-pge-gets-eur-326m-to-upgrade-power-grid-1291517/',type:'press'},
+          {label:'PGE — official site',url:'https://www.gkpge.pl/',type:'official'}]},
+  {id:'g2',date:'2026-09-10',co:'ENEA',cat:'strategy',
+   unit:'Enea Operator — grid modernisation',
+   title:'Enea Operator installs 6,500+ transformers as it deploys ~PLN 9bn KPO loan for a smart grid',
+   desc:'Enea Operator has installed more than 6,500 transformers across rural Poland, part of a modernisation drive upgrading medium- and low-voltage networks, hundreds of kilometres of lines and thousands of substations to raise reliability and renewable-hosting capacity. It draws on the ~PLN 9bn (€2.1bn) BGK/KPO loan secured in 2025, within Enea\'s plan to invest about PLN 41bn in distribution by 2035.',
+   links:[{label:'Enea — official press centre',url:'https://media.enea.pl/',type:'official'}]},
+  {id:'g3',date:'2025-03-20',co:'ENERGA',cat:'strategy',
+   unit:'Energa Operator — grid modernisation (EIB/Orlen)',
+   title:'Energa Operator draws final €405m EIB tranche of a PLN 3.5bn programme to expand and digitise the grid',
+   desc:'The EIB signed a PLN 1.7bn (€405m) loan to Orlen for Energa Operator — the third and final tranche of a PLN 3.5bn package — to upgrade over 4,600 km of grid, build 2,300 km of new lines and connect ~25,000 customers, adding 4.8 GW of renewable capacity. Energa\'s 2035 plan targets 11,000 km of new lines, 7,000 km of cables and 9 GW of RES integration.',
+   links:[{label:'EIB — €400m+ for Energa grid upgrades',url:'https://www.eib.org/en/press/all/2025-155-polish-electricity-grid-to-get-further-upgrades-with-eib-loan-payment-of-over-eur400-million-to-orlen-group',type:'gov'},
+          {label:'Energa — official site',url:'https://grupa.energa.pl/',type:'official'}]},
+  {id:'g4',date:'2026-07-22',co:'TAURON',cat:'strategy',
+   unit:'TAURON Dystrybucja — smart metering',
+   title:'TAURON passes 3 million smart meters — half its customers — as grid digitalisation accelerates',
+   desc:'TAURON Dystrybucja has installed over 3 million remote-reading (LZO) smart meters, covering roughly half of its ~5.6 million customers, after a record 1 million+ in 2025 and 530,000 in H1 2026. Co-financed by NFOŚiGW via the EU Modernisation Fund, the rollout supports demand-side management, new dynamic tariffs and renewable integration, and underpins TAURON\'s ~€1.2bn BGK grid-transformation programme.',
+   links:[{label:'TAURON — official media',url:'https://media.tauron.pl/',type:'official'}]},
+  {id:'b1',date:'2026-08-25',co:'PGE',cat:'project',
+   unit:'PGE — BESS Żarnowiec (262 MW)',
+   title:'PGE\'s 262 MW Żarnowiec battery nears commissioning as Poland\'s largest storage facility',
+   desc:'PGE\'s 262 MW battery storage installation at Żarnowiec is approaching commissioning, set to become the largest BESS in Poland, overtaking the 200 MW/800 MWh Nowa Wieś Elcka. The project anchors PGE\'s storage push to firm renewables and capture capacity-market and balancing revenues, complementing its gas-peaker and offshore-wind programmes.',
+   links:[{label:'Renewables Now — PGE 262 MW Żarnowiec near commissioning',url:'https://renewablesnow.com/news/pges-262-mw-zarnowiec-battery-in-poland-near-commissioning-1297656/',type:'press'},
+          {label:'PGE — official site',url:'https://www.gkpge.pl/',type:'official'}]},
+  {id:'b2',date:'2026-03-12',co:'ENEA',cat:'project',
+   unit:'Enea — BESS & PV programme (1.4 GW)',
+   title:'Enea unveils ~PLN 2bn plan for 1.4 GW of battery storage and 300 MW of PV within 30 months',
+   desc:'Enea deputy CEO Bartosz Krysta said the group will develop 1.4 GW of battery storage and 300 MW of PV over the next 30 months under a roughly PLN 2bn (€469m) programme. A tender is already out for six storage facilities totalling ~600 MWh, with procedures planned for a 200 MW Połaniec project and a 232 MW Kozienice project, plus 242 MW of medium-voltage and ~124 MW of hybrid PV-storage capacity.',
+   links:[{label:'Renewables Now — Enea plans 1.4 GW BESS, 300 MW PV',url:'https://renewablesnow.com/news/polands-enea-plans-1-4-gw-of-bess-300-mw-of-pv-projects-1291291/',type:'press'},
+          {label:'Enea — official press centre',url:'https://media.enea.pl/',type:'official'}]},
+  {id:'b3',date:'2026-09-02',co:'ENERGA',cat:'procurement',
+   unit:'Energa Storage — BESS Grudziądz (47 MW) & PV+BESS',
+   title:'Energa Storage tenders the BESS Grudziądz 47 MW integrator and advances 13 PV-plus-storage projects',
+   desc:'Energa Storage — the Orlen Group\'s battery competence centre — launched a tender for the EMS/SCADA integrator of the 47 MW BESS Grudziądz, with bids due 23 September 2026, and re-ran a tender for a contractor across 13 PV and BESS projects. The batteries, funded from the EU Modernisation Fund via the national eco-fund, add storage to PV farms at Wąbrzeźno, Działdowo, Barczewo and Płońsk plus eight new 100 MW solar sites.',
+   links:[{label:'Energa Storage — BESS Grudziądz 47 MW tender',url:'https://energastorage.pl/',type:'official'},
+          {label:'Renewables Now — Energa seeks contractor for solar & battery',url:'https://renewablesnow.com/news/polands-energa-seeks-contractor-for-solar-battery-projects-1294728/',type:'press'}]},
+  {id:'b4',date:'2025-12-12',co:'TAURON',cat:'project',
+   unit:'TAURON — BESS portfolio (~23 MW/90 MWh)',
+   title:'TAURON launches four batteries totalling ~23 MW/90 MWh on its path to 700 MW of storage by 2030',
+   desc:'TAURON is commissioning four battery systems totalling about 23 MW/90 MWh — BESS Przewóz and Dąbie (4 MW/16 MWh each) at Kraków hydropower sites, the 8 MW/16 MWh BESS Proszowek at a PV farm, and the 6.9 MW/28 MWh BESS Kuźnia Raciborska — across Q4 2025 and Q1 2026. The builds advance the Group\'s target of 700 MW of storage by 2030 and 1.4 GW by 2035, backed by ~PLN 538m of eco-fund co-financing for 11 facilities.',
+   links:[{label:'Renewables Now — TAURON to launch 90 MWh of storage',url:'https://renewablesnow.com/news/polands-tauron-to-launch-90-mwh-of-energy-storage-facilities-1286575/',type:'press'},
+          {label:'TAURON — official media',url:'https://media.tauron.pl/',type:'official'}]},
+  {id:'n1',date:'2025-12-08',co:'PGE',cat:'leadership',
+   unit:'PGE S.A. — Management Board',
+   title:'PGE dismisses CEO Dariusz Marzec; Dariusz Lubera installed as CEO from January 2026',
+   desc:'PGE\'s supervisory board dismissed chief executive Dariusz Marzec on 8 December 2025 and appointed Dariusz Lubera as acting, then permanent, president of the 12th-term management board from 15 January 2026. Katarzyna Rozenfeld joined as vice-president for operations. The reshuffle at Poland\'s largest utility precedes an expected refresh of strategy and capital-allocation priorities.',
+   links:[{label:'PGE — management board',url:'https://www.gkpge.pl/en/pge-group/about-group/management',type:'filing'}]},
+  {id:'n2',date:'2026-01-15',co:'PGE',cat:'strategy',
+   unit:'PGE Group — generation strategy',
+   title:'PGE targets 10 GW of new gas capacity — 4 GW CCGT and 6 GW OCGT — to backstop renewables',
+   desc:'PGE\'s strategy envisages roughly 10 GW of controllable gas capacity to stabilise a grid with rising renewables: about 4 GW of CCGT, including the Gryfino Dolna Odra plant and the 882 MW Nowy Rybnik unit under construction, plus 6 GW of OCGT peakers across Rybnik, Gryfino, Ostrów Wielkopolski and new locations, targeting commissioning around 2030.',
+   links:[{label:'Enerdata — PGE two new gas plants',url:'https://www.enerdata.net/publications/daily-energy-news/pge-plans-build-two-new-gas-fired-power-plants-poland-12-gw.html',type:'press'},
+          {label:'PGE — Group strategy',url:'https://www.gkpge.pl/en/pge-group/about-group/pge-group-s-strategy',type:'filing'}]},
+  {id:'n3',date:'2026-01-27',co:'PGE',cat:'procurement',
+   unit:'OCGT Rybnik & Gryfino (~600 MW each)',
+   title:'PGE selects Polimex-Mostostal–Siemens Energy consortium for 1.2 GW of OCGT peakers at Rybnik and Gryfino',
+   desc:'PGE chose a Polimex-Mostostal and Siemens Energy consortium — the sole bidder in both open tenders launched in August 2025 — to build two roughly 588 MW open-cycle gas units next to the Nowy Rybnik CCGT and the Gryfino Dolna Odra plant. Both units won 15-year capacity contracts in December 2025; contract signature was conditional on EU foreign-subsidies clearance.',
+   links:[{label:'PGE — press release (contractor selected)',url:'https://www.gkpge.pl/grupa-pge/dla-mediow/komunikaty-prasowe/korporacyjne/pge-wybrala-wykonawce-szczytowych-elektrowni-gazowych-w-rybniku-oraz-gryfinie',type:'official'}]},
+  {id:'n4',date:'2025-12-15',co:'ALL',cat:'capacity',
+   unit:'PSE Main Auction — 2030 delivery year',
+   title:'Gas dominates Poland\'s 2030 capacity auction; clearing price jumps to 465 PLN/kW-year',
+   desc:'PSE\'s main capacity auction for 2030 contracted 6,887 MW and cleared at 465.02 PLN/kW/year — more than double 2024\'s 223.77 PLN — as policy tilted back toward gas. Open-cycle gas turbines took most awards while battery storage covered just 13.4% of assets. State-backed PGE, Enea and TAURON secured the contracts underpinning their peaker builds.',
+   links:[{label:'PGE — 2030 auction current report',url:'https://www.gkpge.pl/en/for-investors/current-reports/publication-of-preliminary-results-of-main-capacity-market-auction-for-the-year-2030',type:'filing'},
+          {label:'Enea IR — 2030 auction result',url:'https://ir.enea.pl/en/pr/862309/information-on-the-preliminary-outcome-of-the-capacity-market-auction-for-2030-announced-by-pse',type:'filing'}]},
+  {id:'n5',date:'2025-12-30',co:'ALL',cat:'capacity',
+   unit:'PSE 2030 auction — storage',
+   title:'Poland downgrades battery availability, cutting storage awards in the 2030 auction',
+   desc:'Regulatory changes lowered the assumed availability of battery storage in Poland\'s 2030 capacity auction, cutting BESS awards to about 685 MW — roughly 13% of assets — and reducing total procurement versus expectations. The shift favoured gas peakers and helped lift the clearing price, signalling a policy preference for firm gas capacity over storage in the near term.',
+   links:[{label:'ESS-News — Poland downgrades BESS',url:'https://www.ess-news.com/2025/12/30/poland-downgrades-bess-availability-plummets-total-awards-in-capacity-market-auction/',type:'press'},
+          {label:'Forum Energii — capacity market analysis',url:'https://www.forum-energii.eu/en/the-capacity-market-in-poland-more-expensive-than-ever',type:'press'}]},
+  {id:'n6',date:'2026-04-02',co:'TAURON',cat:'procurement',
+   unit:'OCGT Jaworzno (~600 MW)',
+   title:'TAURON approves construction of ~600 MW Jaworzno OCGT and tenders the turbine island',
+   desc:'TAURON\'s board approved building an approximately 600 MW open-cycle gas peaker at Jaworzno III to meet a 2030 capacity obligation backed by a 15-year contract worth about 3.7 billion zł. The company tendered a turbine-island supply-and-service package. TAURON holds grid-connection rights for 1.4 GW of OCGT, with the unit\'s running hours capped near 1,500 annually.',
+   links:[{label:'WNP — TAURON to build Jaworzno OCGT',url:'https://www.wnp.pl/rynki/tauron-wybuduje-w-jaworznie-gazowa-jednostke-szczytowa-typu-ocgt,1012969.html',type:'press'},
+          {label:'WNP — OCGT after capacity-auction win',url:'https://www.wnp.pl/energia/po-wygranej-aukcji-mocy-w-jaworznie-powstanie-gazowa-jednostka-szczytowa-typu-ocgt,1013057.html',type:'press'}]},
+  {id:'n7',date:'2026-01-20',co:'TAURON',cat:'procurement',
+   unit:'OCGT Jaworzno — turbine supply',
+   title:'TAURON orders the OCGT turbine island for Jaworzno to secure a scarce delivery slot',
+   desc:'TAURON launched procurement for the turbine island and a long-term service agreement for its Jaworzno peaker, a critical step given global gas-turbine shortages. Securing an early slot with a major OEM is decisive for meeting the 2030 capacity-market obligation, as wait times at GE Vernova, Siemens Energy and Mitsubishi now stretch several years.',
+   links:[{label:'WNP — TAURON orders turbine island',url:'https://www.wnp.pl/energia/tauron-zamawia-wyspe-turbinowa-projekt-ma-wspierac-bezpieczenstwo-energetyczne,1028561.html',type:'press'}]},
+  {id:'n8',date:'2026-02-16',co:'ENEA',cat:'project',
+   unit:'CCGT Kozienice (2×668 MW)',
+   title:'Enea starts construction of two 668 MW CCGT units at Kozienice with Çalık Enerji',
+   desc:'Enea began building two combined-cycle gas units totalling 1,336 MW at Kozienice, handing the site to general contractor Çalık Enerji on 2 January 2026 and starting works in February. Commissioning is scheduled for 31 March and 30 June 2029. Designed for green-hydrogen co-firing, the units mark Kozienice\'s transition from coal to gas.',
+   links:[{label:'WNP — Enea starts Kozienice build',url:'https://www.wnp.pl/energia/enea-ruszyla-z-wielka-gazowa-inwestycja-w-kozienicach-spolka-stawia-na-polskie-firmy,1033337.html',type:'press'},
+          {label:'Enea — press release',url:'https://media.enea.pl/pr/864806/ruszyla-budowa-blokow-gazowo-parowych-w-kozienicach-enea-stawia-na-polskie-kompetencje-i-polskie-firmy',type:'filing'}]},
+  {id:'n9',date:'2026-01-20',co:'ENEA',cat:'financial',
+   unit:'Enea Elkogaz — Kozienice financing',
+   title:'Enea secures ~6.45 billion zł (€1.53bn) bank financing for the Kozienice CCGT',
+   desc:'Enea\'s project company Elkogaz arranged about 6.45 billion zł (€1.53 billion) from a consortium led by Bank Gospodarstwa Krajowego to fund the two-unit Kozienice CCGT. The financing de-risks Poland\'s largest single gas build and underpins a 2026 capex step-up, with group spending reported to exceed 9 billion zł for the year.',
+   links:[{label:'Enea — investor relations',url:'https://ir.enea.pl/en',type:'filing'}]},
+  {id:'n10',date:'2026-07-13',co:'ENERGA',cat:'project',
+   unit:'CCGT Grudziądz (Orlen Group)',
+   title:'CCGT Grudziądz delivers first power to Poland\'s grid — key Orlen gas milestone',
+   desc:'Energy from the CCGT Grudziądz gas-steam plant flowed to the national grid for the first time in mid-July 2026, a milestone in Orlen Group\'s largest-ever gas investment programme. Full commissioning and commercial operation are planned during 2026. Grudziądz anchors a northern-Poland flexible-generation cluster alongside Ostrołęka, Gdańsk and Grudziądz II.',
+   links:[{label:'ORLEN — press release (EN)',url:'https://www.orlen.pl/en/about-the-company/media/press-releases/current/2026/July-2026/First-electricity-from-CCGT-Grudziadz-delivered-to-national-grid-major-milestone-reached-in-one-of-ORLENs-flagship-projects',type:'official'},
+          {label:'Energa — press release',url:'https://media.energa.pl/pr/873421/energia-z-ccgt-grudziadz-poplynela-do-krajowej-sieci',type:'official'}]},
+  {id:'n11',date:'2026-06-01',co:'ENERGA',cat:'project',
+   unit:'CCGT Grudziądz 1 & Ostrołęka',
+   title:'Energa flags missed commercial-operation deadline at CCGT Grudziądz 1 and Ostrołęka',
+   desc:'Energa disclosed that the contractual commercial-operation date for CCGT Grudziądz 1 and Ostrołęka was not met, confirming slippage on two flagship Orlen gas units. Ministry officials cited roughly 90% completion at Ostrołęka. The delays underline execution risk even as first power is achieved, pushing commissioning later into 2026 and beyond.',
+   links:[{label:'WysokieNapięcie — OKM deadline missed',url:'https://wysokienapiecie.pl/krotkie-spiecie/energa-termin-osi-gni-cia-okm-w-ccgt-grudzi-dz-1-i-ccgt-ostro-ka-nie-zosta-dotrzymany/',type:'press'}]},
+  {id:'n12',date:'2026-01-08',co:'ENERGA',cat:'procurement',
+   unit:'CCGT Gdańsk & Grudziądz II',
+   title:'Orlen advances new CCGT units at Gdańsk and Grudziądz II, extending the gas programme',
+   desc:'Alongside Grudziądz and Ostrołęka nearing completion, Orlen Group is building a new CCGT block at Gdańsk, has started the Grudziądz II project, and is selecting gas technology and an EPC contractor for the Siekierki plant in Warsaw. The expanding pipeline cements Energa and Orlen as the deepest gas developers among the four utilities.',
+   links:[{label:'ORLEN — press release (CCGT programme status)',url:'https://www.orlen.pl/en/about-the-company/media/press-releases/current/2026/July-2026/First-electricity-from-CCGT-Grudziadz-delivered-to-national-grid-major-milestone-reached-in-one-of-ORLENs-flagship-projects',type:'official'}]},
+  {id:'n13',date:'2026-06-08',co:'ALL',cat:'strategy',
+   unit:'Poland — KPEiK / national energy & climate plan',
+   title:'Council of Ministers adopts updated KPEiK; gas confirmed as bridging fuel to 2040',
+   desc:'On 8 June 2026 Poland\'s Council of Ministers adopted the updated National Energy and Climate Plan to 2030 with a 2040 perspective. Gas is confirmed as the bridging fuel, peaking around 2030 before declining, alongside a renewables share above 50% by 2030 and coal below roughly 5% by 2040 — underpinning the four utilities\' gas-peaker case.',
+   links:[{label:'pv magazine — Poland\'s new energy strategy',url:'https://www.pv-magazine.com/2026/06/10/polands-new-energy-strategy-envisages-sharp-increase-in-renewables/',type:'press'},
+          {label:'CEENERGYNEWS — revised NECP',url:'https://ceenergynews.com/climate/poland-published-revised-national-energy-and-climate-plan/',type:'press'}]},
+  {id:'n14',date:'2026-03-01',co:'ALL',cat:'strategy',
+   unit:'Poland — power balance',
+   title:'Poland remains a net electricity importer as coal retirements accelerate',
+   desc:'Poland stayed a net electricity importer, taking about 15.2 TWh against 13.3 TWh exported in 2024, drawing mainly from Germany and Sweden. Up to 8 GW of coal capacity may exit after 2025 as contracts lapse, with another wave in 2029–2030. The structural gap strengthens the commercial case for domestic flexible gas generation.',
+   links:[{label:'Forum Energii — Energy Transition 2025',url:'https://www.forum-energii.eu/en/transformacja-energetyczna-polski-edycja-2025',type:'press'}]},
+  {id:'n15',date:'2026-07-22',co:'ALL',cat:'procurement',
+   unit:'Global gas-turbine supply',
+   title:'Gas-turbine backlogs balloon — GE Vernova hits 116 GW, wait times reach seven years',
+   desc:'GE Vernova\'s gas-turbine backlog reached 116 GW in Q2 2026 while Siemens Energy reported a record €136bn order book after nearly doubling turbine sales. With only three large-turbine makers — GE Vernova, Siemens Energy and Mitsubishi — delivery waits stretch up to seven years, making turbine-slot timing the binding constraint for Poland\'s 6 GW-plus gas pipeline.',
+   links:[{label:'Utility Dive — backlog climbs to 116 GW',url:'https://www.utilitydive.com/news/ge-vernova-gas-turbine-backlog-climbs-to-116-gw/826039/',type:'press'}]},
+  {id:'n16',date:'2026-06-25',co:'ALL',cat:'partnerships',
+   unit:'Ukraine reconstruction — URC 2026, Gdańsk',
+   title:'PGE, Orlen, Enea and TAURON sign letter of intent on rebuilding Ukraine\'s energy system',
+   desc:'At the Ukraine Recovery Conference in Gdańsk, Poland\'s four largest energy groups — PGE, Orlen, Enea and TAURON — signed a letter of intent to help rebuild and modernise Ukraine\'s war-damaged energy infrastructure. Early-stage and without financial commitments, it could deepen cross-border cooperation and grid integration once large-scale reconstruction becomes feasible.',
+   links:[{label:'Energetyka24 — four groups sign LoI',url:'https://energetyka24.com/polityka/wydarzenia/pge-orlen-enea-i-tauron-odbuduja-ukrainska-energetyke-podpisano-dokument',type:'press'}]},
+  {id:'n18',date:'2026-03-17',co:'TAURON',cat:'financial',
+   unit:'TAURON — FY2025 results',
+   title:'TAURON publishes FY2025 annual report; capacity revenues support the gas capex plan',
+   desc:'TAURON released its 2025 annual financial report, with capacity-market income and coal-unit margins strengthening the balance sheet that funds its gas programme. The results frame the decision to proceed with the roughly 600 MW Jaworzno OCGT, while gas-turbine supply timing remains the principal execution risk to meeting the 2030 delivery obligation.',
+   links:[{label:'WNP — Jaworzno OCGT',url:'https://www.wnp.pl/energia/po-wygranej-aukcji-mocy-w-jaworznie-powstanie-gazowa-jednostka-szczytowa-typu-ocgt,1013057.html',type:'press'}]},
+  {id:'n20',date:'2026-03-04',co:'PGE',cat:'procurement',
+   unit:'OCGT Rybnik (~600 MW) — EPC award',
+   title:'Polimex-Mostostal and Siemens Energy win the EPC for PGE\'s Rybnik OCGT peaker',
+   desc:'PGE unit PGE Inwest 23 signed an engineering, procurement and construction contract worth about €269.55 million with a Polimex-Mostostal and Siemens Energy consortium to build the roughly 600 MW OCGT peaker at Rybnik, for commissioning by 16 January 2030. A 12-year turbine service agreement accompanies the award, locking in scarce Siemens turbine capacity.',
+   links:[{label:'PGE — current report 11/2026',url:'https://www.gkpge.pl/en/for-investors/current-reports/signing-of-the-agreements-for-construction-of-the-gas-fired-units-in-rybnik-and-in-gryfino',type:'filing'}]},
+  {id:'n21',date:'2024-12-18',co:'ALL',cat:'capacity',
+   unit:'PSE Main Auction — 2029 delivery year',
+   title:'Poland\'s 2029 capacity auction clears low at 264.90 zł/kW, favouring batteries over gas',
+   desc:'Poland\'s 2029 main capacity auction cleared at just 264.90 zł/kW/year, awarding over 8 GW — an estimated 4.2 GW of it battery storage — while rendering about 1.7 GW of combined-cycle gas uneconomical. Enea withdrew over 1.2 GW of gas from bidding. The outcome contrasts sharply with the gas-dominated, far higher-priced 2030 auction a year later.',
+   links:[{label:'ESS-News — 2029 auction, batteries win',url:'https://www.ess-news.com/2024/12/18/polish-capacity-market-auction-for-2029-catalyzes-gigawatts-of-battery-storage-projects/',type:'press'},
+          {label:'pv magazine — 2029 auction storage',url:'https://www.pv-magazine.com/2024/12/19/polish-capacity-market-auction-for-2029-catalyzes-gigawatts-of-battery-storage/',type:'press'}]},
+  {id:'n22',date:'2026-07-01',co:'ALL',cat:'capacity',
+   unit:'Poland — battery energy storage',
+   title:'Poland\'s battery build-out accelerates; 600 MW Siedlce project set to be the country\'s largest',
+   desc:'Poland\'s battery storage capacity is set to roughly triple to about 1.3 GW in 2026, with 89 utility-scale projects totalling 12.5 GW in the pipeline and over 1 billion euro of state subsidies. Greenvolt signed a BYD supply deal for the 600 MW / 2.4 GWh Siedlce project — soon Poland\'s largest — intensifying storage-versus-gas competition for flexibility.',
+   links:[{label:'ESS-News — Greenvolt/BYD 600 MW Siedlce',url:'https://www.ess-news.com/2026/07/01/greenvolt-byd-energy-sign-supply-deal-for-600-mw-bess-in-poland/',type:'press'},
+          {label:'ESS-News — construction under way',url:'https://www.ess-news.com/2026/03/31/construction-underway-at-one-of-polands-largest-battery-storage-projects/',type:'press'}]},
+  {id:'n23',date:'2026-04-16',co:'PGE',cat:'financial',
+   unit:'PGE Group — FY2025 results',
+   title:'PGE posts record 12.9bn zł EBITDA but a 3.4bn zł net loss on coal write-offs',
+   desc:'PGE reported record recurring EBITDA of 12.9 billion zł for 2025, up 14%, yet a full-year net loss of 3.4 billion zł after 9.9 billion zł of non-cash coal-asset write-offs. Capex rose above 11.5 billion zł while net debt fell 1.4 billion. CEO Lubera flagged offshore wind, gas and nuclear as capital priorities.',
+   links:[{label:'PGE — investor current reports',url:'https://www.gkpge.pl/en/for-investors/current-reports',type:'filing'}]},
+  {id:'n24',date:'2026-05-14',co:'PGE',cat:'project',
+   unit:'Baltica 2 offshore wind (1.5 GW)',
+   title:'Ørsted and PGE begin offshore installation of the 1.5 GW Baltica 2 wind farm',
+   desc:'PGE and Ørsted began offshore installation of Baltica 2, at 1.5 GW the largest offshore wind farm under construction in Poland. Van Oord is placing 111 monopiles — 107 for Siemens Gamesa 14 MW turbines and four for substations — through Q4 2026, with commissioning expected by end-2027. Output of 5–6 TWh a year would power roughly 2.5 million households.',
+   links:[{label:'Ørsted — Baltica 2 installation begins',url:'https://orsted.com/en/media/news/2026/05/orsted-and-pge-kick-off-offshore-installation-of-b-14922371',type:'press'}]},
+  {id:'n25',date:'2026-03-10',co:'ENERGA',cat:'strategy',
+   unit:'Energa-Operator — grid modernisation',
+   title:'Energa-Operator lands EIB backing for a 40bn zł grid-modernisation drive',
+   desc:'Energa, part of the Orlen Group, is investing 40 billion zł by 2035 to modernise, expand and digitise its distribution grid, backed by European Investment Bank loans. A near-1 billion zł EIB tranche funds about 830 km of power lines by 2026 and connections for roughly 25,000 customers and 1.4 GW of renewables — vital grid headroom for Poland\'s flexible generation.',
+   links:[{label:'EIB — €400m for Polish grid upgrades',url:'https://www.eib.org/en/press/all/2025-155-polish-electricity-grid-to-get-further-upgrades-with-eib-loan-payment-of-over-eur400-million-to-orlen-group',type:'gov'}]},
+  {id:'n26',date:'2025-09-01',co:'TAURON',cat:'strategy',
+   unit:'TAURON Dystrybucja — grid',
+   title:'TAURON secures ~€1.2bn from BGK for grid transformation and digitalisation',
+   desc:'TAURON secured about 4.87 billion zł (≈€1.2bn) from Bank Gospodarstwa Krajowego under Poland\'s Recovery Plan to modernise and digitise its distribution grid — including 1,000 km of high-voltage and 4,800 km of medium-voltage lines plus 2.3 million smart meters. By 2030 it aims to connect nearly 1.9 GW of renewables and 2.8 GW of storage.',
+   links:[{label:'Renewables Now — TAURON solar & storage loan',url:'https://renewablesnow.com/news/tauron-borrows-eur-54m-to-build-solar-and-storage-plants-in-poland-1294812/',type:'press'}]},
+  {id:'n27',date:'2025-12-10',co:'TAURON',cat:'project',
+   unit:'TAURON — battery storage (346 MW)',
+   title:'TAURON wins ~€128m eco-fund co-financing for 346 MW of battery storage',
+   desc:'TAURON qualified for about 538 million zł (≈€128m) in national eco-fund co-financing toward 346 MW / 1.5 GWh of battery storage, part of a plan for 11 facilities by 2028. The storage push complements its Jaworzno gas peaker, giving TAURON both firm gas and fast-response batteries to capture capacity-market and balancing revenues.',
+   links:[{label:'Renewables Now — TAURON 346 MW storage co-financing',url:'https://renewablesnow.com/news/polands-tauron-qualifies-for-co-financing-346-mw-of-energy-storage-1286394/',type:'press'},
+          {label:'Renewables Now — TAURON €128m storage award',url:'https://renewablesnow.com/news/tauron-gets-eur-128m-in-co-financing-for-energy-storage-in-poland-1287479/',type:'press'}]},
+  {id:'n28',date:'2025-12-17',co:'TAURON',cat:'leadership',
+   unit:'TAURON PE — VP Commerce',
+   title:'TAURON dismisses commerce VP Gołębiowski; Zawadzki delegated as acting VP Commerce',
+   desc:'TAURON\'s supervisory board dismissed vice-president for commerce Piotr Gołębiowski effective 17 December 2025 and delegated board member Krzysztof Zawadzki to act in the role from 1 January 2026 for up to three months. The trading and offtake seat directly shapes gas-capacity contracting for the Jaworzno peaker; a further appointment, Łukasz Czopik, followed from 1 July 2026.',
+   links:[{label:'WNP — Gołębiowski dismissed, Zawadzki acting',url:'https://www.wnp.pl/energia/zmiany-w-zarzadzie-tauronu-piotr-golebiowski-odwolany,1014976.html',type:'press'}]},
+  {id:'n29',date:'2026-04-24',co:'ENEA',cat:'leadership',
+   unit:'Enea S.A. — Management Board',
+   title:'Enea\'s supervisory board reappoints Grzegorz Kinelski and renews the management board',
+   desc:'Enea\'s supervisory board reappointed the management board for a new three-year term from April 2026, with Grzegorz Kinelski continuing as president alongside vice-presidents for finance, commerce and security. From 1 July 2026 two members were added — Eryk Kosiński for corporate affairs and Adrian Moliński for regional cooperation — as Enea advances its ~7 billion zł Kozienice CCGT build.',
+   links:[{label:'WNP — two new Enea board members',url:'https://www.wnp.pl/energia/dwie-nowe-osoby-w-zarzadzie-grupy-enea,1074816.html',type:'press'},
+          {label:'Enea — investor relations',url:'https://ir.enea.pl/en',type:'filing'}]},
+  {id:'n30',date:'2026-06-18',co:'PGE',cat:'leadership',
+   unit:'PGE — Supervisory Board / AGM 2026',
+   title:'PGE\'s June 2026 AGM refreshes the supervisory board after the term expires',
+   desc:'At PGE\'s 18 June 2026 annual meeting the supervisory board\'s term expired and shareholders appointed seven new members, including Michał Domagała, Andrzej Sadkowski, Anna Kowalik, Elżbieta Niebisz and Piotr Stolarczyk. The meeting also resolved to cover PGE\'s roughly 6.95 billion zł 2025 net loss from capital reserves. A supervisory reset often precedes management-board change within months.',
+   links:[{label:'WNP — PGE new supervisory board',url:'https://www.wnp.pl/energia/polski-gigant-energetyczny-z-nowymi-czlonkami-rady-nadzorczej,1073333.html',type:'press'},
+          {label:'Energetyka24 — PGE supervisory changes',url:'https://energetyka24.com/elektroenergetyka/wiadomosci/duze-zmiany-w-radzie-nadzorczej-pge-dwa-nowe-nazwiska',type:'press'}]},
+  {id:'n31',date:'2026-04-01',co:'ENERGA',cat:'leadership',
+   unit:'Energa S.A. — CEO',
+   title:'Magdalena Kamińska appointed CEO of Energa as Orlen tightens control',
+   desc:'Energa\'s supervisory board appointed Magdalena Kamińska as president of the management board from 1 April 2026, confirming her after a spell as acting CEO from November 2025. Previously Energa\'s finance vice-president and with the group since 2011, she leads amid financial pressure and Orlen plans to raise its stake — with implications for the Grudziądz and Ostrołęka CCGT programme.',
+   links:[{label:'Rzeczpospolita — Kamińska new Energa CEO',url:'https://energia.rp.pl/energetyka-zawodowa/art44067911-jest-nowa-prezes-energi-orlen-szykuje-tez-kolejny-ruch',type:'press'}]},
+  {id:'n32',date:'2026-07-02',co:'TAURON',cat:'procurement',
+   unit:'OCGT Jaworzno — turbine supply (Ansaldo Energia)',
+   title:'TAURON signs Ansaldo Energia for the Jaworzno turbine island, resolving its supply risk',
+   desc:'TAURON Wytwarzanie signed a €293 million contract with Italy\'s Ansaldo Energia to supply the turbine island — two 314.6 MW gas turbines — plus a long-term service agreement for the roughly 630 MW Jaworzno OCGT peaker. Turbines are due in late 2028 and 2029, resolving the earlier failed tender and keeping the 2030 capacity-market obligation on track.',
+   links:[{label:'WNP — Jaworzno project next stages',url:'https://www.wnp.pl/energia/wielki-krajowy-projekt-gazowy-wchodzi-na-kolejne-etapy-rozwoju-tauron-zdradza-szczegoly,1098472.html',type:'press'}]},
+  {id:'n33',date:'2026-08-06',co:'ENEA',cat:'project',
+   unit:'Enea — Kozienice & Połaniec (drought)',
+   title:'Drought cuts ~1.3 GW as Enea reduces output at Kozienice and Połaniec',
+   desc:'In early August 2026 Enea reduced generation at its Kozienice and Połaniec coal plants after the Vistula\'s flow fell to about 135 m³/s, starving cooling systems and removing roughly 1.3 GW — nearly 2% of national capacity. The episode underscores water-stress risk for thermal fleets and reinforces the rationale for Enea\'s Kozienice gas transition.',
+   links:[{label:'Enea — investor relations',url:'https://ir.enea.pl/en',type:'filing'}]},
+  {id:'n34',date:'2026-08-21',co:'PGE',cat:'project',
+   unit:'Baltica 2 offshore wind (1.5 GW)',
+   title:'Van Oord completes all 111 Baltica 2 foundations, keeping PGE\'s 1.5 GW wind farm on schedule',
+   desc:'Van Oord installed the last of 111 monopile foundations for the PGE–Ørsted Baltica 2 offshore wind farm on 21 August 2026 — 107 for turbines and four for substations — concluding one of the Baltic\'s most demanding campaigns on schedule. At 1.5 GW, Poland\'s largest offshore project will power about 2.5 million households, with secondary structures continuing into late 2026.',
+   links:[{label:'Van Oord — 111 monopiles complete',url:'https://www.vanoord.com/en/updates/baltica-2-reaches-major-milestone-completion-111-monopile-installations/',type:'press'}]},
+  {id:'n35',date:'2026-08-20',co:'ENERGA',cat:'project',
+   unit:'CCGT Gdańsk (560 MW)',
+   title:'Orlen\'s 560 MW Gdańsk CCGT advances; Polimex–Siemens on site, foundations due H2 2026',
+   desc:'Construction of northern Poland\'s first large combined-cycle gas block — the 560 MW Gdańsk CCGT within Energa\'s Orlen-led programme — is advancing. A Polimex-Mostostal and Siemens Energy consortium took over the site, with main foundation works in the second half of 2026, Siemens turbines arriving in 2027 and operation required by 2029 under capacity-market rules.',
+   links:[{label:'WNP — Orlen starts Gdańsk gas block',url:'https://www.wnp.pl/energia/orlen-rusza-z-budowa-bloku-parowo-gazowego-w-gdansku,1010591.html',type:'press'}]},
+  {id:'n36',date:'2026-04-13',co:'ENEA',cat:'financial',
+   unit:'Enea S.A. — FY2025 results',
+   title:'Enea FY2025: net profit rises to 1.77bn zł as EBITDA slips to 5.62bn on weaker generation',
+   desc:'Enea reported 2025 net profit of PLN 1.77bn while Group EBITDA fell to PLN 5.62bn on weaker generation margins. Revenue and other income totalled PLN 28.1bn, capex reached PLN 6.2bn, output exceeded 20.4 TWh, and construction of the 1.3 GWe Kozienice CCGT began with PLN 6.95bn project financing from a BGK/PKO BP/Pekao consortium.',
+   links:[{label:'Enea IR — 2025 results release',url:'https://ir.enea.pl/en/pr/868626/enea-s-energy-transition-accelerates-2025-was-a-breakthrough-year',type:'filing'}]},
+  {id:'n37',date:'2026-04-29',co:'ENERGA',cat:'financial',
+   unit:'Energa S.A. — FY2025 results',
+   title:'Energa FY2025: net profit jumps to 1.24bn zł, EBITDA 3.6bn, distribution leads',
+   desc:'Energa posted 2025 net profit of 1.24 billion zł, up sharply from 376 million a year earlier, with EBITDA of 3.6 billion (+5%) driven by an 18% rise in distribution EBITDA to 3.3 billion. Revenue was 21.1 billion zł and capex reached 5.6 billion; the board proposed no dividend, retaining profit for its investment programme.',
+   links:[{label:'Biznes PAP — Energa 1.24bn zł net (EN)',url:'https://biznes.pap.pl/wiadomosci/firmy/energa-posts-pln-124-billion-net-profit-2025-and-pln-36-billion-ebitda',type:'press'}]},
+  {id:'n38',date:'2026-09-10',co:'TAURON',cat:'financial',
+   unit:'TAURON — H1 2026 results',
+   title:'TAURON H1 2026: net profit falls 24% to 1.56bn zł but the dividend returns',
+   desc:'TAURON reported first-half 2026 net profit of 1.56 billion zł, down 24% year-on-year, with EBITDA of 3.7 billion (down 12%) as distribution supplied 64% of earnings. Revenue rose to 17.2 billion zł and power output climbed 30% to 5.44 TWh. Despite softer profit, the group signalled a return to dividend payments.',
+   links:[{label:'Rzeczpospolita — TAURON H1 2026 results',url:'https://energia.rp.pl/energetyka-zawodowa/art45126971-tauron-pochwalil-sie-wynikami-ktore-nadal-zasila-dystrybucja',type:'press'},
+          {label:'WNP — TAURON profit down, revenue up',url:'https://www.wnp.pl/energia/tauron-notuje-spadek-zysku-mimo-wzrostu-przychodow,1097716.html',type:'press'}]},
+  {id:'n39',date:'2026-09-15',co:'PGE',cat:'financial',
+   unit:'PGE Group — H1 2026 results',
+   title:'PGE H1 2026: sales up and net profit swings to ~2.0bn zł as distribution and lower CO2 costs lift EBITDA',
+   desc:'PGE\'s consolidated H1 2026 report (released 15 September 2026) showed Q2 2026 sales of 15.26 billion zł (+11% y/y), EBITDA of 4.11 billion zł (+23%) and net profit to equity of about 2.0 billion zł, versus a large loss a year earlier that was hit by coal impairments. Net debt/LTM EBITDA stayed very low at ~0.15x, giving PGE ample headroom for its gas, offshore-wind and grid programmes.',
+   links:[{label:'PGE — Q2 & H1 2026 results presentation',url:'https://www.gkpge.pl/en/for-investors/results-center',type:'filing'},
+          {label:'PGE — investor current reports',url:'https://www.gkpge.pl/en/for-investors/current-reports',type:'filing'}]},
+  {id:'n40',date:'2026-08-06',co:'ENERGA',cat:'financial',
+   unit:'Energa S.A. — H1 2026 results',
+   title:'Energa H1 2026: net profit up 56% to 1.32bn zł, EBITDA 2.72bn on distribution and renewables',
+   desc:'Energa reported first-half 2026 net profit of 1.32 billion zł, up 56% year-on-year, with EBITDA rising 25% to 2.72 billion — distribution contributing 71% — on higher network volumes, a retail recovery and expanded renewables. Revenue reached 11.2 billion zł and more than half of output came from renewable sources, funding the Orlen-led CCGT and grid programme.',
+   links:[{label:'WNP — Energa strong H1 2026',url:'https://www.wnp.pl/energia/energa-pokazala-solidne-wyniki-za-pierwsze-polrocze-zysk-mocno-w-gore,1087778.html',type:'press'},
+          {label:'Bankier — Energa H1 EBITDA 2.72bn',url:'https://www.bankier.pl/wiadomosc/EBITDA-Grupy-Energa-w-I-polroczu-26-wzrosla-do-2-72-mld-zl-9178587.html',type:'press'}]}
+];
+
+/* ═══ CORE MONITORING SCOPE — 3 PILLARS ═══ */
+const PILLARS = [
+  {id:'policy',  label:'Policy & Market Design',        ico:'§', subs:[
+    {id:'capacity',  label:'Capacity market & reform'},
+    {id:'strategic', label:'Energy policy & strategic documents'},
+    {id:'political', label:'Political developments'},
+    {id:'mktreform', label:'Electricity-market reform'},
+    {id:'support',   label:'Support mechanisms & CfDs'}]},
+  {id:'thermal', label:'Thermal Generation & Nuclear',  ico:'⚡', subs:[
+    {id:'gasnew',    label:'New CCGT / OCGT / gas engines'},
+    {id:'chp',       label:'CHP modernisation & fuel switching'},
+    {id:'coal',      label:'Coal closures & conversions'},
+    {id:'fid',       label:'FID, procurement & financing'},
+    {id:'delays',    label:'Delays & cancellations'},
+    {id:'nuclear',   label:'SMR & large-scale nuclear'}]},
+  {id:'company', label:'Company & Transaction Signals', ico:'◆', subs:[
+    {id:'leadership',  label:'Leadership & governance'},
+    {id:'strategy',    label:'Strategy changes'},
+    {id:'project',     label:'Project milestones'},
+    {id:'contracts',   label:'Contract awards'},
+    {id:'partnerships',label:'Partnerships'},
+    {id:'financial',   label:'Financial results & financing'},
+    {id:'ma',          label:'M&A'}]}
+];
+const SUBS = PILLARS.flatMap(p => p.subs.map(s => ({...s, pillar:p.id})));
+const CATS = [{id:'all',label:'All Signals',ico:'◈'}, ...SUBS.map(s => ({id:s.id,label:s.label,ico:PILLARS.find(p=>p.id===s.pillar).ico}))];
+
+const COX = {
+  ORLEN:     {c:'#d4141c', label:'ORLEN',              grp:'Utilities'},
+  ZEPAK:     {c:'#8a5a00', label:'ZE PAK',             grp:'Utilities'},
+  PEJ:       {c:'#00708a', label:'PEJ (nuclear)',      grp:'Nuclear & SMR'},
+  OSGE:      {c:'#2f7d6d', label:'ORLEN Synthos GE',   grp:'Nuclear & SMR'},
+  POLENERGIA:{c:'#3d8f2f', label:'Polenergia',         grp:'Independents & investors'},
+  FORTUM:    {c:'#4a6b8a', label:'Fortum Polska',      grp:'Independents & investors'},
+  AXPO:      {c:'#b0262e', label:'Axpo Polska',        grp:'Independents & investors'},
+  ENGIE:     {c:'#0a7bc1', label:'ENGIE Zielona Energia', grp:'Independents & investors'},
+  OTHER:     {c:'#777777', label:'Other investors / developers', grp:'Independents & investors'}
+};
+Object.assign(CO, COX);
+['PGE','ENEA','ENERGA','TAURON'].forEach(k => CO[k].grp = 'Utilities');
+CO.ALL.label = 'Market / policy-wide'; CO.ALL.grp = 'Market';
+Object.assign(OFFICIAL, {
+  ORLEN:{label:'ORLEN — press releases', url:'https://www.orlen.pl/en/about-the-company/media/press-releases'},
+  ZEPAK:{label:'ZE PAK — investor relations', url:'https://ri.zepak.com.pl/en/'},
+  PEJ:  {label:'PEJ — press centre', url:'https://pej.pl/en/homepage/'},
+  OSGE: {label:'ORLEN — SMR programme', url:'https://www.orlen.pl/en/sustainability/transition-projects/smr'},
+  POLENERGIA:{label:'Polenergia — official site', url:'https://www.polenergia.pl/'},
+  FORTUM:{label:'Fortum — newsroom', url:'https://www.fortum.com/en/media'},
+  AXPO: {label:'Axpo Polska — newsroom', url:'https://www.axpo.com/pl/en/newsroom.html'},
+  ENGIE:{label:'ENGIE Polska — newsroom', url:'https://engie-polska.pl/'}
+});
+
+const SRC_TIERS = [];
+const PRIMARY_TYPES = ['gov','filing','official','proc','permit'];
+const HIGH_REL = ['capacity','support','gasnew','fid','delays','nuclear','coal','chp','contracts','ma','financial'];
+
+const TAG = {
+  x1:['policy','capacity',['ALL']], x2:['company','ma',['ENGIE']], x3:['company','financial',['TAURON']],
+  x4:['policy','mktreform',['ALL','PGE','ENEA','ENERGA']], x5:['policy','support',['TAURON']],
+  x6:['policy','strategic',['ALL']], x7:['policy','mktreform',['ALL']],
+  r1:['policy','mktreform',['ALL']], r2:['policy','mktreform',['ALL']], r3:['policy','support',['ALL']],
+  r4:['policy','support',['ALL']], r5:['policy','capacity',['ALL']], r6:['policy','mktreform',['ALL']],
+  r7:['policy','mktreform',['ALL']], r8:['policy','capacity',['ALL']], p1:['policy','support',['ALL']],
+  m1:['company','ma',['ENGIE']], m2:['company','ma',['AXPO','POLENERGIA']], m3:['company','ma',['AXPO','POLENERGIA']],
+  m4:['company','ma',['AXPO']], m5:['company','ma',['OTHER']], m6:['company','ma',['ORLEN','ENERGA']],
+  m7:['company','ma',['OTHER']], m8:['company','ma',['PGE','ZEPAK']], m9:['company','ma',['PGE','ZEPAK']],
+  e1:['company','financial',['ENEA']], e2:['policy','capacity',['ALL','PGE','TAURON','ENEA','ZEPAK']],
+  e3:['policy','capacity',['ENEA']], e4:['thermal','delays',['ENERGA','ORLEN']],
+  g1:['company','strategy',['PGE']], g2:['company','strategy',['ENEA']], g3:['company','strategy',['ENERGA','ORLEN']],
+  g4:['company','strategy',['TAURON']], b1:['company','project',['PGE']], b2:['company','strategy',['ENEA']],
+  b3:['company','contracts',['ENERGA','ORLEN']], b4:['company','project',['TAURON']],
+  n1:['company','leadership',['PGE']], n2:['thermal','gasnew',['PGE']], n3:['thermal','gasnew',['PGE']],
+  n4:['policy','capacity',['ALL','PGE','ENEA','TAURON']], n5:['policy','capacity',['ALL']],
+  n6:['thermal','fid',['TAURON']], n7:['thermal','fid',['TAURON']], n8:['thermal','gasnew',['ENEA']],
+  n9:['thermal','fid',['ENEA']], n10:['thermal','gasnew',['ENERGA','ORLEN']], n11:['thermal','delays',['ENERGA','ORLEN']],
+  n12:['thermal','gasnew',['ORLEN','ENERGA']], n13:['policy','strategic',['ALL']], n14:['thermal','coal',['ALL']],
+  n15:['thermal','fid',['ALL']], n16:['company','partnerships',['PGE','ORLEN','ENEA','TAURON']],
+  n18:['company','financial',['TAURON']], n20:['thermal','fid',['PGE']], n21:['policy','capacity',['ALL','ENEA']],
+  n22:['company','project',['OTHER']], n23:['company','financial',['PGE']], n24:['company','project',['PGE']],
+  n25:['company','strategy',['ENERGA','ORLEN']], n26:['company','strategy',['TAURON']], n27:['policy','support',['TAURON']],
+  n28:['company','leadership',['TAURON']], n29:['company','leadership',['ENEA']], n30:['company','leadership',['PGE']],
+  n31:['company','leadership',['ENERGA','ORLEN']], n32:['thermal','fid',['TAURON']], n33:['thermal','coal',['ENEA']],
+  n34:['company','project',['PGE']], n35:['thermal','gasnew',['ORLEN','ENERGA']],
+  n36:['company','financial',['ENEA']], n37:['company','financial',['ENERGA']], n38:['company','financial',['TAURON']],
+  n39:['company','financial',['PGE']], n40:['company','financial',['ENERGA']]
+};
+const LEGACY = {leadership:['company','leadership'],strategy:['company','strategy'],project:['company','project'],
+  procurement:['company','contracts'],financial:['company','financial'],capacity:['policy','capacity'],
+  partnerships:['company','partnerships'],regulatory:['policy','mktreform'],ma:['company','ma'],
+  polandeu:['policy','strategic'],electricity:['policy','mktreform']};
+
+SIGNALS.push(
+  {id:'nu1',date:'2026-10-08',pillar:'thermal',cat:'nuclear',cos:['PEJ'],
+   unit:'Lubiatowo-Kopalino AP1000 — long-lead items',
+   title:'PEJ commissions Westinghouse to start long-lead-item procurement for the first AP1000 unit',
+   desc:'PEJ asked Westinghouse to begin ordering long-lead items covering six key nuclear-island components, including the containment vessel, after PEJ and the consortium agreed main commercial EPC terms in September. The Energy Minister reiterated the target of first power in 2036, while detailed EPC negotiations continue.',
+   links:[{label:'PEJ — press centre',url:'https://pej.pl/en/homepage/',type:'official'},
+          {label:'Westinghouse — LLI procurement release',url:'https://info.westinghousenuclear.com/news/pej-and-westinghouse-begin-long-lead-item-procurement-process-for-polands-first-nuclear-power-plant',type:'press'}]},
+  {id:'nu2',date:'2026-08-06',pillar:'thermal',cat:'nuclear',cos:['PEJ'],
+   unit:'Lubiatowo-Kopalino — site handover',
+   title:'PEJ hands the nuclear site to Bechtel as earthworks begin with Budimex',
+   desc:'General contractor Bechtel replaced PEJ as coordinator of the Lubiatowo-Kopalino site and earthworks started, carried out by Budimex — a step reflecting the project\'s local-content commitment.',
+   links:[{label:'PEJ — press centre',url:'https://pej.pl/en/homepage/',type:'official'}]},
+  {id:'nu3',date:'2026-03-31',pillar:'thermal',cat:'nuclear',cos:['PEJ'],
+   unit:'Lubiatowo-Kopalino (3 × AP1000)',
+   title:'PEJ files Poland\'s first nuclear construction-licence application with the PAA',
+   desc:'PEJ submitted its construction-licence application for the Pomeranian plant in Choczewo commune to the President of the National Atomic Energy Agency, with documentation exceeding 40,000 pages — one of the main permits required before construction can begin.',
+   links:[{label:'PEJ — construction licence application',url:'https://pej.pl/en/press-center/news/polskie-elektrownie-jadrowe-applied-for-a-construction-license-to-build-a-nuclear-power-plant-in-pomerania/',type:'official'}]},
+  {id:'nu4',date:'2026-05-08',pillar:'thermal',cat:'nuclear',cos:['PEJ'],
+   unit:'PAA — preliminary site assessment',
+   title:'Nuclear regulator finds Lubiatowo-Kopalino suitable for Poland\'s first plant',
+   desc:'After reviewing PEJ\'s Preliminary Site Report, the PAA President concluded that no factors preclude building a nuclear plant at Lubiatowo-Kopalino, covering seismic, hydrological, population and emergency-planning criteria.',
+   links:[{label:'World Nuclear News — site deemed suitable',url:'https://www.world-nuclear-news.org/articles/site-of-polish-plant-deemed-suitable',type:'press'}]},
+  {id:'nu5',date:'2026-01-29',pillar:'thermal',cat:'fid',cos:['PEJ'],
+   unit:'Lubiatowo-Kopalino — export-credit financing',
+   title:'US EXIM signs first credit agreement with PEJ ahead of nuclear FID',
+   desc:'EXIM signed a direct-loan facility with PEJ under its Engineering Multiplier Program to finance design and engineering services from Bechtel and Westinghouse as PEJ advances toward a final investment decision. PEJ said it opens the way to further agreements with international financing institutions.',
+   links:[{label:'EXIM — credit agreement with PEJ',url:'https://www.exim.gov/news/exim-powers-american-nuclear-exports-poland-supporting-jobs-and-energy-dominance',type:'gov'}]},
+  {id:'nu6',date:'2026-06-30',pillar:'thermal',cat:'nuclear',cos:['OSGE','ORLEN'],
+   unit:'OSGE — BWRX-300 fleet CfD (14 units)',
+   title:'ORLEN Synthos Green Energy applies for a CfD covering 14 BWRX-300 SMRs at three sites',
+   desc:'OSGE applied to the Minister of Energy for a Contract for Difference covering 14 BWRX-300 units at Włocławek, Stawy Monowskie and Stalowa Wola — the first phase of a 26-unit programme. The government will now prepare the European Commission notification; the EC cleared PEJ\'s large-nuclear CfD in December 2025.',
+   links:[{label:'World Nuclear News — OSGE CfD application',url:'https://www.world-nuclear-news.org/articles/polish-developer-applies-for-state-funding-for-three-smr-plants',type:'press'}]},
+  {id:'nu7',date:'2026-06-25',pillar:'thermal',cat:'nuclear',cos:['OSGE','ORLEN'],
+   unit:'BWRX-300 Włocławek (up to 6 units)',
+   title:'OSGE and the City of Włocławek sign cooperation agreement for up to six SMRs',
+   desc:'The agreement covers public communication, education and information exchange for up to six BWRX-300 units. The project SPV holds a decision-in-principle and a GDOŚ scoping resolution for its environmental report, with environmental and siting studies under way ahead of a building-permit application.',
+   links:[{label:'World Nuclear News — Włocławek agreement',url:'https://www.world-nuclear-news.org/articles/osge-signs-agreement-with-wloclawek-for-smr-plant',type:'press'}]},
+  {id:'nu8',date:'2026-02-24',pillar:'thermal',cat:'nuclear',cos:['OSGE','ORLEN'],
+   unit:'BWRX-300 — Polish generic design',
+   title:'OSGE and GE Vernova Hitachi sign agreement on a Polish generic BWRX-300 design',
+   desc:'The Poland Generic Design Agreement commits OSGE to fund a detailed BWRX-300 design to serve as the reference for Polish SMR projects, backed publicly by Poland\'s Energy Minister and US officials as the basis for a standardised reactor fleet.',
+   links:[{label:'GE Vernova — Polish generic design agreement',url:'https://www.gevernova.com/news/press-releases/deployment-bwrx-300-small-modular-reactor-poland-major-step-forward-design-development',type:'press'}]},
+  {id:'c1',date:'2025-10-29',pillar:'thermal',cat:'chp',cos:['FORTUM'],
+   unit:'Fortum Zabrze CHP — coal exit',
+   title:'Fortum commits ~€85m to convert Zabrze CHP from coal to biomass and RDF',
+   desc:'Fortum will retrofit the Zabrze CHP plant between Q4 2025 and Q4 2027, cutting coal-based capacity by 0.1 GW and direct CO₂ emissions by about 280,000 tonnes a year. It follows the decision to decarbonise Częstochowa CHP and supports Fortum\'s coal exit by end-2027.',
+   links:[{label:'Fortum — investor news',url:'https://www.fortum.com/en/media/2025/10/fortum-advances-its-coal-exit-eur-85-million-investment-decarbonisation-zabrze-plant-poland',type:'official'}]},
+  {id:'c2',date:'2025-12-03',pillar:'thermal',cat:'chp',cos:['FORTUM'],
+   unit:'Fortum Zabrze CHP — boiler conversion',
+   title:'Valmet wins the boiler-island fuel conversion for Fortum\'s Zabrze CHP',
+   desc:'Valmet will convert the existing CFB boiler at Fortum’s Zabrze CHP from a 60% coal / 40% RDF mix to certified local forest biomass plus RDF, including new fuel-feeding systems. The order is part of Fortum’s ~€85m retrofit; the rebuilt plant is scheduled to start up in Q4 2027.',
+   links:[{label:'Valmet — press release',url:'https://www.valmet.com/news/press-releases/2025/valmet-in-key-role-to-decarbonize-fortums-zabrze-combined-heat-and-power-plant-in-poland/',type:'official'}]}
+);
+
+/* ═══ TECHNOLOGY & ASSET DIMENSIONS ═══ */
+const TECHS = [
+  ['ccgt','CCGT',/\bccgt\b|combined-cycle|gas-steam|gazowo-parow/i],
+  ['ocgt','OCGT / gas peakers',/\bocgt\b|open-cycle|peaker/i],
+  ['gasengine','Gas engines',/gas engine|gas-engine|silnik/i],
+  ['chp','CHP / district heat',/\bchp\b|combined heat|cogeneration|elektrociep/i],
+  ['coal','Coal & lignite',/\bcoal\b|lignite|w\u0119gl/i],
+  ['biomass','Biomass / RDF / fuel switch',/biomass|\brdf\b|fuel conversion|fuel switch/i],
+  ['nuclear','Large-scale nuclear',/ap1000|nuclear power plant|lubiatowo|pej\b|large-scale nuclear|j\u0105drow/i],
+  ['smr','SMR',/\bsmr|bwrx|small modular/i],
+  ['bess','Battery storage (BESS)',/\bbess\b|battery|batteries|storage|magazyn/i],
+  ['pumped','Pumped hydro',/pumped|ro\u017cn\u00f3w/i],
+  ['offshore','Offshore wind',/offshore wind|baltica/i],
+  ['onshore','Onshore wind',/onshore wind|wind farm/i],
+  ['solar','Solar PV',/\bpv\b|solar|photovolta/i],
+  ['grid','Grid & networks',/\bgrid\b|distribution|smart meter|transformer|substation|connection/i],
+  ['h2','Hydrogen & biomethane',/hydrogen|biomethane/i]
+];
+const ASSETS = [
+  ['Kozienice',/kozienice/i],['Po\u0142aniec',/po\u0142aniec/i],['Ostro\u0142\u0119ka CCGT',/ostro\u0142\u0119ka/i],
+  ['Grudzi\u0105dz CCGT',/grudzi\u0105dz/i],['Gda\u0144sk CCGT',/gda\u0144sk ccgt|ccgt gda\u0144sk|560 mw gda\u0144sk/i],
+  ['Siekierki',/siekierki/i],['Rybnik',/rybnik/i],['Gryfino / Dolna Odra',/gryfino|dolna odra/i],
+  ['Jaworzno OCGT',/jaworzno/i],['PAK CCGT (Adam\u00f3w)',/pak ccgt/i],['Nowa Sarzyna CCGT',/nowa sarzyna/i],
+  ['Zabrze CHP',/zabrze/i],['Cz\u0119stochowa CHP',/cz\u0119stochowa/i],
+  ['Lubiatowo-Kopalino NPP',/lubiatowo|choczewo/i],['W\u0142oc\u0142awek SMR',/w\u0142oc\u0142awek/i],
+  ['Stawy Monowskie SMR',/stawy monowskie/i],['Stalowa Wola SMR',/stalowa wola/i],
+  ['Baltica 2',/baltica/i],['\u017barnowiec BESS',/\u017carnowiec/i],['Siedlce BESS',/siedlce/i],
+  ['Tr\u0119baczew BESS',/tr\u0119baczew/i],['Tursko Wielkie BESS',/tursko/i],['Miejska G\u00f3rka wind',/miejska g\u00f3rka/i],
+  ['Ro\u017cn\u00f3w II',/ro\u017cn\u00f3w/i],['Mieczys\u0142aw\u00f3w & Kamionka BESS',/mieczys\u0142aw\u00f3w|kamionka/i]
+];
+const TECH_LABEL = Object.fromEntries(TECHS.map(t=>[t[0],t[1]]));
+function inferTech(s){
+  const hay = s.unit+' '+s.title;
+  let t = TECHS.filter(x => x[2].test(hay)).map(x=>x[0]);
+  if(!t.length) t = TECHS.filter(x => x[2].test(s.desc)).map(x=>x[0]).slice(0,2);
+  return t.length ? t : ['cross'];
+}
+TECH_LABEL.cross = 'Cross-technology / market-wide';
+const inferAssets = s => { const hay = s.unit+' '+s.title+' '+s.desc;
+  const a = ASSETS.filter(x => x[1].test(hay)).map(x=>x[0]); return a.length ? a : ['Portfolio / non-asset']; };
+
+function normalise(s){
+  if(TAG[s.id]){ const [p,c,cos] = TAG[s.id]; s.pillar=p; s.cat=c; s.cos=cos; }
+  if(!s.pillar){ const m = LEGACY[s.cat] || ['company','strategy']; s.pillar=m[0]; s.cat=m[1]; }
+  if(!s.cos) s.cos = [s.co || 'ALL'];
+  s.cos = s.cos.filter(c => CO[c]); if(!s.cos.length) s.cos = ['ALL'];
+  s.co = s.cos[0];
+  s.unit = s.unit || '';
+  s.tech = s.tech || inferTech(s);
+  s.assets = s.assets || inferAssets(s);
+  s.primary = (s.links||[]).some(l => PRIMARY_TYPES.includes(l.type));
+  s.rel = s.rel || (HIGH_REL.includes(s.cat) && s.cos.some(c => c!=='ALL') || ['nuclear','fid','delays','gasnew'].includes(s.cat) ? 'high' : 'std');
+  return s;
+}
+const isPeerRelevant = s => true;
+
+const REV_KEY = 'flexgen-reviewed-v7';
+let REVIEWED = new Set(JSON.parse(localStorage.getItem(REV_KEY) || '[]'));
+const reviewState = s => REVIEWED.has(s.id) ? 'reviewed' : (s.rel==='high' ? (s.primary ? 'pending' : 'required') : (s.primary ? 'ok' : 'pending'));
+function toggleReview(id){
+  REVIEWED.has(id) ? REVIEWED.delete(id) : REVIEWED.add(id);
+  localStorage.setItem(REV_KEY, JSON.stringify([...REVIEWED])); render();
+}
+
+const ALL_COS = ['PGE','ENEA','ENERGA','ORLEN','TAURON','ZEPAK','PEJ','OSGE','POLENERGIA','FORTUM','AXPO','ENGIE','OTHER','ALL'];
+let activeCos = new Set(ALL_COS);
+let activeCat = 'all';
+let srcMode   = 'all';
+let fCo = '', fAsset = '', fTech = '', fType = '';
+let sortMode  = 'date';
+let searchQ   = '';
+
+const $ = s => document.querySelector(s);
+const daysAgo = d => {
+  const diff = (Date.now() - new Date(d)) / 86400000;
+  if(diff < 0) return 'Scheduled'; if(diff < 1) return 'Today'; if(diff < 2) return 'Yesterday';
+  if(diff < 7) return Math.floor(diff)+'d ago'; if(diff < 30) return Math.floor(diff/7)+'w ago';
+  if(diff < 365) return Math.floor(diff/30)+'mo ago'; return Math.floor(diff/365)+'yr ago';
+};
+const coColor  = co => CO[co]?.c || '#8a8a8b';
+const coLabel  = co => CO[co]?.label || co;
+const catLabel = id => SUBS.find(c=>c.id===id)?.label || PILLARS.find(p=>p.id===id)?.label || id;
+const pilOf    = id => PILLARS.find(p=>p.id===id);
+const catIco   = id => pilOf(SUBS.find(c=>c.id===id)?.pillar)?.ico || '';
+const matchCat = s => activeCat==='all' || s.cat===activeCat || s.pillar===activeCat;
+const matchCo  = (s, cos) => s.cos.some(c => (cos||activeCos).has(c));
+const matchDims = s => (!fCo || s.cos.includes(fCo)) && (!fAsset || s.assets.includes(fAsset)) &&
+  (!fTech || s.tech.includes(fTech)) && (!fType || s.cat===fType || s.pillar===fType);
+const matchSrc = s => srcMode==='all' || (srcMode==='primary' && s.primary) ||
+  (srcMode==='review' && ['required','pending'].includes(reviewState(s))) || (srcMode==='high' && s.rel==='high');
+const matchQ = s => { if(!searchQ) return true;
+  const hay = (s.title+' '+s.desc+' '+(s.unit||'')+' '+s.cos.map(coLabel).join(' ')+' '+catLabel(s.cat)+' '+s.assets.join(' ')+' '+s.tech.map(t=>TECH_LABEL[t]).join(' ')).toLowerCase();
+  return searchQ.toLowerCase().split(/[,;]+|\s+/).filter(Boolean).every(t => hay.includes(t)); };
+function countFor(catId, cos){
+  return SIGNALS.filter(s => matchCo(s,cos) && (catId==='all' || s.cat===catId || s.pillar===catId) && matchSrc(s) && matchDims(s)).length;
+}
+
+function buildSidebar(){
+  const groups = ['Utilities','Nuclear & SMR','Independents & investors','Market'];
+  $('#pfil').innerHTML = groups.map(g => {
+    const list = ALL_COS.filter(k => CO[k].grp===g);
+    return `<div class="cogrp">${g}</div>` + list.map(co => {
+      const cnt = countFor('all', new Set([co]));
+      const on = activeCos.has(co);
+      const face = CO[co].logo ? `<span class="plogo"><img src="${CO[co].logo}" alt="${co} logo"></span>`
+        : `<span class="plogo ptxt"><i style="background:${CO[co].c}"></i>${CO[co].label}</span>`;
+      return `<button class="pchip ${on?'on':'off'}" data-co="${co}" aria-pressed="${on}">${face}<span class="ccnt">${cnt}</span></button>`;
+    }).join('');
+  }).join('') + `<div class="pall"><button id="coAll">Select all</button><button id="coNone">Clear</button></div>`;
+
+  $('#catlist').innerHTML = `<button class="catbtn ${activeCat==='all'?'on':''}" data-cat="all"><span class="cico">◈</span><span class="clabel">All signals</span><span class="ccnt">${countFor('all')}</span></button>` +
+    PILLARS.map(p => `<button class="catbtn pil ${activeCat===p.id?'on':''}" data-cat="${p.id}"><span class="cico">${p.ico}</span><span class="clabel">${p.label}</span><span class="ccnt">${countFor(p.id)}</span></button>` +
+      p.subs.map(c => `<button class="catbtn sub ${activeCat===c.id?'on':''}" data-cat="${c.id}"><span class="clabel">${c.label}</span><span class="ccnt">${countFor(c.id)}</span></button>`).join('')).join('');
+
+  $('#pfil').querySelectorAll('.pchip').forEach(b => b.onclick = () => {
+    const co = b.dataset.co; activeCos.has(co) ? activeCos.delete(co) : activeCos.add(co); render(); });
+  $('#coAll').onclick  = () => { activeCos = new Set(ALL_COS); render(); };
+  $('#coNone').onclick = () => { activeCos = new Set(); render(); };
+  $('#catlist').querySelectorAll('.catbtn').forEach(b => b.onclick = () => { activeCat = b.dataset.cat; render(); });
+}
+
+function renderSig(s, grouped){
+  const color = coColor(s.co);
+  let linkHtml = (s.links||[]).map(l => {
+    const prim = PRIMARY_TYPES.includes(l.type);
+    const cls = l.type==='filing' ? 'filing' : prim ? 'gov' : '';
+    const pre = l.type==='filing' ? '📋 ' : prim ? '⊞ ' : '↗ ';
+    return `<a class="slink ${cls}" href="${l.url}" target="_blank" rel="noopener">${pre}${l.label}</a>`;
+  }).join('');
+  s.cos.forEach(c => { const off = OFFICIAL[c];
+    if(off && !(s.links||[]).some(l => l.url===off.url)) linkHtml += `<a class="slink official" href="${off.url}" target="_blank" rel="noopener">🌐 ${off.label}</a>`; });
+  return `<div class="${grouped?'sig':'sig card-solo'}" style="border-left-color:${color}">
+    <div class="sdate"><div class="sd">${s.date}</div><div class="sage">${daysAgo(s.date)}</div></div>
+    <div class="smeta">${s.cos.map(c=>`<div class="sco" style="color:${coColor(c)}">${coLabel(c)}</div>`).join('')}
+      <div class="stype">${pilOf(s.pillar).label}</div><div class="stype"><b>${catLabel(s.cat)}</b></div>
+      <div class="stech">${s.tech.map(t=>`<span>${TECH_LABEL[t]}</span>`).join('')}</div></div>
+    <div class="sbody">
+      ${s.unit ? `<div class="sunit">📍 ${s.unit}</div>` : ''}${s.assets[0].startsWith('Portfolio')?'':s.assets.map(a=>`<button class="assetpill" data-asset="${a}">🏭 ${a}</button>`).join('')}
+      <div class="stitle">${s.title}${s.auto?'<span class="auto-tag">LIVE FEED</span>':''}</div>
+      <div class="sdesc">${s.desc}</div>
+      <div class="slinks">${linkHtml}</div>
+    </div></div>`;
+}
+
+function buildFilters(){
+  const base = SIGNALS.filter(s => matchCo(s) && matchCat(s) && matchSrc(s) && matchQ(s));
+  const cnt = (fn) => base.filter(fn).length;
+  const opt = (v,l,n,sel) => `<option value="${v}" ${sel===v?'selected':''}>${l} (${n})</option>`;
+  const cos = ALL_COS.map(c => [c, coLabel(c), cnt(s=>s.cos.includes(c))]).filter(x=>x[2]);
+  const assets = [...new Set(SIGNALS.flatMap(s=>s.assets))].sort((a,b)=>a.startsWith('Portfolio')?1:b.startsWith('Portfolio')?-1:a.localeCompare(b))
+    .map(a => [a, a, cnt(s=>s.assets.includes(a))]).filter(x=>x[2]);
+  const techs = [...TECHS.map(t=>t[0]),'cross'].map(t => [t, TECH_LABEL[t], cnt(s=>s.tech.includes(t))]).filter(x=>x[2]);
+  let types = '';
+  PILLARS.forEach(p => { types += `<optgroup label="${p.label}">` + opt(p.id,'All — '+p.label,cnt(s=>s.pillar===p.id),fType) +
+    p.subs.map(c => opt(c.id,c.label,cnt(s=>s.cat===c.id),fType)).join('') + `</optgroup>`; });
+  const sel = (id,lab,all,arr,cur) => `<label class="fsel"><span>${lab}</span><select id="${id}"><option value="">${all}</option>${typeof arr==='string'?arr:arr.map(x=>opt(x[0],x[1],x[2],cur)).join('')}</select></label>`;
+  $('#fbar').innerHTML = sel('fCo','Company','All companies',cos,fCo) + sel('fAsset','Asset','All assets',assets,fAsset) +
+    sel('fTech','Technology','All technologies',techs,fTech) + sel('fType','Signal type','All signal types',types,fType) +
+    `<button class="sortbtn" id="fReset">Reset filters</button>`;
+  const active = [[fCo,coLabel(fCo),'fCo'],[fAsset,fAsset,'fAsset'],[fTech,TECH_LABEL[fTech],'fTech'],[fType,catLabel(fType),'fType']].filter(x=>x[0]);
+  $('#fchips').innerHTML = active.map(x=>`<span class="fchip">${x[1]} <button data-clr="${x[2]}" aria-label="Remove">✕</button></span>`).join('');
+  const set = {fCo:v=>fCo=v, fAsset:v=>fAsset=v, fTech:v=>fTech=v, fType:v=>fType=v};
+  Object.keys(set).forEach(k => $('#'+k).onchange = e => { set[k](e.target.value); render(); });
+  $('#fchips').querySelectorAll('button').forEach(b => b.onclick = () => { set[b.dataset.clr](''); render(); });
+  $('#fReset').onclick = () => { fCo=fAsset=fTech=fType=''; activeCat='all'; activeCos=new Set(ALL_COS); searchQ=''; $('#search').value=''; render(); };
+}
+
+function render(){
+  buildSidebar();
+  buildFilters();
+  let list = SIGNALS.filter(s => matchCo(s) && matchCat(s) && matchSrc(s) && matchQ(s) && matchDims(s));
+  $('#cnt').textContent = list.length;
+  $('#hsTot').textContent = SIGNALS.length;
+  $('#hsCos').textContent = ALL_COS.filter(c=>c!=='ALL'&&c!=='OTHER').length;
+  if(!list.length){
+    $('#feed').innerHTML = `<div class="empty"><h2>No signals match this filter</h2><p>Try adjusting company, scope, filters or search.</p></div>`; return;
+  }
+  let html = '';
+  if(sortMode === 'cat'){
+    PILLARS.forEach(p => p.subs.forEach(c => {
+      const g = list.filter(s => s.cat===c.id).sort((a,b)=>b.date.localeCompare(a.date));
+      if(!g.length) return;
+      html += `<div class="grp-head"><span class="gico">${p.ico}</span><h2>${c.label}</h2><span class="gcnt">${g.length}</span><span class="gsrc">${p.label}</span></div>`;
+      g.forEach(s => { html += renderSig(s, true); });
+    }));
+  } else {
+    list.sort((a,b) => b.date.localeCompare(a.date)).forEach(s => { html += renderSig(s, false); });
+  }
+  $('#feed').innerHTML = html;
+  $('#feed').querySelectorAll('.assetpill').forEach(b => b.onclick = () => { fAsset = b.dataset.asset; render(); window.scrollTo({top:0,behavior:'smooth'}); });
+}
+SIGNALS.forEach(normalise);
+const SEED = SIGNALS.slice();
+
+
+/* ═══ WIRE CONTROLS ═══ */
+$('#search').addEventListener('input', e => { searchQ = e.target.value.trim(); render(); });
+$('#sortdate').addEventListener('click', () => {
+  sortMode = 'date';
+  $('#sortdate').classList.add('on'); $('#sortdate').setAttribute('aria-pressed','true');
+  $('#sortcat').classList.remove('on'); $('#sortcat').setAttribute('aria-pressed','false');
+  render();
+});
+$('#sortcat').addEventListener('click', () => {
+  sortMode = 'cat';
+  $('#sortcat').classList.add('on'); $('#sortcat').setAttribute('aria-pressed','true');
+  $('#sortdate').classList.remove('on'); $('#sortdate').setAttribute('aria-pressed','false');
+  render();
+});
+
+/* ═══ LIVE FEED LOADER ═══════════════════════════════
+   Fetches signals.json (produced by feed_fetcher.py) on load and
+   every REFRESH_MS. Falls back to the embedded seed data when the
+   file is absent or the page is opened directly via file:// .
+   See REALTIME_SETUP.md for how to make this genuinely live. */
+const FEED_URL   = 'signals.json';
+const REFRESH_MS = 5 * 60 * 1000;   // re-reads signals.json every 5 min; feed_fetcher.py refreshes it every 30 min   // auto-refresh every 5 minutes
+const fmt = t => t.toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+
+async function loadFeed(){
+  try{
+    const res = await fetch(FEED_URL, {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    if(Array.isArray(data.signals) && data.signals.length){
+      /* merge live items with the curated seed set; curated items win on duplicate ids */
+      const ids = new Set(SEED.map(x=>x.id));
+      SIGNALS = SEED.concat(data.signals.filter(x => x && x.id && !ids.has(x.id)).map(normalise));
+    }
+    const t = data.generated ? new Date(data.generated) : new Date();
+    $('#clock').textContent = 'Updated as on ' + fmt(t);
+  }catch(e){
+    // standalone / no live feed present — use the built-in seed dataset
+    $('#clock').textContent = 'Updated as on ' + new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  }
+  
+  render();
+}
+
+loadFeed();
+setInterval(loadFeed, REFRESH_MS);
+
+/* ═══ NEWSLETTER BUILDER ═══════════════════════════════ */
+const nl = id => document.getElementById(id);
+const isoDay = dt => {
+  const z = new Date(dt.getTime() - dt.getTimezoneOffset()*60000);  // local, not UTC
+  return z.toISOString().slice(0,10);
+};
+const fmtD = d => new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+function nlSetPreset(days){
+  document.querySelectorAll('.nl-preset').forEach(b => b.classList.toggle('on', b.dataset.days===days));
+  if(days === 'custom') return;
+  const to = new Date(), from = new Date();
+  if(days === 'mtd') from.setDate(1);
+  else from.setDate(from.getDate() - parseInt(days,10));
+  nl('nlFrom').value = isoDay(from);
+  nl('nlTo').value   = isoDay(to);
+}
+
+function nlSelect(){
+  const from = nl('nlFrom').value, to = nl('nlTo').value, respect = nl('nlRespect').checked;
+  return SIGNALS.filter(s => {
+    if(from && s.date < from) return false;
+    if(to   && s.date > to)   return false;
+    if(respect){
+      if(!(matchCo(s) && matchCat(s) && matchSrc(s) && matchQ(s) && matchDims(s))) return false;
+    }
+    return true;
+  }).sort((a,b) => b.date.localeCompare(a.date));
+}
+
+const fmtLong  = d => new Date(d).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fmtShort = d => { const x=new Date(d); return x.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+"'"+String(x.getFullYear()).slice(2); };
+
+/* Equinor logo (from the reference template) loaded once and embedded as a data
+   URI so exported Word/PDF/HTML files carry the mark offline. Needs the page to be
+   served over http:// (see REALTIME_SETUP.md); silently omitted on file://. */
+let LOGO_DATAURL = '';
+async function nlLoadLogo(){
+  if(LOGO_DATAURL) return;
+  try{
+    const r = await fetch('newsletter_assets/logo.png', {cache:'force-cache'});
+    if(!r.ok) throw 0;
+    const b = await r.blob();
+    LOGO_DATAURL = await new Promise(res => { const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.readAsDataURL(b); });
+  }catch(e){ LOGO_DATAURL = ''; }
+}
+
+/* Renders the "Poland Markets Intelligence" house style from the reference template:
+   red Arial masthead, gray date line, 12pt bold section headings, and each item as a
+   10pt bold headline (Source, date) + a 50–60 word summary, with an internal-use
+   footer. Inline-styled so the preview, Word, PDF and HTML exports are identical. */
+function nlBuild(){
+  const list = nlSelect();
+  const from = nl('nlFrom').value, to = nl('nlTo').value, groupBy = nl('nlGroup').value;
+  const dateLine = (from && to && from!==to)
+    ? `${fmtShort(from)} – ${fmtShort(to)}`
+    : fmtShort(to || from || new Date());
+
+  let body = '';
+  if(!list.length){
+    body = `<div style="color:#7F7F7F;font-family:Arial,sans-serif;font-size:10pt;padding:24px 0;text-align:center">No signals in this period for the current selection.</div>`;
+  } else {
+    const groups={}, order=[];
+    list.forEach(s => { const k = groupBy==='company'?s.co:groupBy==='date'?s.date:s.cat;
+      if(!groups[k]){groups[k]=[];order.push(k);} groups[k].push(s); });
+    let keys = order;
+    if(groupBy==='category') keys = CATS.filter(c=>c.id!=='all').map(c=>c.id).filter(k=>groups[k]);
+    keys.forEach(k => {
+      const label = groupBy==='category' ? catLabel(k) : groupBy==='company' ? (CO[k]?.label||k) : fmtLong(k);
+      body += `<div style="font-family:Arial,sans-serif;font-size:12pt;font-weight:bold;color:#000;margin:20px 0 8px">${label}</div>`;
+      groups[k].forEach(s => {
+        const links = (s.links||[]).map(l => `<a href="${l.url}" style="color:#1F4E79">${l.label}</a>`).join(' · ');
+        body += `<div style="margin:0 0 13px">
+          <div style="font-family:Arial,sans-serif;font-size:10pt;font-weight:bold;line-height:1.35;color:#1F1F1F">${s.title} (${s.cos.map(coLabel).join(' / ')}, ${fmtShort(s.date)})</div>
+          <div style="font-family:Arial,sans-serif;font-size:10pt;line-height:1.5;color:#000;margin-top:2px">${s.desc}</div>
+          ${links?`<div style="font-family:Arial,sans-serif;font-size:9pt;margin-top:3px;color:#595959">Read more: ${links}</div>`:''}
+        </div>`;
+      });
+    });
+  }
+
+  const doc = `<div style="font-family:Arial,Helvetica,sans-serif;color:#000;max-width:720px;margin:0 auto">
+    <div style="font-family:Arial,sans-serif;font-size:20pt;font-weight:bold;color:#FF0000;line-height:1.05">Poland Markets Intelligence</div>
+    <div style="font-family:Arial,sans-serif;font-size:9pt;color:#7F7F7F;margin:3px 0 6px">${dateLine}</div>
+    <div style="border-bottom:1.5pt solid #FF0000;margin-bottom:14px"></div>
+    ${body}
+    <div style="border-top:1px solid #d0d0d0;margin-top:24px;padding-top:9px">
+      <div style="font-family:Arial,sans-serif;font-size:9pt;font-weight:bold;color:#000">For further information, click on links after the headlines.</div>
+      <div style="font-family:Arial,sans-serif;font-size:9pt;color:#404040;margin-top:2px">The content of this newsletter is strictly for internal use and must not be forwarded or distributed externally without prior consent of the author.</div>
+    </div>
+  </div>`;
+
+  nl('nlPreview').innerHTML = doc;
+  nl('nlMsg').textContent = `${list.length} signal${list.length===1?'':'s'}`;
+}
+
+function nlDownload(){
+  const full = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Poland Markets Intelligence</title></head><body style="margin:24px">${nl('nlPreview').innerHTML}</body></html>`;
+  const url = URL.createObjectURL(new Blob([full], {type:'text/html'}));
+  const a = document.createElement('a');
+  a.href = url; a.download = 'poland-markets-intelligence-' + (nl('nlTo').value||'') + '.html';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  nl('nlMsg').textContent = 'Downloaded HTML ✓';
+}
+
+/* Word export: an HTML document with Office/Word XML markers + .doc extension +
+   application/msword MIME. Word opens it natively as an editable, template-styled doc. */
+function nlWord(){
+  const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head><meta charset='utf-8'><title>Poland Markets Intelligence</title>
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->
+<style>@page{size:A4;margin:2cm} body{font-family:Arial,sans-serif}</style></head>
+<body>${nl('nlPreview').innerHTML}</body></html>`;
+  const url = URL.createObjectURL(new Blob(['﻿'+html], {type:'application/msword'}));
+  const a = document.createElement('a');
+  a.href = url; a.download = 'poland-markets-intelligence-' + (nl('nlTo').value||'') + '.doc';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  nl('nlMsg').textContent = 'Downloaded Word ✓';
+}
+
+async function nlCopy(){
+  const node = nl('nlPreview');
+  try{
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html':  new Blob([node.innerHTML], {type:'text/html'}),
+      'text/plain': new Blob([node.innerText], {type:'text/plain'})
+    })]);
+    nl('nlMsg').textContent = 'Copied to clipboard ✓';
+  }catch(e){
+    const r = document.createRange(); r.selectNode(node);
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    try{ document.execCommand('copy'); nl('nlMsg').textContent = 'Copied ✓'; }
+    catch(_){ nl('nlMsg').textContent = 'Press Ctrl+C to copy'; }
+    sel.removeAllRanges();
+  }
+}
+
+function nlOpen(){ nlSetPreset('30'); nlBuild(); nl('nlOverlay').classList.add('open'); }
+function nlClose(){ nl('nlOverlay').classList.remove('open'); }
+
+nl('nlOpen').addEventListener('click', nlOpen);
+nl('srcOpen').addEventListener('click', openSources);
+nl('srcX').addEventListener('click', () => nl('srcOverlay').classList.remove('open'));
+nl('srcOverlay').addEventListener('click', e => { if(e.target.id==='srcOverlay') nl('srcOverlay').classList.remove('open'); });
+nl('nlX').addEventListener('click', nlClose);
+nl('nlOverlay').addEventListener('click', e => { if(e.target.id==='nlOverlay') nlClose(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape'){ nlClose(); nl('srcOverlay').classList.remove('open'); } });
+document.querySelectorAll('.nl-preset').forEach(b =>
+  b.addEventListener('click', () => { nlSetPreset(b.dataset.days); nlBuild(); }));
+['nlFrom','nlTo'].forEach(id =>
+  nl(id).addEventListener('change', () => { nlSetPreset('custom'); nlBuild(); }));
+nl('nlGroup').addEventListener('change', nlBuild);
+nl('nlRespect').addEventListener('change', nlBuild);
+nl('nlGenBtn').addEventListener('click', nlBuild);
+nl('nlPrint').addEventListener('click', () => window.print());
+nl('nlCopy').addEventListener('click', nlCopy);
+nl('nlDownload').addEventListener('click', nlDownload);
+nl('nlWord').addEventListener('click', nlWord);
+</script>
+</body>
+</html>
