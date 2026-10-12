@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T11:45:41.039123+00:00",
+ "generated": "2026-10-12T12:15:04.581073+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -523,6 +523,26 @@
    ]
   },
   {
+   "id": "auto_da0ec6826b",
+   "date": "2026-10-05",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ENEA"
+   ],
+   "unit": "",
+   "title": "Enea: Działalność rozpoczęła Enea Sprzedaż odpowiedzialna za sprzedaż energii i gazu",
+   "desc": "Enea: Działalność rozpoczęła Enea Sprzedaż odpowiedzialna za sprzedaż energii i gazu WysokieNapiecie.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQYlJjVmwtb2lXZzRtNEpFZ01zM2wxU29rbDhmWUJJLTNwUFRHVEFXRUVxVEQwQk1MV1JuRVdLSWtzcXA3QXFMV1NFdzAtZ0FwaEVrRWxHSkNYaE5HOGdOa21UYnpSTE1BOVk1QTNqckRsY29TejY4UHdQWm1sc1V1Tl9KX0FDcEpSV0Y2bUR6LUtEcDJjMnBuMUcyX2EyVzEtSjQ5TlJlMnluS2Nkd1B3elV6bDNjakN5ZUZTTjJvaw?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
    "id": "auto_e7cd7c0a32",
    "date": "2026-10-05",
    "pillar": "thermal",
@@ -723,26 +743,6 @@
    ]
   },
   {
-   "id": "auto_80369c27ac",
-   "date": "2026-09-29",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "PGE"
-   ],
-   "unit": "",
-   "title": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie",
-   "desc": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie Bankier.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "Bankier.pl",
-     "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQNV84c2hGOWtldlQ4bndnTTM1SDVRWnpRM2RDYjlVUHQxbzRlLTJjeXhPRHo0TTdjendFSzJILS1zRkRoSGNKenB1YkRaYnFpUUJBQWNwMXVEN0lKc3NmTlBONElVY3htb1BYWnRGcExZY1VLSWJUOUJLOEhOZ1MyektWU3kxX05vaU5Bc2NEbkJRakdCT211RGVPXzRCeGtIVUVtQnd1akZ5WGRwN3RXeHhtUTJTMXJ1SU1IU0M0RFJhY1FtN2dET3hoazlhOWV0YVBLWWozSGxrRVMwU2loZXFRazk0NlJneURieTNfTy00OHdUYTlZRWhqMGd1OFBf?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_da943fc82f",
    "date": "2026-09-29",
    "pillar": "policy",
@@ -798,6 +798,26 @@
     {
      "label": "WysokieNapiecie.pl",
      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQWjQxQkRWQjMyX1lpWk1qX3lNT1IxWEVVbWdQenlBOHFBZ1hmSGx6czNKQTNRN3ItZEc2UzV6bHlVNGJwQ1UwVGF6TGVEU0hNYVFjTmh2UDVad1M3dkF1MmRuT21YLWp4cXBHUVlMa0JjLVhyaGc4UUNabFZfenFGZXFqVEY3N3ZhaHFYRVlTOE10VUFOZXdna19oZmJsZExwbTh3REVLbUdRdy16RkRBZXdHMC0yYlVmMWdNbmhpVExGUFhVc2pMNkdpU1dqWk1MaWRDbVVocHFJYTF5MHc?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_80369c27ac",
+   "date": "2026-09-29",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "",
+   "title": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie",
+   "desc": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie Bankier.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "Bankier.pl",
+     "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQNV84c2hGOWtldlQ4bndnTTM1SDVRWnpRM2RDYjlVUHQxbzRlLTJjeXhPRHo0TTdjendFSzJILS1zRkRoSGNKenB1YkRaYnFpUUJBQWNwMXVEN0lKc3NmTlBONElVY3htb1BYWnRGcExZY1VLSWJUOUJLOEhOZ1MyektWU3kxX05vaU5Bc2NEbkJRakdCT211RGVPXzRCeGtIVUVtQnd1akZ5WGRwN3RXeHhtUTJTMXJ1SU1IU0M0RFJhY1FtN2dET3hoazlhOWV0YVBLWWozSGxrRVMwU2loZXFRazk0NlJneURieTNfTy00OHdUYTlZRWhqMGd1OFBf?oc=5",
      "type": "press"
     }
    ]
