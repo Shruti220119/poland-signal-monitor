@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T15:13:01.499061+00:00",
+ "generated": "2026-10-12T15:45:43.805546+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -362,26 +362,6 @@
    ]
   },
   {
-   "id": "auto_077b7135ce",
-   "date": "2026-10-06",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "GMINA-MIASTO STARGARD",
-   "title": "Tender: Poland – Generators – Dostawa agregatów prądotwórczych oraz mobilnego sprzętu do uzdatniania i dystrybucji wody pitnej w ramach Programu Ochrony Ludności i Obrony Cywilnej na lata 2025–2026",
-   "desc": "Public procurement notice published on TED by GMINA-MIASTO STARGARD.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 687406-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/687406-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_414f1d981c",
    "date": "2026-10-06",
    "pillar": "thermal",
@@ -397,6 +377,26 @@
     {
      "label": "TED — notice 688255-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/688255-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_077b7135ce",
+   "date": "2026-10-06",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "GMINA-MIASTO STARGARD",
+   "title": "Tender: Poland – Generators – Dostawa agregatów prądotwórczych oraz mobilnego sprzętu do uzdatniania i dystrybucji wody pitnej w ramach Programu Ochrony Ludności i Obrony Cywilnej na lata 2025–2026",
+   "desc": "Public procurement notice published on TED by GMINA-MIASTO STARGARD.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 687406-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/687406-2026",
      "type": "gov"
     }
    ]
