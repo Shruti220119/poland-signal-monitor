@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T12:15:04.581073+00:00",
+ "generated": "2026-10-12T13:08:36.456295+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -22,26 +22,6 @@
    ]
   },
   {
-   "id": "auto_84bb08549f",
-   "date": "2026-10-12",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ENEA"
-   ],
-   "unit": "",
-   "title": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR",
-   "desc": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR Bankier.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "Bankier.pl",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdC10RjYyejc1MkhsXzE4dWttblVBQkRsT1JPM0k5RzdEa19YbkQxWFJUaUctNFlTWHRtNkhkR0lCQWlvaDBHRUNWdFlLYUdMeFdRZEliSlZhVFR0T19xOEtLZ0ZIQVBuaDUyY2RpUzJCNzNwTmJ0UEE4UFE3OUlPSXV4MlBrdEthX2N2MWlYOGlKMU5JWnJ3SlppOVpXNzNicmhac0s4UEN6TWljNzRLeG5tR0p4akVfdEtwMUxJbDBndVBxdEE?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_f6b2a9f778",
    "date": "2026-10-12",
    "pillar": "company",
@@ -57,6 +37,26 @@
     {
      "label": "WysokieNapiecie.pl",
      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPU3MyVkJ3WmFTN0x1czNRWUh6SlN1ay1mZ29iOGNVcnVtSjlLcXZjbXpNZnp4TV9HUlp0anBBZHVaeklfZEJpNVB1QUxOZkxYTWp4SFRtdWdybm14aUJlWWo5amttcTBmN0F4WFdpdFFTOVF6OG5Sa2s2YlU1VVpkdkhzMTVZdGcwdlVlOVRkOEJWZm42RUhaLVJKclhBQQ?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_84bb08549f",
+   "date": "2026-10-12",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ENEA"
+   ],
+   "unit": "",
+   "title": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR",
+   "desc": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR Bankier.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "Bankier.pl",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdC10RjYyejc1MkhsXzE4dWttblVBQkRsT1JPM0k5RzdEa19YbkQxWFJUaUctNFlTWHRtNkhkR0lCQWlvaDBHRUNWdFlLYUdMeFdRZEliSlZhVFR0T19xOEtLZ0ZIQVBuaDUyY2RpUzJCNzNwTmJ0UEE4UFE3OUlPSXV4MlBrdEthX2N2MWlYOGlKMU5JWnJ3SlppOVpXNzNicmhac0s4UEN6TWljNzRLeG5tR0p4akVfdEtwMUxJbDBndVBxdEE?oc=5",
      "type": "press"
     }
    ]
@@ -282,6 +282,26 @@
    ]
   },
   {
+   "id": "auto_5ffc75218b",
+   "date": "2026-10-07",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "POLENERGIA"
+   ],
+   "unit": "",
+   "title": "Czy Polenergia wycofa się z budowy rumuńskiego offshore?",
+   "desc": "Czy Polenergia wycofa się z budowy rumuńskiego offshore? Energetyka.24",
+   "auto": true,
+   "links": [
+    {
+     "label": "Energetyka.24",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNYldpWXJMTlJXdGY1amlaTDM2bmZsQlIxUGRzN2NuR3RZVUpMX2dEM1ctU3NKYWhXalVTQUdqdnF4WURNLTVncXFjSllNcU9acmYzX3RCTU1OczkyUUlxTzJTcXpLeFlIbkg4blJVUThjbTdDOXdhVmZLMEJsRWdfSTdYR3dkQjhSOFBrNHFqSTQ0UUJQVHFxNUpHMA?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
    "id": "auto_6c958e5121",
    "date": "2026-10-07",
    "pillar": "company",
@@ -317,26 +337,6 @@
     {
      "label": "Energetyka.24",
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPMDl5UHJSY3JzVjhKazQ2MlNaTmtsN2Raak9CSVExcVBMMmVjbnlPWjFnSU1FTFl6RHk4Vnl0am5jZHl0X0p4eXVVTHJCTldxT25USVRxT1A3b3VWTVVYOGFYa0FpenpxakhTTldZc1djRVVGRkdNaDItZTRNUDhadTVYWndueUoweXZXZHQ3MjdUYVc3YTl3Y0tFT1ZqeUY3Umk5OTFURXNwQ2l5cEpaZm5SQWJMQXFhenc?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_5ffc75218b",
-   "date": "2026-10-07",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "POLENERGIA"
-   ],
-   "unit": "",
-   "title": "Czy Polenergia wycofa się z budowy rumuńskiego offshore?",
-   "desc": "Czy Polenergia wycofa się z budowy rumuńskiego offshore? Energetyka.24",
-   "auto": true,
-   "links": [
-    {
-     "label": "Energetyka.24",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNYldpWXJMTlJXdGY1amlaTDM2bmZsQlIxUGRzN2NuR3RZVUpMX2dEM1ctU3NKYWhXalVTQUdqdnF4WURNLTVncXFjSllNcU9acmYzX3RCTU1OczkyUUlxTzJTcXpLeFlIbkg4blJVUThjbTdDOXdhVmZLMEJsRWdfSTdYR3dkQjhSOFBrNHFqSTQ0UUJQVHFxNUpHMA?oc=5",
      "type": "press"
     }
    ]
@@ -402,6 +402,27 @@
    ]
   },
   {
+   "id": "auto_4cdc9a5a86",
+   "date": "2026-10-06",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ENERGA",
+    "ORLEN"
+   ],
+   "unit": "",
+   "title": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100%",
+   "desc": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100% WysokieNapiecie.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdnh3V2FoYkVHNVpUWXVOYXVxNTBhMHNORkFaYVNCZFFYaG5POGdiVi1rTGo2dzVISjFxU01heFZlS0pUZXg0amVVODg1T1JnNDJicnU4TG9wZGRObHBXX3dWaDhIdHBic1RJUFpDVXhTRUtkd0VyeGJpTkVZelZEckFmWGM4MEpzSlI2Sk4zbS03bmFyd3Rrd3ZFUTRPSGVidExKM09WNlZHMngzRDRvLUN2ZTBSdVlC?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
    "id": "auto_bff8a2bda6",
    "date": "2026-10-06",
    "pillar": "company",
@@ -437,27 +458,6 @@
     {
      "label": "wnp.pl",
      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNcTNsTDJxbkxKdjNCSUVGU21DanZNSGgwT0tLWHd0cTBNZHpMd1ltMmFHRUdlaXdLUldqMnEwR3dkWnJ4R0JkbTRwN1lnWHh6dHlOSVJxbnlXeDJFMFRFb0F0X2tPcjd6ZUpuRDRjV3FocHpNTXBFcUxaVmF5ME1ia2ltNEF3OWFTR0lfTDZrR2Foa1NNWmZ2c0JlVTRyUlhsbzRWSHdDS0lOSUFBbVNLUTJzdVd6T0dXdGluSXVMcFhvR0pZVjBvVzRrd01LTWhy?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_4cdc9a5a86",
-   "date": "2026-10-06",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ENERGA",
-    "ORLEN"
-   ],
-   "unit": "",
-   "title": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100%",
-   "desc": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100% WysokieNapiecie.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "WysokieNapiecie.pl",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdnh3V2FoYkVHNVpUWXVOYXVxNTBhMHNORkFaYVNCZFFYaG5POGdiVi1rTGo2dzVISjFxU01heFZlS0pUZXg0amVVODg1T1JnNDJicnU4TG9wZGRObHBXX3dWaDhIdHBic1RJUFpDVXhTRUtkd0VyeGJpTkVZelZEckFmWGM4MEpzSlI2Sk4zbS03bmFyd3Rrd3ZFUTRPSGVidExKM09WNlZHMngzRDRvLUN2ZTBSdVlC?oc=5",
      "type": "press"
     }
    ]
@@ -503,26 +503,6 @@
    ]
   },
   {
-   "id": "auto_86b3b414a8",
-   "date": "2026-10-05",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "TAURON"
-   ],
-   "unit": "",
-   "title": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma",
-   "desc": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma wnp.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObU50dWV5UEZLVlE5STVuYlBudFBlbmVCRzZrc3BjR0Z6QjUyOGcwd05xYTJZNUlpNVdXTnV5cDd5ODhFT2puemQ1c3NkTWdHVVhLVm1OcWhLTXcwblBZeTRYc2w4eG9iVUpCTTdxbzNLYXUxZlQ3Y2hNTG1zb0pEbTg3QXBLeVNmWHVNSWw2UE0xR0VVaU9ON184blR4aHhPZnV3YWpOc0hpbHE1XzJXeXd3?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_da0ec6826b",
    "date": "2026-10-05",
    "pillar": "company",
@@ -558,6 +538,46 @@
     {
      "label": "ESS News",
      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPR3ZJUDBIVHR3c1NncmJZVWYtQ0ZXZHRfUnNJODBfRHpicWRfamo5Z2YtVnlCTWtiNEZodDEtRk1uQ2JfNlZCWnA5YmFXcVFid1NUVXptTDVhZzdtOE5xSXpzUVJvdGRieU42ZU8zQThpeVh5RHdwQ2t4dEpfLXRYQTk4WHo3cTc0V0ljNTRhdnFESmY4Z3ZtRVpXT0psdlJ1Q1NwTU54VzJIM3RXTmdOQTJmbFU0bE0?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_86b3b414a8",
+   "date": "2026-10-05",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "TAURON"
+   ],
+   "unit": "",
+   "title": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma",
+   "desc": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObU50dWV5UEZLVlE5STVuYlBudFBlbmVCRzZrc3BjR0Z6QjUyOGcwd05xYTJZNUlpNVdXTnV5cDd5ODhFT2puemQ1c3NkTWdHVVhLVm1OcWhLTXcwblBZeTRYc2w4eG9iVUpCTTdxbzNLYXUxZlQ3Y2hNTG1zb0pEbTg3QXBLeVNmWHVNSWw2UE0xR0VVaU9ON184blR4aHhPZnV3YWpOc0hpbHE1XzJXeXd3?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_7d8ef0e568",
+   "date": "2026-10-03",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "Znana spółka energetyczna może zniknąć z giełdy. Szykuje się transakcja za 311,4 mln zł",
+   "desc": "Znana spółka energetyczna może zniknąć z giełdy. Szykuje się transakcja za 311,4 mln zł wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOVmVvRm5vQW5mYWt0SWJZMnFaVVhLQkhqXy1Hb1lXM1ZNcm9pTzN4b3hnWVN4VkZ2aWtLYTRXSTljTDNoWmxBeEdwUjl6YWtyU2JvZmZRMFM5Y0N4cnZPZnh0WGpHQWYwZXNCUEZGRGVZd25zdWwzQU1JTWg0ZDVCSjVocDFaMVRGRGJ1R1hLRlNJRVhIRXNUQk5OeEctemlvTWxWa0x4bks1RGRLQWUyZjdkc1pia01SQXFoOWd0bEdJUFYt?oc=5",
      "type": "press"
     }
    ]
@@ -1003,26 +1023,6 @@
    ]
   },
   {
-   "id": "auto_51d3620fd6",
-   "date": "2026-09-24",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Przedsiębiorstwo Energetyki Cieplnej \"Legionowo\" Sp. z o.o.",
-   "title": "Tender: Poland – Construction works for power plants and heating plants – zaprojektowanie i wykonanie robót budowlanych dla zadania Budowa elektrociepłowni gazowej w oparciu o moduły silników gazowych do skojarzonego wyt",
-   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Energetyki Cieplnej \"Legionowo\" Sp. z o.o..",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 660308-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/660308-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_2e20557124",
    "date": "2026-09-24",
    "pillar": "thermal",
@@ -1043,42 +1043,22 @@
    ]
   },
   {
-   "id": "auto_78cce440c2",
+   "id": "auto_51d3620fd6",
    "date": "2026-09-24",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "TAURON"
-   ],
-   "unit": "",
-   "title": "Elektrownia Siersza przejdzie transformację. TAURON planuje inwestycje za 3,5 mld zł",
-   "desc": "Elektrownia Siersza przejdzie transformację. TAURON planuje inwestycje za 3,5 mld zł Energetyka.24",
-   "auto": true,
-   "links": [
-    {
-     "label": "Energetyka.24",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUE1iVExrUXFxTnpoOHpPU2NZSlItaFZKRzJEakJNcFFmN3BPaXhKSUtPVjN6elVkMl94WEtfZno1QUl3OFZRdlR5MHRUVWEwTHpoVzVCUUtHM2FIX0J6ajloOXQxTk9XQ2NQQlhzMTJ5NWtnekYyQUo5a181N3hzbnNWVzJST3JxdGpUaEduMlAydDBlUU1Xd0diRDhIVFJoakstV3hyLTVKQVJqZnJCaVpjVmdMR1NDX1lnenRRVkJMREROWEhKNV9tb1NyZEM2M2c?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_320b558a3c",
-   "date": "2026-09-24",
-   "pillar": "company",
-   "cat": "project",
+   "pillar": "thermal",
+   "cat": "fid",
    "cos": [
     "ALL"
    ],
-   "unit": "",
-   "title": "Spór o chłodzenie polskiej elektrowni. Pojawiły się nowe dowody ws. szkód na Wiśle",
-   "desc": "Spór o chłodzenie polskiej elektrowni. Pojawiły się nowe dowody ws. szkód na Wiśle wnp.pl",
+   "unit": "Przedsiębiorstwo Energetyki Cieplnej \"Legionowo\" Sp. z o.o.",
+   "title": "Tender: Poland – Construction works for power plants and heating plants – zaprojektowanie i wykonanie robót budowlanych dla zadania Budowa elektrociepłowni gazowej w oparciu o moduły silników gazowych do skojarzonego wyt",
+   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Energetyki Cieplnej \"Legionowo\" Sp. z o.o..",
    "auto": true,
    "links": [
     {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQQVM0WWF3V3JrNVBSeW16VF9mdXlGeElrVGZkR2tTSjJiZGZXRkc1dUtoUTlvcDVfRkFuQUhMZXN1Rk5SY25mSG9ua09sQk9DUndELWZoNVJyUy1yWUJFbTk4OGg4aG51cVFxVEw0dVEyRUFCREJxazF1aFRpZlhWRjVQdVRHYnlCTzNyOHk3dDc3RjhwejN5ZTN4dXFOR09yclRoZUxPNHlsalFPaVItYWZsUjZFNkJE?oc=5",
-     "type": "press"
+     "label": "TED — notice 660308-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/660308-2026",
+     "type": "gov"
     }
    ]
   },
@@ -1123,22 +1103,42 @@
    ]
   },
   {
-   "id": "auto_3a39389ea7",
-   "date": "2026-09-23",
-   "pillar": "thermal",
-   "cat": "fid",
+   "id": "auto_78cce440c2",
+   "date": "2026-09-24",
+   "pillar": "company",
+   "cat": "project",
    "cos": [
-    "ENEA"
+    "TAURON"
    ],
-   "unit": "ENEA Nowa Energia sp. z o.o.",
-   "title": "Tender: Poland – Construction work for power plant – Przedmiotem Zamówienia jest wykonanie robót budowlanych pn.: Projektowanie, dostawa i budowa pod klucz instalacji fotowoltaicznej pn. PV Lubno III o mocy zainstalowane",
-   "desc": "Public procurement notice published on TED by ENEA Nowa Energia sp. z o.o..",
+   "unit": "",
+   "title": "Elektrownia Siersza przejdzie transformację. TAURON planuje inwestycje za 3,5 mld zł",
+   "desc": "Elektrownia Siersza przejdzie transformację. TAURON planuje inwestycje za 3,5 mld zł Energetyka.24",
    "auto": true,
    "links": [
     {
-     "label": "TED — notice 656439-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/656439-2026",
-     "type": "gov"
+     "label": "Energetyka.24",
+     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUE1iVExrUXFxTnpoOHpPU2NZSlItaFZKRzJEakJNcFFmN3BPaXhKSUtPVjN6elVkMl94WEtfZno1QUl3OFZRdlR5MHRUVWEwTHpoVzVCUUtHM2FIX0J6ajloOXQxTk9XQ2NQQlhzMTJ5NWtnekYyQUo5a181N3hzbnNWVzJST3JxdGpUaEduMlAydDBlUU1Xd0diRDhIVFJoakstV3hyLTVKQVJqZnJCaVpjVmdMR1NDX1lnenRRVkJMREROWEhKNV9tb1NyZEM2M2c?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_320b558a3c",
+   "date": "2026-09-24",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "Spór o chłodzenie polskiej elektrowni. Pojawiły się nowe dowody ws. szkód na Wiśle",
+   "desc": "Spór o chłodzenie polskiej elektrowni. Pojawiły się nowe dowody ws. szkód na Wiśle wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQQVM0WWF3V3JrNVBSeW16VF9mdXlGeElrVGZkR2tTSjJiZGZXRkc1dUtoUTlvcDVfRkFuQUhMZXN1Rk5SY25mSG9ua09sQk9DUndELWZoNVJyUy1yWUJFbTk4OGg4aG51cVFxVEw0dVEyRUFCREJxazF1aFRpZlhWRjVQdVRHYnlCTzNyOHk3dDc3RjhwejN5ZTN4dXFOR09yclRoZUxPNHlsalFPaVItYWZsUjZFNkJE?oc=5",
+     "type": "press"
     }
    ]
   },
@@ -1158,6 +1158,26 @@
     {
      "label": "TED — notice 654112-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/654112-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_3a39389ea7",
+   "date": "2026-09-23",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ENEA"
+   ],
+   "unit": "ENEA Nowa Energia sp. z o.o.",
+   "title": "Tender: Poland – Construction work for power plant – Przedmiotem Zamówienia jest wykonanie robót budowlanych pn.: Projektowanie, dostawa i budowa pod klucz instalacji fotowoltaicznej pn. PV Lubno III o mocy zainstalowane",
+   "desc": "Public procurement notice published on TED by ENEA Nowa Energia sp. z o.o..",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 656439-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/656439-2026",
      "type": "gov"
     }
    ]
@@ -1403,26 +1423,6 @@
    ]
   },
   {
-   "id": "auto_589b229b72",
-   "date": "2026-09-18",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "PGE"
-   ],
-   "unit": "PGE Polska Grupa Energetyczna S.A.",
-   "title": "Tender: Poland – Passenger cars – Wynajem długoterminowy samochodów osobowych dla Spółek GK PGE",
-   "desc": "Public procurement notice published on TED by PGE Polska Grupa Energetyczna S.A..",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 643603-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/643603-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_771bc33729",
    "date": "2026-09-18",
    "pillar": "thermal",
@@ -1438,6 +1438,26 @@
     {
      "label": "TED — notice 646347-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/646347-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_589b229b72",
+   "date": "2026-09-18",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "PGE Polska Grupa Energetyczna S.A.",
+   "title": "Tender: Poland – Passenger cars – Wynajem długoterminowy samochodów osobowych dla Spółek GK PGE",
+   "desc": "Public procurement notice published on TED by PGE Polska Grupa Energetyczna S.A..",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 643603-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/643603-2026",
      "type": "gov"
     }
    ]
