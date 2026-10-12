@@ -1,7 +1,29 @@
 {
- "generated": "2026-10-12T10:00:00Z",
+ "generated": "2026-10-12T16:09:43.177194+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_98646dcb2c",
+   "date": "2026-10-09",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "TED (EU tenders)",
+     "url": "https://ted.europa.eu/en/notice/-/detail/699100-2026",
+     "type": "gov"
+    }
+   ],
+   "title": "Tender: Poland – Construction work for power plant – Wykonanie robót budowlanych w formule zaprojektuj i wybuduj: Projektowanie, dostawa i budowa :instalacji fotowoltaicznej pn. PV Skalin 1 o mocy zainstalowanej do 5,61MW;instalacji fotowoltaicznej pn.PV Gryfice 2 o mocy zainstalowanej do 9MW; Projektowanie, dostawa i budowa Magazynu Energii Elektrycznej pn.ME Skalin 1 o mocy zainstalowanej 4,472MW; ME Gryfice 2 o mocy zainstalowanej8,944MW",
+   "summary": "ENEA Nowa Energia sp. z o.o. published public procurement notice 699100-2026 on the EU TED portal: Poland – Construction work for power plant – Wykonanie robót budowlanych w formule zaprojektuj i wybuduj: Projektowanie, dostawa i budowa :instalacji fotowoltaicznej pn. PV…",
+   "cat": "fid",
+   "pillar": "thermal",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
   {
    "id": "nu1",
    "date": "2026-10-08",
@@ -29,6 +51,160 @@
      "type": "press"
     }
    ]
+  },
+  {
+   "id": "auto_46f9af740d",
+   "date": "2026-10-08",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "TED (EU tenders)",
+     "url": "https://ted.europa.eu/en/notice/-/detail/695422-2026",
+     "type": "gov"
+    }
+   ],
+   "title": "Tender: Poland – Electricity distribution and control apparatus – Dostawa komponentów systemu magazynowania energii elektrycznej BESS Laryszów",
+   "summary": "TAURON BME8 sp. z o.o. published public procurement notice 695422-2026 on the EU TED portal: Poland – Electricity distribution and control apparatus – Dostawa komponentów systemu magazynowania energii elektrycznej BESS Laryszów. The notice relates to power-generation or heat infrastructure in…",
+   "cat": "fid",
+   "pillar": "thermal",
+   "cos": [
+    "TAURON"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_adec4f75a6",
+   "date": "2026-10-08",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "CEEnergynews",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9JZktDdl94NDhXSUNlMlZ4R0RsVWdodWQ3RmdiTjNrdndpM21VamVUMkZmMXlQdU1FclZGa3pDR1J1SWNNc1BMbjhaUWJFcVgyZW5fam9PTEJLVVdMejhoTWQxSjdhU2hYbHk3a2xOdTE0bUI2Q2JF?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "The future of Poland and CEE – A museum or an electric El Dorado?",
+   "summary": "The future of Poland and CEE – A museum or an electric El Dorado? CEEnergynews",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_9167ea148f",
+   "date": "2026-10-07",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQUEtzV1RkY0tLQ1VHUEd6UFpJYzlvemZNUF9LR0tybzdHZzlhSFF3clNrZDlXdWxtUDVfV1lpTzZJSVFpV296a0QtdmpwZHpUdWRubWMxSGxlc2V4d0p3NUp4aEZvT21OaklDMjRvQlVKQ3pXU1BobzlFR3R6Sl9WbkMtTFg3Tlh6VV9KU3dsUUI5bEptTVAybE5aVm44V1JjdmtQNmxFbGRhWEhEMEhJRlhSeVFUaWVnbXppbEFWMEdlS00?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Northland, Orlen complete turbine installation at Poland's first offshore wind project",
+   "summary": "Northland, Orlen complete turbine installation at Poland's first offshore wind project Reuters",
+   "cat": "fid",
+   "pillar": "thermal",
+   "cos": [
+    "ORLEN"
+   ],
+   "region": "Baltic Sea"
+  },
+  {
+   "id": "auto_299a9b1bfe",
+   "date": "2026-10-05",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "World Nuclear News",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWEc2X2RWNTk3d19maFJ2eXhQeElRa1MyOFNRd1ZOeVRlNUJKVnNETjFuV2hVY3VMODJ6MXZtRFhrODA3ZmlfdHhXLWhpOUdOVVBSZDBYZ3dUREhqRURVS2lId0F3aFhDZ0IyeWZkUGswcDk4SWhSVG05aWJEQXVRYnZOcXVkOVBrcHVRXzB5MVNWMVdkYzNIMGlUVkhfdlpFT0s2UEhaTQ?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Timeline for Polish nuclear units slips in updated programme",
+   "summary": "Timeline for Polish nuclear units slips in updated programme World Nuclear News",
+   "cat": "nuclear",
+   "pillar": "thermal",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_e7cd7c0a32",
+   "date": "2026-10-05",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "ESS News",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPR3ZJUDBIVHR3c1NncmJZVWYtQ0ZXZHRfUnNJODBfRHpicWRfamo5Z2YtVnlCTWtiNEZodDEtRk1uQ2JfNlZCWnA5YmFXcVFid1NUVXptTDVhZzdtOE5xSXpzUVJvdGRieU42ZU8zQThpeVh5RHdwQ2t4dEpfLXRYQTk4WHo3cTc0V0ljNTRhdnFESmY4Z3ZtRVpXT0psdlJ1Q1NwTU54VzJIM3RXTmdOQTJmbFU0bE0?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Northland Power closes financing for 1.2 GWh battery storage projects in Poland",
+   "summary": "Northland Power closes financing for 1.2 GWh battery storage projects in Poland ESS News",
+   "cat": "fid",
+   "pillar": "thermal",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_8c88bca99b",
+   "date": "2026-10-03",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "pv magazine Global",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVXVHTWVlNkxIY3g4MnJEWWhVcUJYQ1BtZThiUzNkNC1xWU5ibUNOTDBySWZybzNuajYzcFVlNjZPbkd0YkIyTlI5eVU3dTR4c1ZEcTJfbkNkODBjNHFJMDMxcTdidmM3SFlvS1F3M2Q0a2c3dl9vQlUyMXNCaXhuYU1vRW9kUmNqR0hvNDJhUWx2NjVQdGJNUEJRLTlaYW13N2xN?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Brazil hits 56 GW of connection headroom for battery auctions",
+   "summary": "Brazil hits 56 GW of connection headroom for battery auctions pv magazine Global",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_40f2a184bc",
+   "date": "2026-09-25",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Rzeczpospolita",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdE4wdXE2cVJCYWRhZHViOEQ5MWxtanowdEZkenB2dkVWN19HYmRWdmszdjAwUlJIbjJQZDNsTnhJdEFnd3kxWFE4VW9wSnNnRGotdEdwUWVuTTNLV3pZdnEzX2t4dHpGSGdxZUpKR2lxdk9LbGYxZW1lSWZ5dXFzZVEyeElTQURJM1locXJKSkVTcldRSl9zbjBXaFkyb0l6dHZmbktxc25EaG5uRGc?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach?",
+   "summary": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach? Rzeczpospolita",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
   },
   {
    "id": "x1",
