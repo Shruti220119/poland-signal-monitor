@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T09:10:49.201230+00:00",
+ "generated": "2026-10-12T09:47:29.851899+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -923,26 +923,6 @@
    ]
   },
   {
-   "id": "auto_0f13af3cb9",
-   "date": "2026-09-25",
-   "pillar": "thermal",
-   "cat": "chp",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "Ciepłownictwa będzie coraz więcej na rynku energii",
-   "desc": "Ciepłownictwa będzie coraz więcej na rynku energii WysokieNapiecie.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "WysokieNapiecie.pl",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT1hwUnpOdU1zWUY5dzdhRXlLZThIUk5WMGhDZzZnUHpFcXZjZ3lNM2tJWF9PdG1EM2lLWEJWbmRXVlJTRHNrNUVmbFVNSHFOYnV6YThvNGRVT3lQR1FtNllOUU9SLWVVeDk5Z1VjSURoaWZlMmZQZjNCSXlrYklEWHctVFhrMTdzOTdZa21B?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_40f2a184bc",
    "date": "2026-09-25",
    "pillar": "company",
@@ -963,22 +943,22 @@
    ]
   },
   {
-   "id": "auto_2e20557124",
-   "date": "2026-09-24",
+   "id": "auto_0f13af3cb9",
+   "date": "2026-09-25",
    "pillar": "thermal",
-   "cat": "fid",
+   "cat": "chp",
    "cos": [
-    "PGE"
+    "ALL"
    ],
-   "unit": "PGE Górnictwo i Energetyka Konwencjonalna SA",
-   "title": "Tender: Poland – Heat-exchange units – Zakup modułów chłodnic do wymienników podgrzewu spalin na blokach 8,10,11,12 dla PGE GiEK SA Oddział Elektrownia Bełchatów",
-   "desc": "Public procurement notice published on TED by PGE Górnictwo i Energetyka Konwencjonalna SA.",
+   "unit": "",
+   "title": "Ciepłownictwa będzie coraz więcej na rynku energii",
+   "desc": "Ciepłownictwa będzie coraz więcej na rynku energii WysokieNapiecie.pl",
    "auto": true,
    "links": [
     {
-     "label": "TED — notice 658783-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/658783-2026",
-     "type": "gov"
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT1hwUnpOdU1zWUY5dzdhRXlLZThIUk5WMGhDZzZnUHpFcXZjZ3lNM2tJWF9PdG1EM2lLWEJWbmRXVlJTRHNrNUVmbFVNSHFOYnV6YThvNGRVT3lQR1FtNllOUU9SLWVVeDk5Z1VjSURoaWZlMmZQZjNCSXlrYklEWHctVFhrMTdzOTdZa21B?oc=5",
+     "type": "press"
     }
    ]
   },
@@ -998,6 +978,26 @@
     {
      "label": "TED — notice 660308-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/660308-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_2e20557124",
+   "date": "2026-09-24",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "PGE Górnictwo i Energetyka Konwencjonalna SA",
+   "title": "Tender: Poland – Heat-exchange units – Zakup modułów chłodnic do wymienników podgrzewu spalin na blokach 8,10,11,12 dla PGE GiEK SA Oddział Elektrownia Bełchatów",
+   "desc": "Public procurement notice published on TED by PGE Górnictwo i Energetyka Konwencjonalna SA.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 658783-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/658783-2026",
      "type": "gov"
     }
    ]
@@ -1083,26 +1083,6 @@
    ]
   },
   {
-   "id": "auto_371724f912",
-   "date": "2026-09-23",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością",
-   "title": "Tender: Poland – Construction works for power plants and heating plants – Rozbudowa układu kogeneracji wraz z rozbudową węzła osadowego na Oczyszczalni Ścieków w Rybniku-Orzepowicach należącej do Przedsiębiorstwa Wodocią",
-   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 654112-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/654112-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_3a39389ea7",
    "date": "2026-09-23",
    "pillar": "thermal",
@@ -1118,6 +1098,26 @@
     {
      "label": "TED — notice 656439-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/656439-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_371724f912",
+   "date": "2026-09-23",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością",
+   "title": "Tender: Poland – Construction works for power plants and heating plants – Rozbudowa układu kogeneracji wraz z rozbudową węzła osadowego na Oczyszczalni Ścieków w Rybniku-Orzepowicach należącej do Przedsiębiorstwa Wodocią",
+   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 654112-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/654112-2026",
      "type": "gov"
     }
    ]
@@ -1303,26 +1303,6 @@
    ]
   },
   {
-   "id": "auto_16dee44c6c",
-   "date": "2026-09-21",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Gmina Bieruń reprezentowana przez Burmistrza Miasta Bierunia",
-   "title": "Tender: Poland – Solar photovoltaic modules – Zielona energia – Budowa instalacji OZE w Gminie Bieruń",
-   "desc": "Public procurement notice published on TED by Gmina Bieruń reprezentowana przez Burmistrza Miasta Bierunia.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 649250-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/649250-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_ae45cc5b2a",
    "date": "2026-09-21",
    "pillar": "thermal",
@@ -1343,21 +1323,21 @@
    ]
   },
   {
-   "id": "auto_771bc33729",
-   "date": "2026-09-18",
+   "id": "auto_16dee44c6c",
+   "date": "2026-09-21",
    "pillar": "thermal",
    "cat": "fid",
    "cos": [
     "ALL"
    ],
-   "unit": "Elektrociepłownia Ciechanów sp. z o.o.",
-   "title": "Tender: Poland – Construction work – (WZNOWIONE POSTĘPOWANIE) Budowa i przebudowa kogeneracji gazowych o łącznej mocy 4,636 MWe i 5,729 MWt w Elektrociepłowni Ciechanów",
-   "desc": "Public procurement notice published on TED by Elektrociepłownia Ciechanów sp. z o.o..",
+   "unit": "Gmina Bieruń reprezentowana przez Burmistrza Miasta Bierunia",
+   "title": "Tender: Poland – Solar photovoltaic modules – Zielona energia – Budowa instalacji OZE w Gminie Bieruń",
+   "desc": "Public procurement notice published on TED by Gmina Bieruń reprezentowana przez Burmistrza Miasta Bierunia.",
    "auto": true,
    "links": [
     {
-     "label": "TED — notice 646347-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/646347-2026",
+     "label": "TED — notice 649250-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/649250-2026",
      "type": "gov"
     }
    ]
@@ -1383,6 +1363,26 @@
    ]
   },
   {
+   "id": "auto_771bc33729",
+   "date": "2026-09-18",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Elektrociepłownia Ciechanów sp. z o.o.",
+   "title": "Tender: Poland – Construction work – (WZNOWIONE POSTĘPOWANIE) Budowa i przebudowa kogeneracji gazowych o łącznej mocy 4,636 MWe i 5,729 MWt w Elektrociepłowni Ciechanów",
+   "desc": "Public procurement notice published on TED by Elektrociepłownia Ciechanów sp. z o.o..",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 646347-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/646347-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
    "id": "auto_d7826beb6e",
    "date": "2026-09-17",
    "pillar": "thermal",
@@ -1398,6 +1398,46 @@
     {
      "label": "TED — notice 639999-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/639999-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_8f19f78e06",
+   "date": "2026-09-17",
+   "pillar": "thermal",
+   "cat": "nuclear",
+   "cos": [
+    "OSGE"
+   ],
+   "unit": "",
+   "title": "Aukcje OZE: Prezes URE publikuje harmonogram przeprowadzenia aukcji na sprzedaż energii elektrycznej ze źródeł odnawialnych w 2026 r. Na ten cel przeznaczono niemal 25 mld zł.",
+   "desc": "Aukcje OZE: Prezes URE publikuje harmonogram przeprowadzenia aukcji na sprzedaż energii elektrycznej ze źródeł odnawialnych w 2026 r. Na ten cel przeznaczono niemal 25 mld zł. Urząd Regulacji Energetyki",
+   "auto": true,
+   "links": [
+    {
+     "label": "Urząd Regulacji Energetyki",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNY3dzMFQxRWZBZ3hoMzVFZXNWWE4wQlUwMUFNcnZSejE1QTBWRXRiWVVFTmZ4SUhvZDZ6T25PVmRPeWVfYkNIN2w2WGFvWXlnUFZ0SUFvNG5BOXgxRS12YmpxRTRBLUNZQXFUeDFXVDZ3UkVyLWd0Nk4zZHhoZTlBLUt4ZFgxM241RUlmcHRnd3pSSGszU0hKNFJrQ0hEc1Y0Y2dKckxLZTNjX0VDQUt5RE5FTThyTE1lU21ROFpFRWdLbWJERC1qaF9TN0lTd0JMaEs0WVQ4VUdIcjZ3TVpiTlNDcU9FTGEy?oc=5",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_ac941d3677",
+   "date": "2026-09-16",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie",
+   "title": "Tender: Poland – Heating plant construction work – Budowa instalacji spalania biomasy o mocy 10 MW w Koszalinie, ul. Mieszka I 20A, Kotłownia DPM",
+   "desc": "Public procurement notice published on TED by Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 637150-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/637150-2026",
      "type": "gov"
     }
    ]
