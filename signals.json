@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T10:10:42.967602+00:00",
+ "generated": "2026-10-12T10:45:15.405830+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -18,6 +18,26 @@
      "label": "TED — notice 701893-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/701893-2026",
      "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_84bb08549f",
+   "date": "2026-10-12",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ENEA"
+   ],
+   "unit": "",
+   "title": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR",
+   "desc": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR Bankier.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "Bankier.pl",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdC10RjYyejc1MkhsXzE4dWttblVBQkRsT1JPM0k5RzdEa19YbkQxWFJUaUctNFlTWHRtNkhkR0lCQWlvaDBHRUNWdFlLYUdMeFdRZEliSlZhVFR0T19xOEtLZ0ZIQVBuaDUyY2RpUzJCNzNwTmJ0UEE4UFE3OUlPSXV4MlBrdEthX2N2MWlYOGlKMU5JWnJ3SlppOVpXNzNicmhac0s4UEN6TWljNzRLeG5tR0p4akVfdEtwMUxJbDBndVBxdEE?oc=5",
+     "type": "press"
     }
    ]
   },
@@ -102,26 +122,6 @@
    ]
   },
   {
-   "id": "auto_af64972cf8",
-   "date": "2026-10-09",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "R.Power sees Dec commissioning of 150-MW Polish battery",
-   "desc": "R.Power sees Dec commissioning of 150-MW Polish battery Renewables Now",
-   "auto": true,
-   "links": [
-    {
-     "label": "Renewables Now",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPYlNyalYxN0pldFh0MDhfNnJrSG85UVFGQzRBMjFQVGY0UjRSMThzak11OVVfMTVQT2FYTXFRa2Z0ZnAtZVYzdllGbEVZeDBjci1vSkhwRmdzNW02UF9Sa0hJdU96ZV9YNEM5bmtVMk90VmFXTGVWS2xSRmh2R01GeXItU2RkdEdIaFlGbXhYQl9IbjlkVDJwS0VtNA?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_b7d57301c9",
    "date": "2026-10-09",
    "pillar": "thermal",
@@ -137,6 +137,26 @@
     {
      "label": "CEEnergynews",
      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQUkcteGUzU0FLX1B0LWFuZExJbXhMRkRqUmRHa2NVSUR0a0NuU1dhTGE4b3pUOExLZnZYYnV3RlU3SGdfdC1VYUxuZF9aN0hmakVCeFQ2SEUtUDB3YllTMDdCaWVuY3FZMTRlOXNYWGlUU21vbGQyM0NkY3VCN1VrMWJzbGFkMzJIMTQteXhn?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_af64972cf8",
+   "date": "2026-10-09",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "R.Power sees Dec commissioning of 150-MW Polish battery",
+   "desc": "R.Power sees Dec commissioning of 150-MW Polish battery Renewables Now",
+   "auto": true,
+   "links": [
+    {
+     "label": "Renewables Now",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPYlNyalYxN0pldFh0MDhfNnJrSG85UVFGQzRBMjFQVGY0UjRSMThzak11OVVfMTVQT2FYTXFRa2Z0ZnAtZVYzdllGbEVZeDBjci1vSkhwRmdzNW02UF9Sa0hJdU96ZV9YNEM5bmtVMk90VmFXTGVWS2xSRmh2R01GeXItU2RkdEdIaFlGbXhYQl9IbjlkVDJwS0VtNA?oc=5",
      "type": "press"
     }
    ]
@@ -1319,26 +1339,6 @@
      "label": "TED — notice 649250-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/649250-2026",
      "type": "gov"
-    }
-   ]
-  },
-  {
-   "id": "auto_821bbfdcdc",
-   "date": "2026-09-21",
-   "pillar": "thermal",
-   "cat": "nuclear",
-   "cos": [
-    "ENEA"
-   ],
-   "unit": "",
-   "title": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR",
-   "desc": "Enea Elektrownia Połaniec Sp. z o.o.: POWIADOMIENIE O TRANSAKCJI W TRYBIE ART. 19 MAR Bankier.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "Bankier.pl",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxORzlzeTdZMERLcnpMNThaVnA5QnVhRGJPUngzWGNldzZnNGx1SGtEeWNJRFh4LWgwc0lWTG1jRmRfTjlSNEJWRTFNcUdsOFo4RjdNQjJjZXBZSk4wVjVvS2JJaUlvMjF3OG5GSVBfRm40TV9Cbk85TDZRbUY4SlRoSmRTUlgwOXNkN19acU5xQ0xKTHhRTmE0dUg4Y3NSM2tFbVpoUV95WXFheXdOdGtWLWlNRGdBUGI3TkxHUE1ZYWN5TUtlSGc?oc=5",
-     "type": "press"
     }
    ]
   },
