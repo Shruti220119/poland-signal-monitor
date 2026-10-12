@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlexGen Signal Monitor · Poland</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
    EVALUESERVE BRAND TOKENS
@@ -440,6 +438,22 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2p
 .src-url{font-size:9.5px;color:var(--gray-dim);word-break:break-all}
 .src-n{text-align:center;font-weight:600;width:60px}
 .auto-tag{font-size:9px;font-weight:600;color:#1a6645;background:rgba(26,138,92,.08);border:1px solid rgba(26,138,92,.25);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.trtag{display:inline-block;font-size:9.5px;font-weight:600;padding:3px 8px;border-radius:4px;margin:0 0 8px 6px;background:#fff6e5;color:#9a5b00;border:1px solid #f2d9a6}
+.sigbox{border:1px solid var(--border);border-radius:6px;background:#fbfafc;margin:2px 0 10px;overflow:hidden}
+.sb-row{display:grid;grid-template-columns:130px 1fr;border-top:1px solid var(--border)}
+.sb-row:first-child{border-top:0}
+.sb-k{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);padding:8px 10px;background:var(--purple-lt)}
+.sb-v{font-size:11.5px;line-height:1.5;color:#000;padding:7px 11px}
+.sb-v b{font-weight:600}
+.sb-v.aff{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.affc label{display:block;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-dim);margin-bottom:3px}
+.atag{display:inline-block;font-family:'Poppins';font-size:10px;padding:2px 7px;border-radius:4px;margin:0 3px 3px 0;background:#fff;border:1px solid var(--border);color:#000;line-height:1.45}
+.atag.co{color:#fff;border:0}
+button.atag{cursor:pointer}
+button.atag.as{background:var(--red-lt);color:var(--red);border-color:rgba(224,4,78,.25)}
+button.atag:hover{border-color:var(--purple)}
+.ana{font-size:10.5px;color:var(--gray-dim)}
+@media(max-width:1100px){.sb-v.aff{grid-template-columns:1fr 1fr}.sb-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -494,7 +508,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2p
     <div>
       <h1>FlexGen Signal Monitor &middot; Poland</h1>
       <p>Live news feed &amp; signals across three pillars: Policy &amp; Market Design · Thermal Generation &amp; Nuclear · Company &amp; Transaction Signals.</p>
-      <p>Polish primary sources first — government, URE, PSE/DSOs, companies, procurement &amp; permitting — complemented by specialist media.</p>
+      <p>Each signal comes with a 30–40-word English summary. Polish sources are always translated.</p>
     </div>
     <div class="head-stats">
       <div class="hstat"><div class="hv" id="hsTot">—</div><div class="hl">Signals</div></div>
@@ -506,7 +520,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2p
   </div>
 
   <div class="cbar">
-    <div class="searchbox"><span class="si">⌕</span><input type="text" id="search" placeholder="Search e.g. OCGT TAURON, SMR CfD, Kozienice…" aria-label="Search signals"></div>
+    <div class="searchbox"><span class="si">⌕</span><input type="text" id="search" placeholder="Search e.g. OCGT Silesia, SMR CfD, Kozienice…" aria-label="Search signals"></div>
     <div class="cinfo">Showing <b id="cnt">—</b> signals</div>
     <div class="sb-spacer"></div>
     <button class="sortbtn on" id="sortdate" aria-pressed="true">↓ Newest first</button>
@@ -518,7 +532,7 @@ a:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2p
   <div class="feed" id="feed"></div>
 
   <div class="footnote">
-    <b>Source note.</b> Every signal links directly to its source document. Polish primary sources come first — government, URE, PSE/DSOs/TGE, company disclosures (ESPI/EBI), procurement and permitting — complemented by selected established specialist media. ⊞ government/operator · 📋 company filing · 🌐 company newsroom · ↗ specialist media. Full list under <b>📚 Sources</b>.
+    <b>Source note.</b> Every signal links directly to its source document. Polish primary sources come first — government, URE, PSE/DSOs/TGE, company disclosures (ESPI/EBI), procurement and permitting — complemented by selected established specialist media. All headlines and summaries are in English; Polish-language sources are translated and marked <b>PL → EN</b>. ⊞ government/operator · 📋 company filing · 🌐 company newsroom · ↗ specialist media. Full list under <b>📚 Sources</b>.
   </div>
 
 </main>
@@ -888,9 +902,9 @@ let SIGNALS = [
           {label:'Enea — press release',url:'https://media.enea.pl/pr/864806/ruszyla-budowa-blokow-gazowo-parowych-w-kozienicach-enea-stawia-na-polskie-kompetencje-i-polskie-firmy',type:'filing'}]},
   {id:'n9',date:'2026-01-20',co:'ENEA',cat:'financial',
    unit:'Enea Elkogaz — Kozienice financing',
-   title:'Enea secures ~6.45 billion zł (€1.53bn) bank financing for the Kozienice CCGT',
+   title:'Enea secures PLN 6.95bn project financing for the Kozienice CCGT',
    desc:'Enea\'s project company Elkogaz arranged about 6.45 billion zł (€1.53 billion) from a consortium led by Bank Gospodarstwa Krajowego to fund the two-unit Kozienice CCGT. The financing de-risks Poland\'s largest single gas build and underpins a 2026 capex step-up, with group spending reported to exceed 9 billion zł for the year.',
-   links:[{label:'Enea — investor relations',url:'https://ir.enea.pl/en',type:'filing'}]},
+   links:[{label:'Enea IR — 2025 results release (financing)',url:'https://ir.enea.pl/en/pr/868626/enea-s-energy-transition-accelerates-2025-was-a-breakthrough-year',type:'filing'}]},
   {id:'n10',date:'2026-07-13',co:'ENERGA',cat:'project',
    unit:'CCGT Grudziądz (Orlen Group)',
    title:'CCGT Grudziądz delivers first power to Poland\'s grid — key Orlen gas milestone',
@@ -1234,7 +1248,20 @@ TECH_LABEL.cross = 'Cross-technology / market-wide';
 const inferAssets = s => { const hay = s.unit+' '+s.title+' '+s.desc;
   const a = ASSETS.filter(x => x[1].test(hay)).map(x=>x[0]); return a.length ? a : ['Portfolio / non-asset']; };
 
+/* ═══ SIGNAL INTELLIGENCE — English 30–40-word summary, what changed, why it matters, region ═══ */
+const SIG_X = {"x1": {"region": "National", "change": "Capacity-market rule update RRM/Z/16/2026 approved", "why": "Rule changes alter how capacity units qualify, bid and are settled, affecting revenue certainty for every unit in future auctions.", "summary": "URE published its decision approving capacity-market rule update RRM/Z/16/2026, which PSE announced on 10 September 2026. It is the latest formal change to the capacity-market rules recorded in the official register."}, "x2": {"region": "Łódź", "change": "ENGIE adds a 438 MW / 876 MWh BESS project", "why": "Signals a foreign utility building scale in Polish flexibility, adding competition for capacity-market and balancing revenues.", "summary": "ENGIE Zielona Energia acquired the SPV developing a 438 MW / 876 MWh battery project at Trębaczew, Łódź province, from Mithra Energy and a Futureal Group member. Ready-to-build status is expected in Q4 2026, with commissioning planned for Q1 2029."}, "x3": {"region": "Greater Poland", "change": "€260m+ EIB loan secured for 190 MW wind farm", "why": "Low-cost EU financing de-risks TAURON’s renewables build and frees balance-sheet capacity for its gas and storage programme.", "summary": "The European Investment Bank signed more than €260 million (PLN 1.12 billion) of financing for TAURON’s 190 MW Miejska Górka onshore wind farm in western Poland, which TAURON plans to bring into operation in 2027."}, "x4": {"region": "National", "change": "DSOs agree a common flexibility-services platform", "why": "Creates a new local revenue stream for storage, flexible generation and aggregators, and may ease grid-connection constraints.", "summary": "TGE, Enea Operator, Energa-Operator and PGE Dystrybucja agreed to build a common national platform where distribution operators can buy flexibility from active consumers, storage, generators and aggregators to manage local grid constraints and connect new resources."}, "x5": {"region": "Lesser Poland", "change": "Government backs a framework for large-scale storage", "why": "State backing could unlock support mechanisms for long-duration storage, improving the economics of pumped hydro such as Rożnów II.", "summary": "The Ministry of Energy and TAURON signed a strategic letter of intent to develop regulatory, organisational and financial solutions that accelerate large-scale energy-storage investment, including the Rożnów II pumped-storage project in southern Poland."}, "x6": {"region": "EU / Poland", "change": "EC quantifies the energy share of Poland’s €54.7bn RRF plan", "why": "Shows the scale of EU money available to grid, renewables and efficiency projects, a key funding source for Polish utilities.", "summary": "A European Commission factsheet states that Poland’s Recovery and Resilience Plan combines structural reforms with €54.7 billion of EU funding, with 40% of that funding allocated primarily to energy-related objectives."}, "x7": {"region": "National", "change": "No third-party appetite for system-service storage", "why": "Suggests system operators may own this storage themselves, limiting a potential market for independent storage investors.", "summary": "URE’s Information 10/2026 reported that no entities other than electricity-system operators expressed interest in investing in the storage facilities covered by its consultation on the cost-effective provision of system services."}, "r1": {"region": "National", "change": "Grid-connection reform approved by government", "why": "Higher deposits and shorter validity aim to clear speculative queue positions, changing connection costs and timelines for new projects.", "summary": "The government approved an Energy Law amendment requiring operators to publish available capacity, doubling connection deposits to PLN 60/kW, shortening connection-condition validity to one year, extending cable pooling to storage and piloting connection-capacity auctions."}, "r2": {"region": "National", "change": "First anti-blackout act adopted by Standing Committee", "why": "Moves grid-security and connection rules closer to law, shaping how quickly new generation and storage can connect.", "summary": "The Standing Committee of the Council of Ministers adopted the UC84 Energy Law amendment, the first act of the Ministry of Energy and PSE anti-blackout package, streamlining grid connections and implementing EU market-design and REMIT rules."}, "r3": {"region": "National", "change": "Biomethane support scheme enters legislative pipeline", "why": "A dedicated support scheme could open a new investment segment and a renewable gas option for CHP operators.", "summary": "The Government Work Planning Team added draft bill UD332, amending the Renewable Energy Sources Act, to the Council of Ministers’ schedule; its main purpose is to introduce a dedicated support system for biomethane."}, "r4": {"region": "National", "change": "RED II rules in force; new support systems added", "why": "Extends support to heat, hydrogen and modernised assets, widening the scope of subsidy-eligible projects for generators.", "summary": "An amended RES Act entered into force, implementing a further part of RED II across electricity and heat, extending support to renewable hydrogen and cooling, broadening the modernisation definition and giving URE new obligations."}, "r5": {"region": "EU / Poland", "change": "EU derogation keeps capacity mechanism to end-2028", "why": "Secures capacity payments for existing high-emission units until 2028, supporting incumbents’ cash flows during the gas transition.", "summary": "The European Commission granted Poland a derogation from Article 22(4)(b) of Regulation 2019/943 for its capacity mechanism, applying from 1 July 2025 to 31 December 2028, published as Decision (EU) 2026/341."}, "r6": {"region": "National", "change": "New licence rules and storage cable pooling proposed", "why": "Storage cable pooling would let projects share existing connections, lowering cost and speeding deployment at constrained sites.", "summary": "The government’s energy-sector deregulation bill (UDER29) proposes new rules for obtaining electricity-generation licences and extends the cable-pooling formula to energy storage and other installations sharing a single grid connection point."}, "r7": {"region": "National", "change": "Connection-fee reform sent to public consultation", "why": "Raises the upfront cost of holding grid capacity, likely filtering out weaker projects and freeing queue space.", "summary": "A draft Energy Law amendment targeting ‘capacity blocking’ entered public consultation, doubling the connection-fee advance to PLN 60/kW with a PLN 6m cap, adding application fees and financial security, and cutting connection-condition validity to one year."}, "r8": {"region": "National", "change": "High-emission units stay in capacity market to 2028", "why": "Keeps coal units earning capacity payments longer, supporting system adequacy while gas replacements are built.", "summary": "Although EU rules bar units emitting over 550 kg CO₂/MWh from capacity-market aid from July 2025, Poland amended its Capacity Market Act to extend such units’ participation until the end of 2028 for system stability."}, "p1": {"region": "National", "change": "PLN 4.15bn storage subsidies allocated", "why": "Heavy oversubscription confirms strong storage demand; subsidised projects will compete with gas for flexibility revenues.", "summary": "NFOŚiGW published the final list under its PLN 4.15bn Modernisation Fund programme: 172 storage facilities totalling about 3,900 MW / 14,500 MWh, to be built by end-2028, after requests reached nearly seven times the budget."}, "m1": {"region": "Świętokrzyskie", "change": "ENGIE acquires a ready-to-build 250 MW / 1,000 MWh BESS", "why": "A second large BESS deal in months makes ENGIE a leading independent storage player in Poland.", "summary": "ENGIE Zielona Energia agreed to acquire R.Power’s ready-to-build 250 MW / 1,000 MWh battery project at Tursko Wielkie, Świętokrzyskie. Construction is due to start in early 2027, with commissioning in Q4 2028 and direct connection to the Połaniec substation."}, "m2": {"region": "Subcarpathia", "change": "Nowa Sarzyna CCGT ownership passes to Axpo", "why": "Gives a foreign trader physical flexible generation in Poland and confirms Polenergia’s pivot to renewables.", "summary": "After UOKiK approval, Axpo Polska signed the final agreement to acquire 100% of Polenergia Elektrociepłownia Nowa Sarzyna, adding the 116 MW CCGT in south-eastern Poland to its flexible-generation portfolio and retaining all employees."}, "m3": {"region": "Subcarpathia", "change": "Polenergia agrees to divest its gas plant", "why": "Shows independents recycling thermal assets into renewables while traders buy flexible capacity.", "summary": "Axpo agreed to buy Polenergia’s 116 MW Nowa Sarzyna gas plant, subject to antimonopoly approval, with closing expected in early 2026. Polenergia said the sale lets it redeploy capital into major renewable projects."}, "m4": {"region": "Masovia", "change": "Axpo adds a standalone BESS project", "why": "Pairs storage with Axpo’s gas asset, building a flexible portfolio to trade Polish price volatility.", "summary": "Axpo acquired a large-scale standalone battery energy-storage project in the Mazowieckie region with 32 MW of installed capacity and 140 MWh of storage capacity, according to deal counsel SSW’s energy and M&A team."}, "m5": {"region": "Western Poland", "change": "Northland Power buys 300 MW / 1.2 GWh of BESS", "why": "Long-term capacity contracts are attracting international infrastructure capital into Polish storage.", "summary": "Northland Power acquired two pre-construction four-hour battery projects in western Poland from Greenvolt — Mieczysławów (200 MW) and Kamionka (100 MW) — for about €200 million, backed by 17-year capacity-market contracts."}, "m6": {"region": "National", "change": "ORLEN moves to take 100% of Energa", "why": "Full control would let ORLEN integrate Energa’s grid and CCGT programme and simplify group financing.", "summary": "ORLEN invited Energa’s minority shareholders to sell their remaining 37.6 million shares at PLN 18.87 each, which would take it to 100% ownership; offers were accepted between 1 and 17 December 2025."}, "m7": {"region": "Masovia", "change": "DRI adds a 112 MW ready-to-build BESS", "why": "Adds storage next to the Kozienice hub, increasing competition for local grid and balancing revenues.", "summary": "DRI, DTEK’s EU renewables arm, bought Greenvolt’s ready-to-build 112 MW / 448 MWh battery project at Kozienice, with permits and grid connection secured, raising DRI’s storage capacity available to the Polish grid to 245 MW."}, "m8": {"region": "Greater Poland", "change": "PGE–ZE PAK CCGT deal terminated", "why": "ZE PAK must now finance the CCGT alone, raising its execution risk; nuclear cooperation with PGE continues.", "summary": "ZE PAK withdrew from selling 100% of PAK CCGT to PGE, ending negotiations on 30 June 2025. ZE PAK will build the CCGT with other financing, while both sides continue talks on PGE PAK Energia Jądrowa."}, "m9": {"region": "Greater Poland", "change": "PGE gains exclusivity on PAK CCGT stake", "why": "Would have added a contracted CCGT and a nuclear stake to PGE, consolidating flexible capacity under the largest utility.", "summary": "PGE signed a term sheet with ZE PAK on acquiring 100% of PAK CCGT — a 600 MWe-class unit with a 17-year capacity contract from 2026 — and 50% of PGE PAK Energia Jądrowa, with exclusivity until June 2025."}, "e1": {"region": "National", "change": "H1 profit and EBITDA down year on year", "why": "Weaker generation margins test Enea’s capacity to fund its record capex, including the Kozienice CCGT.", "summary": "Enea reported H1 2026 revenue of PLN 12.82bn, EBITDA of PLN 2.75bn (H1 2025: 3.39bn) and net profit of PLN 1.50bn, down from 2.02bn, as generation margins weakened while Kozienice CCGT construction continued."}, "e2": {"region": "National", "change": "2027 capacity fully contracted at PLN 325.55/kW", "why": "Secures 2027 capacity revenue mainly for state-owned incumbents’ existing conventional fleets.", "summary": "PSE’s 2027 supplementary capacity auction, held on 3 September 2026, contracted about 7,481 MW at a clearing price of PLN 325.55/kW/year, with PGE, Enea, TAURON and ZE PAK securing most volume on existing conventional units."}, "e3": {"region": "Masovia", "change": "Enea adds ~1.6 GW of 2027 capacity obligations", "why": "Locks in about PLN 1.3bn of 2027 capacity revenue, supporting Kozienice coal units until gas replaces them.", "summary": "Enea won at least 1,595 MW in the 2027 supplementary auction, worth about PLN 519m, mostly from Kozienice units. It now holds roughly 3,547 MW of 2027 obligations and expects about PLN 1.3bn of 2027 capacity revenue."}, "e4": {"region": "Masovia", "change": "Ostrołęka CCGT deadline reset to March 2027", "why": "Missing the new date would trigger capacity-market penalties; delays were already costing Energa about PLN 2.5m a month.", "summary": "Energa signed an annex with GE Power and GE Vernova committing to bring the Ostrołęka CCGT to its operational milestone by March 2027, protecting it from capacity-market penalties after delays at Ostrołęka and Grudziądz."}, "g1": {"region": "Eastern & Central Poland", "change": "PLN 1.4bn grants unlock 541 MW of grid capacity", "why": "Grant-funded grid expansion supports distribution earnings and eases connection bottlenecks for new generation.", "summary": "PGE Dystrybucja signed seven National Recovery Plan grant agreements worth nearly PLN 1.4bn to rebuild 504 substations and 177 km of lines, install about 58,000 smart meters and add 541 MW of renewable connection capacity."}, "g2": {"region": "Western Poland", "change": "Rural grid upgrade passes 6,500 transformers", "why": "Distribution is Enea’s most stable earnings stream; investment grows its regulated asset base.", "summary": "Enea Operator has installed more than 6,500 transformers across rural Poland, upgrading medium- and low-voltage networks with a ~PLN 9bn BGK/KPO loan, part of plans to invest about PLN 41bn in distribution by 2035."}, "g3": {"region": "Northern Poland", "change": "Final €405m EIB tranche signed for Energa grid", "why": "Completes long-term financing for the grid that must absorb northern offshore wind and new CCGTs.", "summary": "The EIB signed a PLN 1.7bn (€405m) loan to ORLEN for Energa Operator, the final tranche of a PLN 3.5bn package, funding 4,600 km of grid upgrades, 2,300 km of new lines and 4.8 GW of renewable connections."}, "g4": {"region": "Southern Poland", "change": "Smart meters now reach half of customers", "why": "Enables dynamic tariffs and demand response, building a platform for flexibility services in southern Poland.", "summary": "TAURON Dystrybucja has installed over 3 million remote-reading smart meters, covering about half its roughly 5.6 million customers, supported by Modernisation Fund co-financing and enabling dynamic tariffs, demand management and renewable integration."}, "b1": {"region": "Pomerania", "change": "Poland’s largest BESS nears commissioning", "why": "Gives PGE a large flexible asset to earn capacity and balancing revenues alongside its gas and offshore wind.", "summary": "PGE’s 262 MW battery storage installation at Żarnowiec is nearing commissioning and will become Poland’s largest BESS, overtaking the 200 MW / 800 MWh Nowa Wieś Ełcka facility and supporting capacity-market and balancing revenues."}, "b2": {"region": "Masovia · Świętokrzyskie", "change": "PLN 2bn storage and PV programme launched", "why": "Repurposes Enea’s coal sites for storage, reusing existing grid connections as coal units retire.", "summary": "Enea plans 1.4 GW of battery storage and 300 MW of PV within 30 months under a roughly PLN 2bn programme, including a tender for six storage sites and planned 200 MW Połaniec and 232 MW Kozienice projects."}, "b3": {"region": "Kuyavia-Pomerania", "change": "Tenders launched for Grudziądz BESS and PV-plus-storage", "why": "Contract opportunities for integrators and EPC firms; adds storage beside ORLEN’s new Grudziądz CCGT.", "summary": "Energa Storage tendered an EMS/SCADA integrator for the 47 MW BESS Grudziądz, with bids due 23 September 2026, and re-ran a contractor tender for 13 PV and storage projects co-funded by the Modernisation Fund."}, "b4": {"region": "Southern Poland", "change": "Four batteries (~23 MW / 90 MWh) commissioning", "why": "Early steps toward TAURON’s 700 MW storage target, adding flexibility at existing hydro and PV sites.", "summary": "TAURON is commissioning four batteries totalling about 23 MW / 90 MWh at Przewóz, Dąbie, Proszowek and Kuźnia Raciborska across Q4 2025–Q1 2026, advancing its targets of 700 MW of storage by 2030 and 1.4 GW by 2035."}, "n1": {"region": "National", "change": "New CEO at PGE", "why": "A new CEO at Poland’s largest utility often brings a strategy and capital-allocation reset.", "summary": "PGE’s supervisory board dismissed CEO Dariusz Marzec on 8 December 2025 and appointed Dariusz Lubera as acting, then permanent, president from 15 January 2026, with Katarzyna Rozenfeld joining as vice-president for operations."}, "n2": {"region": "National", "change": "Target of ~10 GW of new gas capacity", "why": "Makes PGE the largest buyer of gas turbines and EPC services in Poland through 2030.", "summary": "PGE’s strategy envisages about 10 GW of controllable gas capacity — roughly 4 GW of CCGT, including Gryfino Dolna Odra and the 882 MW Nowy Rybnik unit, and 6 GW of OCGT peakers — targeting commissioning around 2030."}, "n3": {"region": "Silesia · West Pomerania", "change": "EPC contractor selected for two OCGT peakers", "why": "Secures Siemens turbine supply for 1.2 GW of 2030 capacity obligations amid global turbine shortages.", "summary": "PGE selected a Polimex-Mostostal and Siemens Energy consortium, the sole bidder, to build two 588 MW OCGT peakers at Rybnik and Gryfino. Both units hold 15-year capacity contracts; signing awaited EU foreign-subsidies clearance."}, "n4": {"region": "National", "change": "2030 auction clears at PLN 465/kW, gas dominates", "why": "High prices and long contracts underpin the business case for new gas peakers over batteries.", "summary": "PSE’s 2030 main capacity auction contracted 6,887 MW at PLN 465.02/kW/year, more than double the previous year’s price. Gas turbines won most awards and batteries 13.4%, underpinning PGE, Enea and TAURON peaker builds."}, "n5": {"region": "National", "change": "Lower BESS availability factor cuts storage awards", "why": "A regulatory parameter shifted value from storage to gas — a key risk for battery investors.", "summary": "Regulatory changes lowered the assumed availability of battery storage in the 2030 capacity auction, cutting BESS awards to about 685 MW, roughly 13% of assets, which favoured gas peakers and helped lift the clearing price."}, "n6": {"region": "Silesia", "change": "Jaworzno OCGT approved; turbine tender issued", "why": "Commits TAURON to its first large gas peaker, backed by about PLN 3.7bn of contracted capacity revenue.", "summary": "TAURON’s board approved a roughly 600 MW open-cycle gas peaker at Jaworzno III, backed by a 15-year capacity contract worth about PLN 3.7bn, and tendered the turbine-island supply and long-term service package."}, "n7": {"region": "Silesia", "change": "Turbine-island procurement launched", "why": "Turbine delivery slots are the main schedule risk for meeting the 2030 capacity obligation.", "summary": "TAURON launched procurement for the turbine island and a long-term service agreement for its Jaworzno peaker, aiming to secure an early manufacturer delivery slot amid multi-year waiting times for large gas turbines."}, "n8": {"region": "Masovia", "change": "Construction starts on 1,336 MW Kozienice CCGT", "why": "Poland’s largest single gas build begins Kozienice’s shift from coal to gas.", "summary": "Enea began building two CCGT units totalling 1,336 MW at Kozienice with general contractor Çalık Enerji, which took over the site in January 2026. Commissioning is scheduled for March and June 2029; the units are hydrogen-ready."}, "n9": {"region": "Masovia", "change": "Bank financing secured for Kozienice CCGT", "why": "Funds Poland’s largest single gas build, removing the main financing risk for Enea’s flagship project.", "summary": "Enea’s project company Elkogaz arranged bank financing from a consortium led by Bank Gospodarstwa Krajowego to fund the two-unit Kozienice CCGT; Enea’s 2025 results release puts the project financing at PLN 6.95bn, with a KUKE guarantee."}, "n10": {"region": "Kuyavia-Pomerania", "change": "First power to the grid; final commissioning begins", "why": "Moves a delayed flagship CCGT close to commercial operation, reducing ORLEN’s capacity-penalty exposure.", "summary": "CCGT Grudziądz fed electricity to Poland’s national grid for the first time after first firing and synchronisation, entering final commissioning. ORLEN says the plant will supply about one million households once in commercial operation."}, "n11": {"region": "Kuyavia-Pomerania · Masovia", "change": "Commercial-operation deadline missed at two CCGTs", "why": "Missed dates expose Energa to capacity-market penalties and delay new flexible capacity.", "summary": "Energa disclosed that the contractual commercial-operation dates for CCGT Grudziądz 1 and CCGT Ostrołęka were missed, confirming slippage on two flagship ORLEN Group gas units even as first power approached."}, "n12": {"region": "Pomerania · Kuyavia-Pomerania · Masovia", "change": "Gas pipeline extends to Gdańsk, Grudziądz II and Siekierki", "why": "Makes ORLEN Group one of the largest gas-power developers, with further EPC and turbine demand.", "summary": "Beyond Grudziądz and Ostrołęka, ORLEN Group is building a new CCGT block in Gdańsk, has started Grudziądz II and is selecting technology and an EPC contractor for the Siekierki plant in Warsaw."}, "n13": {"region": "National", "change": "Updated NECP adopted; gas as bridge fuel to 2040", "why": "Sets the official policy path that underpins investment cases for gas, renewables and coal exit.", "summary": "On 8 June 2026 the Council of Ministers adopted the updated National Energy and Climate Plan, confirming gas as a bridging fuel peaking around 2030, renewables above 50% by 2030 and coal below about 5% by 2040."}, "n14": {"region": "National", "change": "Net-import position persists as coal exits", "why": "A widening supply gap strengthens the case for domestic flexible gas and storage.", "summary": "Poland remained a net electricity importer in 2024, importing about 15.2 TWh against 13.3 TWh exported. Up to 8 GW of coal capacity may exit after 2025 as contracts lapse, strengthening the case for flexible gas."}, "n15": {"region": "Global", "change": "Turbine backlogs lengthen delivery times", "why": "Turbine slots are now the binding constraint on Poland’s gas-plant timelines and costs.", "summary": "GE Vernova’s gas-turbine backlog reached 116 GW in Q2 2026 while Siemens Energy reported a record order book. With only three large-turbine makers, delivery slots are a binding constraint for Poland’s gas-plant pipeline."}, "n16": {"region": "Poland–Ukraine", "change": "Letter of intent on Ukraine energy reconstruction", "why": "Positions Polish utilities for future reconstruction work and deeper cross-border grid integration.", "summary": "At the Ukraine Recovery Conference in Gdańsk, PGE, ORLEN, Enea and TAURON signed a letter of intent to help rebuild and modernise Ukraine’s war-damaged energy system. The early-stage agreement carries no financial commitments."}, "n18": {"region": "National", "change": "FY2025 annual report published", "why": "Capacity income supports the balance sheet funding TAURON’s Jaworzno gas peaker.", "summary": "TAURON released its 2025 annual financial report, with capacity-market income and coal-unit margins supporting the balance sheet that funds its gas programme, including the roughly 600 MW Jaworzno OCGT due in 2030."}, "n20": {"region": "Silesia", "change": "EPC and 12-year service contracts signed", "why": "Moves the Rybnik peaker into execution with delay penalties, de-risking PGE’s 2030 capacity obligation.", "summary": "PGE Inwest 23 signed EPC and turbine-service agreements with Polimex Mostostal and Siemens Energy for an approximately 600 MWe OCGT at Rybnik, worth PLN 1.17bn plus €269.5m net, with commissioning due by 16 January 2030."}, "n21": {"region": "National", "change": "Low 2029 clearing price favours batteries", "why": "Showed how auction design swings value between storage and gas from one year to the next.", "summary": "Poland’s 2029 main capacity auction cleared at PLN 264.90/kW/year, awarding over 8 GW including an estimated 4.2 GW of batteries, while about 1.7 GW of CCGT became uneconomic and Enea withdrew over 1.2 GW of gas."}, "n22": {"region": "Masovia", "change": "BYD to supply Poland’s largest BESS", "why": "Rapid storage growth raises competition with gas peakers for flexibility revenues.", "summary": "Greenvolt signed a BYD supply deal for the 600 MW / 2.4 GWh Siedlce battery project, set to become Poland’s largest, as national battery-storage capacity is expected to roughly triple to about 1.3 GW in 2026."}, "n23": {"region": "National", "change": "Record EBITDA but net loss on coal write-offs", "why": "Coal write-downs clean up PGE’s balance sheet while strong cash flow funds gas, offshore and nuclear.", "summary": "PGE reported record recurring 2025 EBITDA of PLN 12.9bn, up 14%, but a net loss of PLN 3.4bn after PLN 9.9bn of non-cash coal-asset write-offs; capex exceeded PLN 11.5bn while net debt fell by PLN 1.4bn."}, "n24": {"region": "Baltic Sea", "change": "Offshore installation begins on 1.5 GW Baltica 2", "why": "Poland’s largest offshore wind project moves into construction, adding variable supply that needs flexible backup.", "summary": "PGE and Ørsted began offshore installation of the 1.5 GW Baltica 2 wind farm, with Van Oord placing 111 monopiles through Q4 2026 for Siemens Gamesa 14 MW turbines and commissioning expected by end-2027."}, "n25": {"region": "Northern Poland", "change": "PLN 40bn grid plan backed by EIB", "why": "Grid capacity in the north is critical to connect offshore wind and new CCGTs.", "summary": "Energa, part of ORLEN Group, plans to invest PLN 40bn by 2035 to modernise and digitise its distribution grid, backed by EIB loans funding about 830 km of lines and connections for 1.4 GW of renewables."}, "n26": {"region": "Southern Poland", "change": "~€1.2bn BGK financing for the grid", "why": "Funds the connections TAURON needs for 1.9 GW of renewables and 2.8 GW of storage.", "summary": "TAURON secured about PLN 4.87bn (€1.2bn) from BGK under the National Recovery Plan to modernise and digitise its distribution grid, aiming to connect nearly 1.9 GW of renewables and 2.8 GW of storage by 2030."}, "n27": {"region": "Southern Poland", "change": "PLN 538m co-financing for 346 MW of storage", "why": "The subsidy lowers the cost of TAURON’s battery fleet, complementing its gas peaker for flexibility revenues.", "summary": "TAURON qualified for about PLN 538m (≈€128m) of national eco-fund co-financing toward 346 MW / 1.5 GWh of battery storage across 11 facilities planned by 2028, complementing its Jaworzno gas peaker."}, "n28": {"region": "National", "change": "Commerce vice-president replaced", "why": "The commerce role shapes trading and offtake strategy for TAURON’s new gas capacity.", "summary": "TAURON’s supervisory board dismissed commerce vice-president Piotr Gołębiowski effective 17 December 2025 and delegated board member Krzysztof Zawadzki to act in the role from January 2026 for up to three months."}, "n29": {"region": "National", "change": "Board reappointed; two members added", "why": "Leadership continuity supports delivery of the Kozienice CCGT and Enea’s record investment programme.", "summary": "Enea’s supervisory board reappointed the management board for a new three-year term with Grzegorz Kinelski as president, and added Eryk Kosiński and Adrian Moliński as board members from 1 July 2026."}, "n30": {"region": "National", "change": "Seven new supervisory-board members", "why": "A refreshed supervisory board can lead to further management and strategy changes at PGE.", "summary": "At PGE’s 18 June 2026 AGM the supervisory board’s term expired and shareholders appointed seven new members; the meeting also resolved to cover the 2025 net loss of roughly PLN 6.95bn from capital reserves."}, "n31": {"region": "National", "change": "Kamińska confirmed as Energa CEO", "why": "Leadership stability matters as Energa completes its delayed Grudziądz and Ostrołęka CCGTs.", "summary": "Energa’s supervisory board appointed Magdalena Kamińska president of the management board from 1 April 2026, after serving as acting CEO since November 2025; she was previously Energa’s vice-president for finance."}, "n32": {"region": "Silesia", "change": "€293m Ansaldo turbine contract signed", "why": "Secures turbine supply after an earlier failed tender, keeping the 2030 capacity obligation on track.", "summary": "TAURON Wytwarzanie signed a €293m contract with Ansaldo Energia for the Jaworzno OCGT turbine island — two 314.6 MW gas turbines — plus a long-term service agreement, with deliveries in late 2028 and 2029."}, "n33": {"region": "Masovia · Świętokrzyskie", "change": "Drought curtails ~1.3 GW of coal output", "why": "Highlights climate risk to river-cooled thermal plants and supports the shift to gas and storage.", "summary": "In early August 2026 Enea cut output at its Kozienice and Połaniec coal plants after low Vistula flows starved cooling systems, removing about 1.3 GW and highlighting water-stress risk for thermal fleets."}, "n34": {"region": "Baltic Sea", "change": "All 111 foundations installed on schedule", "why": "Keeps Poland’s largest offshore wind farm on track for end-2027 commissioning.", "summary": "Van Oord installed the last of 111 monopile foundations for the PGE–Ørsted Baltica 2 offshore wind farm on 21 August 2026, completing the campaign on schedule; secondary structures continue into late 2026."}, "n35": {"region": "Pomerania", "change": "Gdańsk CCGT construction advancing", "why": "Adds flexible capacity in northern Poland, where offshore wind will need backup.", "summary": "Construction of the 560 MW Gdańsk CCGT is advancing, with a Polimex-Mostostal and Siemens Energy consortium on site, main foundation works in H2 2026, turbines arriving in 2027 and operation required by 2029."}, "n36": {"region": "National", "change": "Net profit up; EBITDA down", "why": "Record capex and lower EBITDA increase Enea’s reliance on project finance for its transition.", "summary": "Enea reported 2025 EBITDA of PLN 5.62bn, revenue and other income of PLN 28.1bn and net profit of PLN 1.77bn, with record capex of PLN 6.2bn and output above 20.4 TWh as Kozienice CCGT construction began."}, "n37": {"region": "National", "change": "Net profit more than triples", "why": "Retained earnings help fund Energa’s CCGT and grid programme without a dividend.", "summary": "Energa posted 2025 net profit of PLN 1.24bn, up from PLN 376m, with EBITDA of PLN 3.6bn led by distribution. Revenue was PLN 21.1bn, capex PLN 5.6bn, and the board proposed no dividend."}, "n38": {"region": "National", "change": "Profit down 24%; dividend returns", "why": "Distribution now drives TAURON’s earnings, giving stable cash flow for its gas and storage build.", "summary": "TAURON reported H1 2026 net profit of PLN 1.56bn, down 24%, and EBITDA of PLN 3.7bn, with distribution providing 64% of earnings. Revenue rose to PLN 17.2bn and the group signalled a return to dividends."}, "n39": {"region": "National", "change": "Return to profit in H1", "why": "Very low leverage gives PGE headroom to fund gas, offshore wind and grid investment.", "summary": "PGE’s H1 2026 report showed Q2 sales of PLN 15.26bn (+11% y/y), EBITDA of PLN 4.11bn (+23%) and net profit of about PLN 2.0bn, versus a prior-year loss, with net debt/EBITDA around 0.15x."}, "n40": {"region": "National", "change": "Net profit up 56%", "why": "Strong distribution earnings support ORLEN Group’s CCGT and grid spending.", "summary": "Energa reported H1 2026 net profit of PLN 1.32bn, up 56%, and EBITDA of PLN 2.72bn, up 25%, with distribution contributing 71%, on higher network volumes, a retail recovery and expanded renewables."}, "nu1": {"region": "Pomerania", "change": "Long-lead component orders start", "why": "Ordering components early protects the 2036 first-power target before the full EPC contract is signed.", "summary": "PEJ commissioned Westinghouse to begin procuring long-lead items for the first AP1000 unit at Lubiatowo-Kopalino, covering six nuclear-island components, after agreeing main EPC commercial terms; the government targets first power in 2036."}, "nu2": {"region": "Pomerania", "change": "Site handed to Bechtel; earthworks begin", "why": "Physical works mark the shift from preparation to construction and open contracts for Polish suppliers.", "summary": "General contractor Bechtel took over coordination of the Lubiatowo-Kopalino nuclear site from PEJ and earthworks began, carried out by Polish contractor Budimex, reflecting the project’s commitment to maximising Polish local content."}, "nu3": {"region": "Pomerania", "change": "Construction-licence application filed", "why": "The licence is the key permit before nuclear construction; review timing now drives the schedule.", "summary": "PEJ submitted Poland’s first application for a nuclear construction licence to the National Atomic Energy Agency for the Lubiatowo-Kopalino plant in Pomerania; the documentation exceeds 40,000 pages and is a key pre-construction permit."}, "nu4": {"region": "Pomerania", "change": "Regulator confirms site suitability", "why": "Removes a siting risk ahead of the construction-licence decision.", "summary": "The president of Poland’s National Atomic Energy Agency concluded, after reviewing PEJ’s preliminary site report, that no factors preclude building a nuclear plant at Lubiatowo-Kopalino, covering seismic, hydrological, population and emergency-planning criteria."}, "nu5": {"region": "Pomerania", "change": "First export-credit facility signed", "why": "Brings an export-credit agency into the project, opening the way to further international financing.", "summary": "US EXIM signed a direct-loan credit agreement with PEJ under its Engineering Multiplier Program, financing Bechtel and Westinghouse design and engineering services as PEJ moves toward a final investment decision."}, "nu6": {"region": "Kuyavia-Pomerania · Lesser Poland · Subcarpathia", "change": "CfD sought for 14 SMRs", "why": "A CfD would give SMRs long-term price certainty — the key condition for investment decisions.", "summary": "ORLEN Synthos Green Energy applied to the Energy Minister for a Contract for Difference covering 14 BWRX-300 SMRs at Włocławek, Stawy Monowskie and Stalowa Wola, the first phase of a 26-unit programme."}, "nu7": {"region": "Kuyavia-Pomerania", "change": "Local cooperation agreed for up to six SMRs", "why": "Local support and permitting progress make Włocławek the front-runner for Poland’s first SMR.", "summary": "OSGE and the City of Włocławek signed a cooperation agreement on up to six BWRX-300 reactors. The project company holds a decision-in-principle and environmental scoping resolution, with siting studies under way before a permit application."}, "nu8": {"region": "National", "change": "Polish reference SMR design agreed", "why": "A standard design is meant to cut unit costs and speed licensing for a fleet of reactors.", "summary": "OSGE and GE Vernova Hitachi signed an agreement to develop a detailed Polish generic BWRX-300 design, intended as the reference design for a standardised SMR fleet, with public backing from Poland’s Energy Minister."}, "c1": {"region": "Silesia", "change": "€85m coal-exit retrofit approved", "why": "An example of CHP fuel switching that other Polish heat producers may follow.", "summary": "Fortum will invest about €85m to retrofit its Zabrze CHP plant to biomass and RDF between Q4 2025 and Q4 2027, cutting coal-based capacity by 0.1 GW and CO₂ emissions by about 280,000 tonnes a year."}, "c2": {"region": "Silesia", "change": "Boiler fuel-conversion contract awarded", "why": "Moves the Zabrze coal exit into execution with a firm 2027 start-up date.", "summary": "Valmet will convert the CFB boiler at Fortum’s Zabrze CHP from a 60% coal / 40% RDF mix to certified local biomass plus RDF, part of the €85m retrofit, with start-up scheduled for Q4 2027."}};
+/* Polish-language sources: the dashboard always shows the English translation and marks it PL → EN */
+const PL_SRC = /wnp\.pl|wysokienapiecie|energetyka24|energia\.rp\.pl|bankier\.pl|media\.energa\.pl|pgedystrybucja|energa-operator|engie-polska|gkpge\.pl\/grupa-pge|orlen\.pl\/pl\/|gov\.pl\/web\/(energia|premier)|pse\.pl\/-\/|media\.enea\.pl\/pr|energastorage/i;
+const esc = t => String(t??'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function normalise(s){
+  const x = SIG_X[s.id];
+  if(x){ s.summary = s.summary || x.summary; s.change = s.change || x.change; s.why = s.why || x.why; s.region = s.region || x.region; }
+  s.summary = s.summary || s.desc || '';
+  s.desc = s.desc || s.summary;
+  s.change = s.change || ''; s.why = s.why || '';
+  s.region = s.region || 'National';
+  s.regions = s.region.split(/\s*·\s*/);
+  s.pl = s.lang==='pl' || (s.links||[]).some(l => PL_SRC.test(l.url));
   if(TAG[s.id]){ const [p,c,cos] = TAG[s.id]; s.pillar=p; s.cat=c; s.cos=cos; }
   if(!s.pillar){ const m = LEGACY[s.cat] || ['company','strategy']; s.pillar=m[0]; s.cat=m[1]; }
   if(!s.cos) s.cos = [s.co || 'ALL'];
@@ -1250,18 +1277,23 @@ function normalise(s){
 const isPeerRelevant = s => true;
 
 const REV_KEY = 'flexgen-reviewed-v7';
-let REVIEWED = new Set(JSON.parse(localStorage.getItem(REV_KEY) || '[]'));
+const reviewStore = {
+  get(){ try { return window.localStorage.getItem(REV_KEY) || '[]'; } catch(e) { return '[]'; } },
+  set(value){ try { window.localStorage.setItem(REV_KEY, value); } catch(e) {} }
+};
+let REVIEWED;
+try { REVIEWED = new Set(JSON.parse(reviewStore.get())); } catch(e) { REVIEWED = new Set(); }
 const reviewState = s => REVIEWED.has(s.id) ? 'reviewed' : (s.rel==='high' ? (s.primary ? 'pending' : 'required') : (s.primary ? 'ok' : 'pending'));
 function toggleReview(id){
   REVIEWED.has(id) ? REVIEWED.delete(id) : REVIEWED.add(id);
-  localStorage.setItem(REV_KEY, JSON.stringify([...REVIEWED])); render();
+  reviewStore.set(JSON.stringify([...REVIEWED])); render();
 }
 
 const ALL_COS = ['PGE','ENEA','ENERGA','ORLEN','TAURON','ZEPAK','PEJ','OSGE','POLENERGIA','FORTUM','AXPO','ENGIE','OTHER','ALL'];
 let activeCos = new Set(ALL_COS);
 let activeCat = 'all';
 let srcMode   = 'all';
-let fCo = '', fAsset = '', fTech = '', fType = '';
+let fCo = '', fAsset = '', fTech = '', fRegion = '', fType = '';
 let sortMode  = 'date';
 let searchQ   = '';
 
@@ -1280,11 +1312,11 @@ const catIco   = id => pilOf(SUBS.find(c=>c.id===id)?.pillar)?.ico || '';
 const matchCat = s => activeCat==='all' || s.cat===activeCat || s.pillar===activeCat;
 const matchCo  = (s, cos) => s.cos.some(c => (cos||activeCos).has(c));
 const matchDims = s => (!fCo || s.cos.includes(fCo)) && (!fAsset || s.assets.includes(fAsset)) &&
-  (!fTech || s.tech.includes(fTech)) && (!fType || s.cat===fType || s.pillar===fType);
+  (!fTech || s.tech.includes(fTech)) && (!fRegion || s.regions.includes(fRegion)) && (!fType || s.cat===fType || s.pillar===fType);
 const matchSrc = s => srcMode==='all' || (srcMode==='primary' && s.primary) ||
   (srcMode==='review' && ['required','pending'].includes(reviewState(s))) || (srcMode==='high' && s.rel==='high');
 const matchQ = s => { if(!searchQ) return true;
-  const hay = (s.title+' '+s.desc+' '+(s.unit||'')+' '+s.cos.map(coLabel).join(' ')+' '+catLabel(s.cat)+' '+s.assets.join(' ')+' '+s.tech.map(t=>TECH_LABEL[t]).join(' ')).toLowerCase();
+  const hay = (s.title+' '+s.summary+' '+s.change+' '+s.why+' '+s.region+' '+(s.unit||'')+' '+s.cos.map(coLabel).join(' ')+' '+catLabel(s.cat)+' '+s.assets.join(' ')+' '+s.tech.map(t=>TECH_LABEL[t]).join(' ')).toLowerCase();
   return searchQ.toLowerCase().split(/[,;]+|\s+/).filter(Boolean).every(t => hay.includes(t)); };
 function countFor(catId, cos){
   return SIGNALS.filter(s => matchCo(s,cos) && (catId==='all' || s.cat===catId || s.pillar===catId) && matchSrc(s) && matchDims(s)).length;
@@ -1320,7 +1352,7 @@ function renderSig(s, grouped){
     const prim = PRIMARY_TYPES.includes(l.type);
     const cls = l.type==='filing' ? 'filing' : prim ? 'gov' : '';
     const pre = l.type==='filing' ? '📋 ' : prim ? '⊞ ' : '↗ ';
-    return `<a class="slink ${cls}" href="${l.url}" target="_blank" rel="noopener">${pre}${l.label}</a>`;
+    return `<a class="slink ${cls}" href="${esc(l.url)}" target="_blank" rel="noopener">${pre}${esc(l.label)}</a>`;
   }).join('');
   s.cos.forEach(c => { const off = OFFICIAL[c];
     if(off && !(s.links||[]).some(l => l.url===off.url)) linkHtml += `<a class="slink official" href="${off.url}" target="_blank" rel="noopener">🌐 ${off.label}</a>`; });
@@ -1331,8 +1363,9 @@ function renderSig(s, grouped){
       <div class="stech">${s.tech.map(t=>`<span>${TECH_LABEL[t]}</span>`).join('')}</div></div>
     <div class="sbody">
       ${s.unit ? `<div class="sunit">📍 ${s.unit}</div>` : ''}${s.assets[0].startsWith('Portfolio')?'':s.assets.map(a=>`<button class="assetpill" data-asset="${a}">🏭 ${a}</button>`).join('')}
-      <div class="stitle">${s.title}${s.auto?'<span class="auto-tag">LIVE FEED</span>':''}</div>
-      <div class="sdesc">${s.desc}</div>
+      ${s.pl?'<span class="trtag">PL → EN · translated</span>':''}
+      <div class="stitle">${esc(s.title)}${s.auto?'<span class="auto-tag">LIVE FEED</span>':''}</div>
+      <div class="sdesc">${esc(s.summary)}</div>
       <div class="slinks">${linkHtml}</div>
     </div></div>`;
 }
@@ -1345,19 +1378,20 @@ function buildFilters(){
   const assets = [...new Set(SIGNALS.flatMap(s=>s.assets))].sort((a,b)=>a.startsWith('Portfolio')?1:b.startsWith('Portfolio')?-1:a.localeCompare(b))
     .map(a => [a, a, cnt(s=>s.assets.includes(a))]).filter(x=>x[2]);
   const techs = [...TECHS.map(t=>t[0]),'cross'].map(t => [t, TECH_LABEL[t], cnt(s=>s.tech.includes(t))]).filter(x=>x[2]);
+  const regs = [...new Set(SIGNALS.flatMap(s=>s.regions))].sort().map(r => [r, r, cnt(s=>s.regions.includes(r))]).filter(x=>x[2]);
   let types = '';
   PILLARS.forEach(p => { types += `<optgroup label="${p.label}">` + opt(p.id,'All — '+p.label,cnt(s=>s.pillar===p.id),fType) +
     p.subs.map(c => opt(c.id,c.label,cnt(s=>s.cat===c.id),fType)).join('') + `</optgroup>`; });
   const sel = (id,lab,all,arr,cur) => `<label class="fsel"><span>${lab}</span><select id="${id}"><option value="">${all}</option>${typeof arr==='string'?arr:arr.map(x=>opt(x[0],x[1],x[2],cur)).join('')}</select></label>`;
   $('#fbar').innerHTML = sel('fCo','Company','All companies',cos,fCo) + sel('fAsset','Asset','All assets',assets,fAsset) +
-    sel('fTech','Technology','All technologies',techs,fTech) + sel('fType','Signal type','All signal types',types,fType) +
+    sel('fTech','Technology','All technologies',techs,fTech) + sel('fRegion','Region','All regions',regs,fRegion) + sel('fType','Signal type','All signal types',types,fType) +
     `<button class="sortbtn" id="fReset">Reset filters</button>`;
-  const active = [[fCo,coLabel(fCo),'fCo'],[fAsset,fAsset,'fAsset'],[fTech,TECH_LABEL[fTech],'fTech'],[fType,catLabel(fType),'fType']].filter(x=>x[0]);
+  const active = [[fCo,coLabel(fCo),'fCo'],[fAsset,fAsset,'fAsset'],[fTech,TECH_LABEL[fTech],'fTech'],[fRegion,fRegion,'fRegion'],[fType,catLabel(fType),'fType']].filter(x=>x[0]);
   $('#fchips').innerHTML = active.map(x=>`<span class="fchip">${x[1]} <button data-clr="${x[2]}" aria-label="Remove">✕</button></span>`).join('');
-  const set = {fCo:v=>fCo=v, fAsset:v=>fAsset=v, fTech:v=>fTech=v, fType:v=>fType=v};
+  const set = {fCo:v=>fCo=v, fAsset:v=>fAsset=v, fTech:v=>fTech=v, fRegion:v=>fRegion=v, fType:v=>fType=v};
   Object.keys(set).forEach(k => $('#'+k).onchange = e => { set[k](e.target.value); render(); });
   $('#fchips').querySelectorAll('button').forEach(b => b.onclick = () => { set[b.dataset.clr](''); render(); });
-  $('#fReset').onclick = () => { fCo=fAsset=fTech=fType=''; activeCat='all'; activeCos=new Set(ALL_COS); searchQ=''; $('#search').value=''; render(); };
+  $('#fReset').onclick = () => { fCo=fAsset=fTech=fRegion=fType=''; activeCat='all'; activeCos=new Set(ALL_COS); searchQ=''; $('#search').value=''; render(); };
 }
 
 function render(){
@@ -1382,7 +1416,8 @@ function render(){
     list.sort((a,b) => b.date.localeCompare(a.date)).forEach(s => { html += renderSig(s, false); });
   }
   $('#feed').innerHTML = html;
-  $('#feed').querySelectorAll('.assetpill').forEach(b => b.onclick = () => { fAsset = b.dataset.asset; render(); window.scrollTo({top:0,behavior:'smooth'}); });
+  $('#feed').querySelectorAll('.assetpill,.assetpill2').forEach(b => b.onclick = () => { fAsset = b.dataset.asset; render(); window.scrollTo({top:0,behavior:'smooth'}); });
+  $('#feed').querySelectorAll('.rg').forEach(b => b.onclick = () => { fRegion = b.dataset.region; render(); window.scrollTo({top:0,behavior:'smooth'}); });
 }
 SIGNALS.forEach(normalise);
 const SEED = SIGNALS.slice();
@@ -1403,37 +1438,43 @@ $('#sortcat').addEventListener('click', () => {
   render();
 });
 
-/* ═══ LIVE FEED LOADER ═══════════════════════════════
-   Fetches signals.json (produced by feed_fetcher.py) on load and
-   every REFRESH_MS. Falls back to the embedded seed data when the
-   file is absent or the page is opened directly via file:// .
-   See REALTIME_SETUP.md for how to make this genuinely live. */
-const FEED_URL   = 'signals.json';
-const REFRESH_MS = 5 * 60 * 1000;   // re-reads signals.json every 5 min; feed_fetcher.py refreshes it every 30 min   // auto-refresh every 5 minutes
+/* ═══ LIVE FEED ═══
+   Reads signals.json (kept up to date by feed_fetcher.py via GitHub Actions) on load and every 5 minutes.
+   • Curated signals: summary / what changed / why it matters / region from the feed replace the built-in text.
+   • New items: added on top with a LIVE FEED tag.
+   • English only: Polish items are shown only if translated (translated:true).
+   If the feed cannot be read (e.g. file opened from disk), the built-in signals are shown. */
 const fmt = t => t.toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
-
+const FEED_URL = 'signals.json', FEED_REFRESH_MS = 5 * 60 * 1000;
 async function loadFeed(){
+  let gen = null;
   try{
-    const res = await fetch(FEED_URL, {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    const data = await res.json();
-    if(Array.isArray(data.signals) && data.signals.length){
-      /* merge live items with the curated seed set; curated items win on duplicate ids */
-      const ids = new Set(SEED.map(x=>x.id));
-      SIGNALS = SEED.concat(data.signals.filter(x => x && x.id && !ids.has(x.id)).map(normalise));
-    }
-    const t = data.generated ? new Date(data.generated) : new Date();
-    $('#clock').textContent = 'Updated as on ' + fmt(t);
-  }catch(e){
-    // standalone / no live feed present — use the built-in seed dataset
-    $('#clock').textContent = 'Updated as on ' + new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
-  }
-  
+    const r = await fetch(FEED_URL + '?t=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const out = SEED.map(x => ({...x}));
+    const idx = new Map(out.map((x,i) => [x.id, i]));
+    (d.signals || []).forEach(f => {
+      if(!f || !f.id || !f.title || !f.summary) return;
+      if(f.lang === 'pl' && !f.translated) return;            // never show untranslated Polish
+      if(idx.has(f.id)){
+        const o = out[idx.get(f.id)];
+        ['title','summary','change','why','region'].forEach(k => { if(f[k]) o[k] = f[k]; });
+        o.desc = o.summary; o.regions = o.region.split(/\s*·\s*/);
+        if(f.translated) o.pl = true;
+      } else {
+        out.push(normalise({...f, auto: !f.curated, desc: f.summary}));
+      }
+    });
+    SIGNALS = out;
+    gen = d.generated ? new Date(d.generated) : new Date();
+  }catch(e){ SIGNALS = SEED.slice(); }
+  $('#clock').textContent = gen ? 'Live feed · updated ' + fmt(gen) : 'Updated as on ' + fmt(new Date());
   render();
 }
-
+render();
 loadFeed();
-setInterval(loadFeed, REFRESH_MS);
+setInterval(loadFeed, FEED_REFRESH_MS);
 
 /* ═══ NEWSLETTER BUILDER ═══════════════════════════════ */
 const nl = id => document.getElementById(id);
@@ -1472,19 +1513,11 @@ const fmtShort = d => { const x=new Date(d); return x.toLocaleDateString('en-GB'
    URI so exported Word/PDF/HTML files carry the mark offline. Needs the page to be
    served over http:// (see REALTIME_SETUP.md); silently omitted on file://. */
 let LOGO_DATAURL = '';
-async function nlLoadLogo(){
-  if(LOGO_DATAURL) return;
-  try{
-    const r = await fetch('newsletter_assets/logo.png', {cache:'force-cache'});
-    if(!r.ok) throw 0;
-    const b = await r.blob();
-    LOGO_DATAURL = await new Promise(res => { const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.readAsDataURL(b); });
-  }catch(e){ LOGO_DATAURL = ''; }
-}
+async function nlLoadLogo(){ LOGO_DATAURL = ''; }
 
 /* Renders the "Poland Markets Intelligence" house style from the reference template:
    red Arial masthead, gray date line, 12pt bold section headings, and each item as a
-   10pt bold headline (Source, date) + a 50–60 word summary, with an internal-use
+   10pt bold headline (Source, date) + a 30–40 word English summary, with an internal-use
    footer. Inline-styled so the preview, Word, PDF and HTML exports are identical. */
 function nlBuild(){
   const list = nlSelect();
@@ -1509,7 +1542,8 @@ function nlBuild(){
         const links = (s.links||[]).map(l => `<a href="${l.url}" style="color:#1F4E79">${l.label}</a>`).join(' · ');
         body += `<div style="margin:0 0 13px">
           <div style="font-family:Arial,sans-serif;font-size:10pt;font-weight:bold;line-height:1.35;color:#1F1F1F">${s.title} (${s.cos.map(coLabel).join(' / ')}, ${fmtShort(s.date)})</div>
-          <div style="font-family:Arial,sans-serif;font-size:10pt;line-height:1.5;color:#000;margin-top:2px">${s.desc}</div>
+          <div style="font-family:Arial,sans-serif;font-size:10pt;line-height:1.5;color:#000;margin-top:2px">${esc(s.summary)}</div>
+
           ${links?`<div style="font-family:Arial,sans-serif;font-size:9pt;margin-top:3px;color:#595959">Read more: ${links}</div>`:''}
         </div>`;
       });
