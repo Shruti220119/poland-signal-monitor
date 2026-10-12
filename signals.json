@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T13:08:36.456295+00:00",
+ "generated": "2026-10-12T13:56:26.509621+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -22,26 +22,6 @@
    ]
   },
   {
-   "id": "auto_f6b2a9f778",
-   "date": "2026-10-12",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "PGE"
-   ],
-   "unit": "",
-   "title": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027",
-   "desc": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027 WysokieNapiecie.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "WysokieNapiecie.pl",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPU3MyVkJ3WmFTN0x1czNRWUh6SlN1ay1mZ29iOGNVcnVtSjlLcXZjbXpNZnp4TV9HUlp0anBBZHVaeklfZEJpNVB1QUxOZkxYTWp4SFRtdWdybm14aUJlWWo5amttcTBmN0F4WFdpdFFTOVF6OG5Sa2s2YlU1VVpkdkhzMTVZdGcwdlVlOVRkOEJWZm42RUhaLVJKclhBQQ?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_84bb08549f",
    "date": "2026-10-12",
    "pillar": "company",
@@ -57,6 +37,26 @@
     {
      "label": "Bankier.pl",
      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdC10RjYyejc1MkhsXzE4dWttblVBQkRsT1JPM0k5RzdEa19YbkQxWFJUaUctNFlTWHRtNkhkR0lCQWlvaDBHRUNWdFlLYUdMeFdRZEliSlZhVFR0T19xOEtLZ0ZIQVBuaDUyY2RpUzJCNzNwTmJ0UEE4UFE3OUlPSXV4MlBrdEthX2N2MWlYOGlKMU5JWnJ3SlppOVpXNzNicmhac0s4UEN6TWljNzRLeG5tR0p4akVfdEtwMUxJbDBndVBxdEE?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_f6b2a9f778",
+   "date": "2026-10-12",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "",
+   "title": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027",
+   "desc": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027 WysokieNapiecie.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPU3MyVkJ3WmFTN0x1czNRWUh6SlN1ay1mZ29iOGNVcnVtSjlLcXZjbXpNZnp4TV9HUlp0anBBZHVaeklfZEJpNVB1QUxOZkxYTWp4SFRtdWdybm14aUJlWWo5amttcTBmN0F4WFdpdFFTOVF6OG5Sa2s2YlU1VVpkdkhzMTVZdGcwdlVlOVRkOEJWZm42RUhaLVJKclhBQQ?oc=5",
      "type": "press"
     }
    ]
@@ -282,26 +282,6 @@
    ]
   },
   {
-   "id": "auto_5ffc75218b",
-   "date": "2026-10-07",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "POLENERGIA"
-   ],
-   "unit": "",
-   "title": "Czy Polenergia wycofa się z budowy rumuńskiego offshore?",
-   "desc": "Czy Polenergia wycofa się z budowy rumuńskiego offshore? Energetyka.24",
-   "auto": true,
-   "links": [
-    {
-     "label": "Energetyka.24",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNYldpWXJMTlJXdGY1amlaTDM2bmZsQlIxUGRzN2NuR3RZVUpMX2dEM1ctU3NKYWhXalVTQUdqdnF4WURNLTVncXFjSllNcU9acmYzX3RCTU1OczkyUUlxTzJTcXpLeFlIbkg4blJVUThjbTdDOXdhVmZLMEJsRWdfSTdYR3dkQjhSOFBrNHFqSTQ0UUJQVHFxNUpHMA?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_6c958e5121",
    "date": "2026-10-07",
    "pillar": "company",
@@ -337,6 +317,26 @@
     {
      "label": "Energetyka.24",
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPMDl5UHJSY3JzVjhKazQ2MlNaTmtsN2Raak9CSVExcVBMMmVjbnlPWjFnSU1FTFl6RHk4Vnl0am5jZHl0X0p4eXVVTHJCTldxT25USVRxT1A3b3VWTVVYOGFYa0FpenpxakhTTldZc1djRVVGRkdNaDItZTRNUDhadTVYWndueUoweXZXZHQ3MjdUYVc3YTl3Y0tFT1ZqeUY3Umk5OTFURXNwQ2l5cEpaZm5SQWJMQXFhenc?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_5ffc75218b",
+   "date": "2026-10-07",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "POLENERGIA"
+   ],
+   "unit": "",
+   "title": "Czy Polenergia wycofa się z budowy rumuńskiego offshore?",
+   "desc": "Czy Polenergia wycofa się z budowy rumuńskiego offshore? Energetyka.24",
+   "auto": true,
+   "links": [
+    {
+     "label": "Energetyka.24",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNYldpWXJMTlJXdGY1amlaTDM2bmZsQlIxUGRzN2NuR3RZVUpMX2dEM1ctU3NKYWhXalVTQUdqdnF4WURNLTVncXFjSllNcU9acmYzX3RCTU1OczkyUUlxTzJTcXpLeFlIbkg4blJVUThjbTdDOXdhVmZLMEJsRWdfSTdYR3dkQjhSOFBrNHFqSTQ0UUJQVHFxNUpHMA?oc=5",
      "type": "press"
     }
    ]
@@ -402,27 +402,6 @@
    ]
   },
   {
-   "id": "auto_4cdc9a5a86",
-   "date": "2026-10-06",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ENERGA",
-    "ORLEN"
-   ],
-   "unit": "",
-   "title": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100%",
-   "desc": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100% WysokieNapiecie.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "WysokieNapiecie.pl",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdnh3V2FoYkVHNVpUWXVOYXVxNTBhMHNORkFaYVNCZFFYaG5POGdiVi1rTGo2dzVISjFxU01heFZlS0pUZXg0amVVODg1T1JnNDJicnU4TG9wZGRObHBXX3dWaDhIdHBic1RJUFpDVXhTRUtkd0VyeGJpTkVZelZEckFmWGM4MEpzSlI2Sk4zbS03bmFyd3Rrd3ZFUTRPSGVidExKM09WNlZHMngzRDRvLUN2ZTBSdVlC?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_bff8a2bda6",
    "date": "2026-10-06",
    "pillar": "company",
@@ -458,6 +437,27 @@
     {
      "label": "wnp.pl",
      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNcTNsTDJxbkxKdjNCSUVGU21DanZNSGgwT0tLWHd0cTBNZHpMd1ltMmFHRUdlaXdLUldqMnEwR3dkWnJ4R0JkbTRwN1lnWHh6dHlOSVJxbnlXeDJFMFRFb0F0X2tPcjd6ZUpuRDRjV3FocHpNTXBFcUxaVmF5ME1ia2ltNEF3OWFTR0lfTDZrR2Foa1NNWmZ2c0JlVTRyUlhsbzRWSHdDS0lOSUFBbVNLUTJzdVd6T0dXdGluSXVMcFhvR0pZVjBvVzRrd01LTWhy?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_4cdc9a5a86",
+   "date": "2026-10-06",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ENERGA",
+    "ORLEN"
+   ],
+   "unit": "",
+   "title": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100%",
+   "desc": "Energa: Orlen w wyniku przymusowego wykupu zwiększył stan posiadania do 100% WysokieNapiecie.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdnh3V2FoYkVHNVpUWXVOYXVxNTBhMHNORkFaYVNCZFFYaG5POGdiVi1rTGo2dzVISjFxU01heFZlS0pUZXg0amVVODg1T1JnNDJicnU4TG9wZGRObHBXX3dWaDhIdHBic1RJUFpDVXhTRUtkd0VyeGJpTkVZelZEckFmWGM4MEpzSlI2Sk4zbS03bmFyd3Rrd3ZFUTRPSGVidExKM09WNlZHMngzRDRvLUN2ZTBSdVlC?oc=5",
      "type": "press"
     }
    ]
@@ -503,6 +503,26 @@
    ]
   },
   {
+   "id": "auto_86b3b414a8",
+   "date": "2026-10-05",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "TAURON"
+   ],
+   "unit": "",
+   "title": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma",
+   "desc": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObU50dWV5UEZLVlE5STVuYlBudFBlbmVCRzZrc3BjR0Z6QjUyOGcwd05xYTJZNUlpNVdXTnV5cDd5ODhFT2puemQ1c3NkTWdHVVhLVm1OcWhLTXcwblBZeTRYc2w4eG9iVUpCTTdxbzNLYXUxZlQ3Y2hNTG1zb0pEbTg3QXBLeVNmWHVNSWw2UE0xR0VVaU9ON184blR4aHhPZnV3YWpOc0hpbHE1XzJXeXd3?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
    "id": "auto_da0ec6826b",
    "date": "2026-10-05",
    "pillar": "company",
@@ -538,26 +558,6 @@
     {
      "label": "ESS News",
      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPR3ZJUDBIVHR3c1NncmJZVWYtQ0ZXZHRfUnNJODBfRHpicWRfamo5Z2YtVnlCTWtiNEZodDEtRk1uQ2JfNlZCWnA5YmFXcVFid1NUVXptTDVhZzdtOE5xSXpzUVJvdGRieU42ZU8zQThpeVh5RHdwQ2t4dEpfLXRYQTk4WHo3cTc0V0ljNTRhdnFESmY4Z3ZtRVpXT0psdlJ1Q1NwTU54VzJIM3RXTmdOQTJmbFU0bE0?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_86b3b414a8",
-   "date": "2026-10-05",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "TAURON"
-   ],
-   "unit": "",
-   "title": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma",
-   "desc": "Tauron kupił projekt elektrowni wiatrowej. Tu w Polsce powstanie nowa farma wnp.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObU50dWV5UEZLVlE5STVuYlBudFBlbmVCRzZrc3BjR0Z6QjUyOGcwd05xYTJZNUlpNVdXTnV5cDd5ODhFT2puemQ1c3NkTWdHVVhLVm1OcWhLTXcwblBZeTRYc2w4eG9iVUpCTTdxbzNLYXUxZlQ3Y2hNTG1zb0pEbTg3QXBLeVNmWHVNSWw2UE0xR0VVaU9ON184blR4aHhPZnV3YWpOc0hpbHE1XzJXeXd3?oc=5",
      "type": "press"
     }
    ]
@@ -763,6 +763,26 @@
    ]
   },
   {
+   "id": "auto_80369c27ac",
+   "date": "2026-09-29",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "",
+   "title": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie",
+   "desc": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie Bankier.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "Bankier.pl",
+     "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQNV84c2hGOWtldlQ4bndnTTM1SDVRWnpRM2RDYjlVUHQxbzRlLTJjeXhPRHo0TTdjendFSzJILS1zRkRoSGNKenB1YkRaYnFpUUJBQWNwMXVEN0lKc3NmTlBONElVY3htb1BYWnRGcExZY1VLSWJUOUJLOEhOZ1MyektWU3kxX05vaU5Bc2NEbkJRakdCT211RGVPXzRCeGtIVUVtQnd1akZ5WGRwN3RXeHhtUTJTMXJ1SU1IU0M0RFJhY1FtN2dET3hoazlhOWV0YVBLWWozSGxrRVMwU2loZXFRazk0NlJneURieTNfTy00OHdUYTlZRWhqMGd1OFBf?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
    "id": "auto_da943fc82f",
    "date": "2026-09-29",
    "pillar": "policy",
@@ -818,26 +838,6 @@
     {
      "label": "WysokieNapiecie.pl",
      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQWjQxQkRWQjMyX1lpWk1qX3lNT1IxWEVVbWdQenlBOHFBZ1hmSGx6czNKQTNRN3ItZEc2UzV6bHlVNGJwQ1UwVGF6TGVEU0hNYVFjTmh2UDVad1M3dkF1MmRuT21YLWp4cXBHUVlMa0JjLVhyaGc4UUNabFZfenFGZXFqVEY3N3ZhaHFYRVlTOE10VUFOZXdna19oZmJsZExwbTh3REVLbUdRdy16RkRBZXdHMC0yYlVmMWdNbmhpVExGUFhVc2pMNkdpU1dqWk1MaWRDbVVocHFJYTF5MHc?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_80369c27ac",
-   "date": "2026-09-29",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "PGE"
-   ],
-   "unit": "",
-   "title": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie",
-   "desc": "PGE ma umowę kredytu terminowego z konsorcjum banków o wartości 3,05 mld zł na m.in. refinansowanie elektrowni CCGT w Gryfinie Bankier.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "Bankier.pl",
-     "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQNV84c2hGOWtldlQ4bndnTTM1SDVRWnpRM2RDYjlVUHQxbzRlLTJjeXhPRHo0TTdjendFSzJILS1zRkRoSGNKenB1YkRaYnFpUUJBQWNwMXVEN0lKc3NmTlBONElVY3htb1BYWnRGcExZY1VLSWJUOUJLOEhOZ1MyektWU3kxX05vaU5Bc2NEbkJRakdCT211RGVPXzRCeGtIVUVtQnd1akZ5WGRwN3RXeHhtUTJTMXJ1SU1IU0M0RFJhY1FtN2dET3hoazlhOWV0YVBLWWozSGxrRVMwU2loZXFRazk0NlJneURieTNfTy00OHdUYTlZRWhqMGd1OFBf?oc=5",
      "type": "press"
     }
    ]
@@ -1063,46 +1063,6 @@
    ]
   },
   {
-   "id": "auto_d976f94a64",
-   "date": "2026-09-24",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "Wielkie plany energetyczne legły w gruzach. Miały zapewnić Polsce prąd",
-   "desc": "Wielkie plany energetyczne legły w gruzach. Miały zapewnić Polsce prąd wnp.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPMlVzVzRFaW12cDNVR3hRSjEzd2psam12TE9wNW1nbmVZZ0d6V2lCSF9NZTh1T0xvNjBVUUcwM3AxaGRIWTVzamhuRW1WNkZhTmwybE85Q1h0OUlKSnJyRjA3eVhvQlhTQ1RiZEY4QjlYYVF4QlA5NHJrM3lHS2xBSnNKT1lBSEt2aGo1LU1SYUU0WnFVWXU0d1dqeTZoeEhNRVFseVh0V1Z2SVlkT3c?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
-   "id": "auto_10c1256151",
-   "date": "2026-09-24",
-   "pillar": "thermal",
-   "cat": "coal",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "High European gas prices push power producers back to coal",
-   "desc": "High European gas prices push power producers back to coal Reuters",
-   "auto": true,
-   "links": [
-    {
-     "label": "Reuters",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQNGFWalVPQV9Famp5Q1JDM3JzS25FVlFqQ3RtaTdWRmRFU1FIQ091YlVwMnpoY2k1ejNpUmVDckZnMXBMT2lseXZpXzh4YUNZOFgxTFlSdVhTaXRDZF8zNklWV0tySE8tVUprVUZNVERmaFQwbEhyQXZkMl96anYzR01iRzA4OTBoLW8zWUlxM2hEbUNqOGRQWnRKcU9tWjhzOVBlSHNnMTA5WG8?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_78cce440c2",
    "date": "2026-09-24",
    "pillar": "company",
@@ -1138,6 +1098,46 @@
     {
      "label": "wnp.pl",
      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQQVM0WWF3V3JrNVBSeW16VF9mdXlGeElrVGZkR2tTSjJiZGZXRkc1dUtoUTlvcDVfRkFuQUhMZXN1Rk5SY25mSG9ua09sQk9DUndELWZoNVJyUy1yWUJFbTk4OGg4aG51cVFxVEw0dVEyRUFCREJxazF1aFRpZlhWRjVQdVRHYnlCTzNyOHk3dDc3RjhwejN5ZTN4dXFOR09yclRoZUxPNHlsalFPaVItYWZsUjZFNkJE?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_d976f94a64",
+   "date": "2026-09-24",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "Wielkie plany energetyczne legły w gruzach. Miały zapewnić Polsce prąd",
+   "desc": "Wielkie plany energetyczne legły w gruzach. Miały zapewnić Polsce prąd wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPMlVzVzRFaW12cDNVR3hRSjEzd2psam12TE9wNW1nbmVZZ0d6V2lCSF9NZTh1T0xvNjBVUUcwM3AxaGRIWTVzamhuRW1WNkZhTmwybE85Q1h0OUlKSnJyRjA3eVhvQlhTQ1RiZEY4QjlYYVF4QlA5NHJrM3lHS2xBSnNKT1lBSEt2aGo1LU1SYUU0WnFVWXU0d1dqeTZoeEhNRVFseVh0V1Z2SVlkT3c?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_10c1256151",
+   "date": "2026-09-24",
+   "pillar": "thermal",
+   "cat": "coal",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "High European gas prices push power producers back to coal",
+   "desc": "High European gas prices push power producers back to coal Reuters",
+   "auto": true,
+   "links": [
+    {
+     "label": "Reuters",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQNGFWalVPQV9Famp5Q1JDM3JzS25FVlFqQ3RtaTdWRmRFU1FIQ091YlVwMnpoY2k1ejNpUmVDckZnMXBMT2lseXZpXzh4YUNZOFgxTFlSdVhTaXRDZF8zNklWV0tySE8tVUprVUZNVERmaFQwbEhyQXZkMl96anYzR01iRzA4OTBoLW8zWUlxM2hEbUNqOGRQWnRKcU9tWjhzOVBlSHNnMTA5WG8?oc=5",
      "type": "press"
     }
    ]
@@ -1503,26 +1503,6 @@
    ]
   },
   {
-   "id": "auto_ac941d3677",
-   "date": "2026-09-16",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie",
-   "title": "Tender: Poland – Heating plant construction work – Budowa instalacji spalania biomasy o mocy 10 MW w Koszalinie, ul. Mieszka I 20A, Kotłownia DPM",
-   "desc": "Public procurement notice published on TED by Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 637150-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/637150-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_327fe7987f",
    "date": "2026-09-16",
    "pillar": "thermal",
@@ -1539,6 +1519,26 @@
      "label": "wnp.pl",
      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeHRPV0g5TEpVbkdPek5scFZZQkowNmN0NVQyNjVCeW1nRWhOZnd2OHktMEN4clh6bjhvSVphc0tlSUVfTDRmN3VjQnJGVml3YlQtZHNoeVN5ZnFCa3ZTNHhnSTJFZGU0M3kxUjZhVnVSV0FrUDJZdE43VjQ1Y3dMMy0tWnNfQ3hlZXJaSG84Wjk3eVN6LTR0RWVDcFk5MHhGWkVfRzd6cENZa1NIdHd3TVczeXRQcldMcWUw?oc=5",
      "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_ac941d3677",
+   "date": "2026-09-16",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie",
+   "title": "Tender: Poland – Heating plant construction work – Budowa instalacji spalania biomasy o mocy 10 MW w Koszalinie, ul. Mieszka I 20A, Kotłownia DPM",
+   "desc": "Public procurement notice published on TED by Miejska Energetyka Cieplna Sp. z o.o. w Koszalinie.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 637150-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/637150-2026",
+     "type": "gov"
     }
    ]
   },
