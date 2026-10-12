@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T14:49:16.253705+00:00",
+ "generated": "2026-10-12T15:13:01.499061+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -362,26 +362,6 @@
    ]
   },
   {
-   "id": "auto_414f1d981c",
-   "date": "2026-10-06",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Miasto Zielona Góra - Urząd Miasta Zielona Góra",
-   "title": "Tender: Poland – Generator units – Zakup i dostawa agregatów prądotwórczych wraz z osprzętem w ramach „Programu Ochrony ludności i obrony cywilnej na lata 2025-2026”",
-   "desc": "Public procurement notice published on TED by Miasto Zielona Góra - Urząd Miasta Zielona Góra.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 688255-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/688255-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_077b7135ce",
    "date": "2026-10-06",
    "pillar": "thermal",
@@ -397,6 +377,26 @@
     {
      "label": "TED — notice 687406-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/687406-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_414f1d981c",
+   "date": "2026-10-06",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Miasto Zielona Góra - Urząd Miasta Zielona Góra",
+   "title": "Tender: Poland – Generator units – Zakup i dostawa agregatów prądotwórczych wraz z osprzętem w ramach „Programu Ochrony ludności i obrony cywilnej na lata 2025-2026”",
+   "desc": "Public procurement notice published on TED by Miasto Zielona Góra - Urząd Miasta Zielona Góra.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 688255-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/688255-2026",
      "type": "gov"
     }
    ]
@@ -1023,26 +1023,6 @@
    ]
   },
   {
-   "id": "auto_2e20557124",
-   "date": "2026-09-24",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "PGE"
-   ],
-   "unit": "PGE Górnictwo i Energetyka Konwencjonalna SA",
-   "title": "Tender: Poland – Heat-exchange units – Zakup modułów chłodnic do wymienników podgrzewu spalin na blokach 8,10,11,12 dla PGE GiEK SA Oddział Elektrownia Bełchatów",
-   "desc": "Public procurement notice published on TED by PGE Górnictwo i Energetyka Konwencjonalna SA.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 658783-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/658783-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_51d3620fd6",
    "date": "2026-09-24",
    "pillar": "thermal",
@@ -1058,6 +1038,26 @@
     {
      "label": "TED — notice 660308-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/660308-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_2e20557124",
+   "date": "2026-09-24",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "PGE Górnictwo i Energetyka Konwencjonalna SA",
+   "title": "Tender: Poland – Heat-exchange units – Zakup modułów chłodnic do wymienników podgrzewu spalin na blokach 8,10,11,12 dla PGE GiEK SA Oddział Elektrownia Bełchatów",
+   "desc": "Public procurement notice published on TED by PGE Górnictwo i Energetyka Konwencjonalna SA.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 658783-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/658783-2026",
      "type": "gov"
     }
    ]
@@ -1143,26 +1143,6 @@
    ]
   },
   {
-   "id": "auto_371724f912",
-   "date": "2026-09-23",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością",
-   "title": "Tender: Poland – Construction works for power plants and heating plants – Rozbudowa układu kogeneracji wraz z rozbudową węzła osadowego na Oczyszczalni Ścieków w Rybniku-Orzepowicach należącej do Przedsiębiorstwa Wodocią",
-   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością.",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 654112-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/654112-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_3a39389ea7",
    "date": "2026-09-23",
    "pillar": "thermal",
@@ -1178,6 +1158,26 @@
     {
      "label": "TED — notice 656439-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/656439-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_371724f912",
+   "date": "2026-09-23",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością",
+   "title": "Tender: Poland – Construction works for power plants and heating plants – Rozbudowa układu kogeneracji wraz z rozbudową węzła osadowego na Oczyszczalni Ścieków w Rybniku-Orzepowicach należącej do Przedsiębiorstwa Wodocią",
+   "desc": "Public procurement notice published on TED by Przedsiębiorstwo Wodociągów i Kanalizacji Spółka z ograniczoną odpowiedzialnością.",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 654112-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/654112-2026",
      "type": "gov"
     }
    ]
@@ -1223,26 +1223,6 @@
    ]
   },
   {
-   "id": "auto_fdfd52a27b",
-   "date": "2026-09-23",
-   "pillar": "policy",
-   "cat": "political",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "W Polsce zabraknie paliwa? Minister energii ostrzega",
-   "desc": "W Polsce zabraknie paliwa? Minister energii ostrzega wnp.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSHFPX1lkdTJ6bUhpaFpubGhNUlF0Z0EtNzNGSWc3ZHl6dVdjeGZpY1hTajRrb0w4Y1FvR0dLMGVNQmdYLTNhci0wQUdrSVpNN3FSMVQ3RjJiYlZoSG9RamNGcU5ELWU1emdxaHE1aldIbWczbUl1VHNmVHFJOW43TlJVUjF4Y2daTEc2alpvN2gzQ2FwVk1YMjhjUEdqeFN4bU1rSm9MMFFFSE9DRXhKX2czQQ?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_23fc2c47f0",
    "date": "2026-09-23",
    "pillar": "company",
@@ -1278,6 +1258,26 @@
     {
      "label": "Bankier.pl",
      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQYlpib1RNZ01tc1JBU1RKRlY3b19ucEZaYTItS2VtUVU1ZHh6dnJOd3lsYThmTTRPTnpmckt0MDJtdVZxSUNHMzVMQ3gzZXg2T216VzZtWTFkQmVuZ0x1TVc1d1JSaC1aZEQyUEVsLXM5c082dFNMNFJSTFJ6REdDLXgxcGE4RmpPMXVObTJDRUlrOVZvWTVfQVBNZk9od2NIbFVnSVpvSW0zOHVfMWxKLWpFX3FiR2dURnhsakczSHVrOUxSX2dOOTFQcE9XT1BmeVdwQmg3R0RYbFE?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_fdfd52a27b",
+   "date": "2026-09-23",
+   "pillar": "policy",
+   "cat": "political",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "W Polsce zabraknie paliwa? Minister energii ostrzega",
+   "desc": "W Polsce zabraknie paliwa? Minister energii ostrzega wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSHFPX1lkdTJ6bUhpaFpubGhNUlF0Z0EtNzNGSWc3ZHl6dVdjeGZpY1hTajRrb0w4Y1FvR0dLMGVNQmdYLTNhci0wQUdrSVpNN3FSMVQ3RjJiYlZoSG9RamNGcU5ELWU1emdxaHE1aldIbWczbUl1VHNmVHFJOW43TlJVUjF4Y2daTEc2alpvN2gzQ2FwVk1YMjhjUEdqeFN4bU1rSm9MMFFFSE9DRXhKX2czQQ?oc=5",
      "type": "press"
     }
    ]
@@ -1423,26 +1423,6 @@
    ]
   },
   {
-   "id": "auto_771bc33729",
-   "date": "2026-09-18",
-   "pillar": "thermal",
-   "cat": "fid",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "Elektrociepłownia Ciechanów sp. z o.o.",
-   "title": "Tender: Poland – Construction work – (WZNOWIONE POSTĘPOWANIE) Budowa i przebudowa kogeneracji gazowych o łącznej mocy 4,636 MWe i 5,729 MWt w Elektrociepłowni Ciechanów",
-   "desc": "Public procurement notice published on TED by Elektrociepłownia Ciechanów sp. z o.o..",
-   "auto": true,
-   "links": [
-    {
-     "label": "TED — notice 646347-2026",
-     "url": "https://ted.europa.eu/en/notice/-/detail/646347-2026",
-     "type": "gov"
-    }
-   ]
-  },
-  {
    "id": "auto_589b229b72",
    "date": "2026-09-18",
    "pillar": "thermal",
@@ -1458,6 +1438,26 @@
     {
      "label": "TED — notice 643603-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/643603-2026",
+     "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_771bc33729",
+   "date": "2026-09-18",
+   "pillar": "thermal",
+   "cat": "fid",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "Elektrociepłownia Ciechanów sp. z o.o.",
+   "title": "Tender: Poland – Construction work – (WZNOWIONE POSTĘPOWANIE) Budowa i przebudowa kogeneracji gazowych o łącznej mocy 4,636 MWe i 5,729 MWt w Elektrociepłowni Ciechanów",
+   "desc": "Public procurement notice published on TED by Elektrociepłownia Ciechanów sp. z o.o..",
+   "auto": true,
+   "links": [
+    {
+     "label": "TED — notice 646347-2026",
+     "url": "https://ted.europa.eu/en/notice/-/detail/646347-2026",
      "type": "gov"
     }
    ]
@@ -1503,26 +1503,6 @@
    ]
   },
   {
-   "id": "auto_327fe7987f",
-   "date": "2026-09-16",
-   "pillar": "thermal",
-   "cat": "coal",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "Kolejny blok znanej elektrowni węglowej zakończył pracę. Następny stanie wkrótce",
-   "desc": "Kolejny blok znanej elektrowni węglowej zakończył pracę. Następny stanie wkrótce wnp.pl",
-   "auto": true,
-   "links": [
-    {
-     "label": "wnp.pl",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeHRPV0g5TEpVbkdPek5scFZZQkowNmN0NVQyNjVCeW1nRWhOZnd2OHktMEN4clh6bjhvSVphc0tlSUVfTDRmN3VjQnJGVml3YlQtZHNoeVN5ZnFCa3ZTNHhnSTJFZGU0M3kxUjZhVnVSV0FrUDJZdE43VjQ1Y3dMMy0tWnNfQ3hlZXJaSG84Wjk3eVN6LTR0RWVDcFk5MHhGWkVfRzd6cENZa1NIdHd3TVczeXRQcldMcWUw?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_ac941d3677",
    "date": "2026-09-16",
    "pillar": "thermal",
@@ -1539,6 +1519,26 @@
      "label": "TED — notice 637150-2026",
      "url": "https://ted.europa.eu/en/notice/-/detail/637150-2026",
      "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_327fe7987f",
+   "date": "2026-09-16",
+   "pillar": "thermal",
+   "cat": "coal",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "Kolejny blok znanej elektrowni węglowej zakończył pracę. Następny stanie wkrótce",
+   "desc": "Kolejny blok znanej elektrowni węglowej zakończył pracę. Następny stanie wkrótce wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeHRPV0g5TEpVbkdPek5scFZZQkowNmN0NVQyNjVCeW1nRWhOZnd2OHktMEN4clh6bjhvSVphc0tlSUVfTDRmN3VjQnJGVml3YlQtZHNoeVN5ZnFCa3ZTNHhnSTJFZGU0M3kxUjZhVnVSV0FrUDJZdE43VjQ1Y3dMMy0tWnNfQ3hlZXJaSG84Wjk3eVN6LTR0RWVDcFk5MHhGWkVfRzd6cENZa1NIdHd3TVczeXRQcldMcWUw?oc=5",
+     "type": "press"
     }
    ]
   },
