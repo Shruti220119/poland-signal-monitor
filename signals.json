@@ -1,7 +1,29 @@
 {
- "generated": "2026-10-12T17:08:49.243902+00:00",
+ "generated": "2026-10-12T17:43:19.231928+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_6ddf6f206a",
+   "date": "2026-10-12",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQSHZhUno0UGlZdk1lQ1pCemVRV0lhQTk2YWZlSUtQQmstcEQ1eHlPd3JUWHUwTlhOUS10eENQM1BjbFozN1hoX0JOUTAtOGMyS3o1SjdyLXNXS2ZyUnprQnZSbFJ3bkROMUhxNVExNnV2d2hCSk5FdHI2MG4tLWl5czk1V3ZmLUVkRUk5VGMxMVNRWU9jSDJRRk1WUFk4Y0xOWGFmbXpxVWlRS0IxVVVCdmtwbU5qMnNjeGNfVG5DZm9fVEJKSjJCSFd3?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Europe Will Get Through the Winter Without a Gas Shortage. But Industry Will Pay a High Price",
+   "summary": "Europe Will Get Through the Winter Without a Gas Shortage. But Industry Will Pay a High Price WysokieNapiecie.pl",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
   {
    "id": "auto_98646dcb2c",
    "date": "2026-10-09",
