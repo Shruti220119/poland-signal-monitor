@@ -1,10 +1,13 @@
 name: Update signal feed
 on:
   schedule:
-    - cron: "*/30 * * * *"      # every 30 minutes (UTC)
-  workflow_dispatch:            # "Run workflow" button for a manual refresh
+    - cron: "*/30 * * * *"        # every 30 minutes (UTC)
+  workflow_dispatch:              # manual "Run workflow" button
 permissions:
   contents: write
+concurrency:
+  group: feed
+  cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -13,11 +16,13 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
-      - name: Fetch sources
+      - name: Fetch, translate and summarise
         env:
           AZURE_OPENAI_ENDPOINT:   ${{ secrets.AZURE_OPENAI_ENDPOINT }}
           AZURE_OPENAI_KEY:        ${{ secrets.AZURE_OPENAI_KEY }}
           AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          AZURE_TRANSLATOR_KEY:    ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ secrets.AZURE_TRANSLATOR_REGION }}
         run: python feed_fetcher.py
       - name: Commit signals.json if changed
         run: |
