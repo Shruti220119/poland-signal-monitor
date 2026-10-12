@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T11:10:36.858945+00:00",
+ "generated": "2026-10-12T11:45:41.039123+00:00",
  "signals": [
   {
    "id": "auto_1ad0639919",
@@ -37,6 +37,26 @@
     {
      "label": "Bankier.pl",
      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdC10RjYyejc1MkhsXzE4dWttblVBQkRsT1JPM0k5RzdEa19YbkQxWFJUaUctNFlTWHRtNkhkR0lCQWlvaDBHRUNWdFlLYUdMeFdRZEliSlZhVFR0T19xOEtLZ0ZIQVBuaDUyY2RpUzJCNzNwTmJ0UEE4UFE3OUlPSXV4MlBrdEthX2N2MWlYOGlKMU5JWnJ3SlppOVpXNzNicmhac0s4UEN6TWljNzRLeG5tR0p4akVfdEtwMUxJbDBndVBxdEE?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_f6b2a9f778",
+   "date": "2026-10-12",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "PGE"
+   ],
+   "unit": "",
+   "title": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027",
+   "desc": "PGE Energia Ciepła gotowa na sezon grzewczy 2026/2027 WysokieNapiecie.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPU3MyVkJ3WmFTN0x1czNRWUh6SlN1ay1mZ29iOGNVcnVtSjlLcXZjbXpNZnp4TV9HUlp0anBBZHVaeklfZEJpNVB1QUxOZkxYTWp4SFRtdWdybm14aUJlWWo5amttcTBmN0F4WFdpdFFTOVF6OG5Sa2s2YlU1VVpkdkhzMTVZdGcwdlVlOVRkOEJWZm42RUhaLVJKclhBQQ?oc=5",
      "type": "press"
     }
    ]
@@ -923,26 +943,6 @@
    ]
   },
   {
-   "id": "auto_40f2a184bc",
-   "date": "2026-09-25",
-   "pillar": "company",
-   "cat": "project",
-   "cos": [
-    "ALL"
-   ],
-   "unit": "",
-   "title": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach?",
-   "desc": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach? Rzeczpospolita",
-   "auto": true,
-   "links": [
-    {
-     "label": "Rzeczpospolita",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdE4wdXE2cVJCYWRhZHViOEQ5MWxtanowdEZkenB2dkVWN19HYmRWdmszdjAwUlJIbjJQZDNsTnhJdEFnd3kxWFE4VW9wSnNnRGotdEdwUWVuTTNLV3pZdnEzX2t4dHpGSGdxZUpKR2lxdk9LbGYxZW1lSWZ5dXFzZVEyeElTQURJM1locXJKSkVTcldRSl9zbjBXaFkyb0l6dHZmbktxc25EaG5uRGc?oc=5",
-     "type": "press"
-    }
-   ]
-  },
-  {
    "id": "auto_0f13af3cb9",
    "date": "2026-09-25",
    "pillar": "thermal",
@@ -958,6 +958,26 @@
     {
      "label": "WysokieNapiecie.pl",
      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT1hwUnpOdU1zWUY5dzdhRXlLZThIUk5WMGhDZzZnUHpFcXZjZ3lNM2tJWF9PdG1EM2lLWEJWbmRXVlJTRHNrNUVmbFVNSHFOYnV6YThvNGRVT3lQR1FtNllOUU9SLWVVeDk5Z1VjSURoaWZlMmZQZjNCSXlrYklEWHctVFhrMTdzOTdZa21B?oc=5",
+     "type": "press"
+    }
+   ]
+  },
+  {
+   "id": "auto_40f2a184bc",
+   "date": "2026-09-25",
+   "pillar": "company",
+   "cat": "project",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach?",
+   "desc": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach? Rzeczpospolita",
+   "auto": true,
+   "links": [
+    {
+     "label": "Rzeczpospolita",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdE4wdXE2cVJCYWRhZHViOEQ5MWxtanowdEZkenB2dkVWN19HYmRWdmszdjAwUlJIbjJQZDNsTnhJdEFnd3kxWFE4VW9wSnNnRGotdEdwUWVuTTNLV3pZdnEzX2t4dHpGSGdxZUpKR2lxdk9LbGYxZW1lSWZ5dXFzZVEyeElTQURJM1locXJKSkVTcldRSl9zbjBXaFkyb0l6dHZmbktxc25EaG5uRGc?oc=5",
      "type": "press"
     }
    ]
@@ -1159,6 +1179,26 @@
      "label": "Dziennik Ustaw 2026 poz. 1236",
      "url": "https://api.sejm.gov.pl/eli/acts/DU/2026/1236/text.pdf",
      "type": "gov"
+    }
+   ]
+  },
+  {
+   "id": "auto_fdfd52a27b",
+   "date": "2026-09-23",
+   "pillar": "policy",
+   "cat": "political",
+   "cos": [
+    "ALL"
+   ],
+   "unit": "",
+   "title": "W Polsce zabraknie paliwa? Minister energii ostrzega",
+   "desc": "W Polsce zabraknie paliwa? Minister energii ostrzega wnp.pl",
+   "auto": true,
+   "links": [
+    {
+     "label": "wnp.pl",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSHFPX1lkdTJ6bUhpaFpubGhNUlF0Z0EtNzNGSWc3ZHl6dVdjeGZpY1hTajRrb0w4Y1FvR0dLMGVNQmdYLTNhci0wQUdrSVpNN3FSMVQ3RjJiYlZoSG9RamNGcU5ELWU1emdxaHE1aldIbWczbUl1VHNmVHFJOW43TlJVUjF4Y2daTEc2alpvN2gzQ2FwVk1YMjhjUEdqeFN4bU1rSm9MMFFFSE9DRXhKX2czQQ?oc=5",
+     "type": "press"
     }
    ]
   },
