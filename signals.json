@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T22:17:17.907682+00:00",
+ "generated": "2026-10-13T22:53:26.588683+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
   {
@@ -311,6 +311,28 @@
      "type": "filing"
     }
    ]
+  },
+  {
+   "id": "auto_0cb8a79097",
+   "date": "2026-09-14",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "ESS News",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbmhuTlpqSHFBNU0tSkFKamhtT0NrV1h0Y1dnWEhHX3R4eUtCRi1iYXpyRVpFSVJkQUN3RTZGUWZVQXJrMlZXeFV5VzJIWmlHLTdtV2dpX29QcDJZTlFOVWh2bWhlX0IxRDlGSXhqRGdQdjJvdVcxaUl6bkdyYzJmVDFVUlJMeWxSUVYwZ0hhQ0w?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "India adds 8.2 GWh of new BESS capacity in H1 2026 - Energy Storage",
+   "summary": "India adds 8.2 GWh of new BESS capacity in H1 2026 - Energy Storage ESS News",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
   },
   {
    "id": "g2",
