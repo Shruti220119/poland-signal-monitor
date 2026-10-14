@@ -1,7 +1,29 @@
 {
- "generated": "2026-10-14T22:53:13.355783+00:00",
+ "generated": "2026-10-14T23:17:24.002566+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_47bb8ce8db",
+   "date": "2026-10-14",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOVzl2UnJhbXQ2aWpBZWprMmEtTzBSa0hRcjFxRVhTTnFrazFQaFc2Mjh5bTFOSWd2aTdGc2hINkxFeExWdDFyS1BTcEF2RTVfejhFSDExNlc5emtuamdBV2lNMm1vYU5LbmZuZVVXeWhBamN3R01leHlBVGFLZkFUZ3lWUlM0eHAzMWxKNUZwWE9NWTRvcXNNM2M3dmR6ZG43dEd5SU5CRDhGdlFtdThwTUI4SF9TaHp0bWpv?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Biomethane in Poland’s Gas Network: Technology, Costs and the Economics of Green Gas",
+   "summary": "Biomethane in Poland’s Gas Network: Technology, Costs and the Economics of Green Gas WysokieNapiecie.pl",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
   {
    "id": "auto_11fa6cee9b",
    "date": "2026-10-12",
