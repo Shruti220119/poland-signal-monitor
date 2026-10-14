@@ -1,7 +1,29 @@
 {
- "generated": "2026-10-14T16:08:28.751782+00:00",
+ "generated": "2026-10-14T17:00:51.879575+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_11fa6cee9b",
+   "date": "2026-10-12",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "WysokieNapiecie.pl",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS0RSdUtOdTAtNGdNOWhad1VDUEVQZEpodk5nbks2WENoQzZUaUdveldVQXFWLTlhMGtNQUc1T01fS2hydE5JMW5ISHNYV3Y2WEEwQ3FmdmFHamF0NnVOSFNBdkR3V1BCMzNjcXJYZjJIR3pPWXhvWmswbWNwSjNtMkUxOC1fQ3JrZFNOZjdRTmdxMkJGa3hMSlhYSFgyTzNDYVBWNWxWRERkQVc3?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "How to Increase Nuclear Power Capacity? Get More Out of Existing Plants",
+   "summary": "How to Increase Nuclear Power Capacity? Get More Out of Existing Plants WysokieNapiecie.pl",
+   "cat": "nuclear",
+   "pillar": "thermal",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
   {
    "id": "auto_6ddf6f206a",
    "date": "2026-10-12",
