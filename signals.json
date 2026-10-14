@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T11:00:02.604637+00:00",
+ "generated": "2026-10-14T11:29:21.236565+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
   {
@@ -223,6 +223,28 @@
    "summary": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach? Rzeczpospolita",
    "cat": "project",
    "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_4efbf5f3fd",
+   "date": "2026-09-17",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "ESS News",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQYXVDbTNLS25SdjI5V0thelRhTldhMVFWR1c1LUR0ZHY5OGFzQTR0MFRteWtnWEp0c3dJQkFWdGRQWVg0WDZWdENSLXJPZGRfX0t3RzRuR0FYN2sxOXphbWVfUDU1ZlVxUlFRbXduZW5TbXhoZlZ0eUR6Ul82a2I3b21UQU9NTlJXNkFucGJkMllXY2FpOF9iQWpDSDlFdXlRUFFBN2dQbVNmZFZyVUpfYkNKOTI0NVpDNUhJZ291WU0?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Spain launches capacity market via auctions, with key rules that support energy storage",
+   "summary": "Spain launches capacity market via auctions, with key rules that support energy storage ESS News",
+   "cat": "capacity",
+   "pillar": "policy",
    "cos": [
     "ALL"
    ],
