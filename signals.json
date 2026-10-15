@@ -1,7 +1,30 @@
 {
- "generated": "2026-10-15T07:15:07.984580+00:00",
+ "generated": "2026-10-15T08:00:53.307515+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_9ff63a2656",
+   "date": "2026-10-15",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Enerdata",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPamZxeVJIR2ZzUUUxWjdBNDYxSFBRWk1SOTh3WlBTOHQxMHJJYWNxZ3BTb2JNWU9OUHdBXzNBWGVUVGI1cjAxM2RqOThKYjQzSldMTGJYYVFUR245T1prdm4ybE1ocEEydDlBNWpKSENNSTlMOFQ4cW9iTmgySWdKLVc4OUdYTFQzbDByamxoQllKSXpzOGttVUtKQzVpR09KeS1NUmYtTmFWTkREZ1lVOVEzWGZQdDEzVjRqLXBaVVU3RW8?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "PEJ and PGE prepare for second nuclear plant development in Poland by 2040",
+   "summary": "PEJ and PGE prepare for second nuclear plant development in Poland by 2040 Enerdata",
+   "cat": "nuclear",
+   "pillar": "thermal",
+   "cos": [
+    "PGE",
+    "PEJ"
+   ],
+   "region": "National"
+  },
   {
    "id": "auto_47bb8ce8db",
    "date": "2026-10-14",
