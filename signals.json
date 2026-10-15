@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T08:00:53.307515+00:00",
+ "generated": "2026-10-15T09:01:39.109702+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
   {
@@ -266,6 +266,28 @@
    ],
    "title": "Brazil hits 56 GW of connection headroom for battery auctions",
    "summary": "Brazil hits 56 GW of connection headroom for battery auctions pv magazine Global",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_c1b9974b17",
+   "date": "2026-09-25",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Reuters",
+     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNemtIR2FDbDVHcjRWdzNYQnpYZGdsSW5yZTIzRlFtTnhXMVoxUGc1RTNWNlNVTkdiZk05SHpsMmh1TXlvQmdOLWR3MHlGRHV0Qkg4SGFhd1p1SUhfQ3YzVWVNZmc5TTVXbEdzQ19yQXU2RnE0MFprTjlYZGluYWVtb0JuQ3NzWkdNTnhqQ3hKYk9oelprY1FxbU1LZmgzcFByWVh6M01JR3BVMm56REhOR3JST2hQQXBXRUlkSFhqT3dOZGxsSi1fTTlkcWw?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "EU warns of energy price crisis, asks countries to consider curbing demand, letter shows",
+   "summary": "EU warns of energy price crisis, asks countries to consider curbing demand, letter shows Reuters",
    "cat": "project",
    "pillar": "company",
    "cos": [
