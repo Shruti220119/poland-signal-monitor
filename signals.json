@@ -1,7 +1,29 @@
 {
- "generated": "2026-10-15T16:20:52.219747+00:00",
+ "generated": "2026-10-15T17:01:40.792605+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
+  {
+   "id": "auto_5691d9df99",
+   "date": "2026-10-15",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "World Nuclear News",
+     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNTlFsenNBYWtMOXB2S2VROTZDT3pCaEFkaWVuMVRUTEtCUDZ0LTFCVlp5cW1Lc1Zlb1NFNnA0RDkxT1E0QnVDelBGLXZiVFUySEpJOHkxZ1pMWU9sdUxwWGN1NUNtQ1Z1Rm1nSE5hTkZqUTBPN2t4dWRhTk5HM1AwaERJaWtMVWpDWGctcmd0QzFYbVlwUWdFSw?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Joint venture formed for six-unit SMR plant in Poland",
+   "summary": "Joint venture formed for six-unit SMR plant in Poland World Nuclear News",
+   "cat": "nuclear",
+   "pillar": "thermal",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
   {
    "id": "auto_9ff63a2656",
    "date": "2026-10-15",
