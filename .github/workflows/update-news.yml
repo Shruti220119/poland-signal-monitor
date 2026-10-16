@@ -1,0 +1,43 @@
+name: Update Poland Energy news feed
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"      # every 30 minutes (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Fetch, translate and merge latest news
+        env:
+          DATA_PATH: data/signals.json   # must match the file index.html fetches
+        run: python scripts/fetch_news.py
+      - name: Commit updated feed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/
+          if git diff --cached --quiet; then echo "No new articles."; exit 0; fi
+          git commit -m "Live feed update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && exit 0
+            echo "Push attempt $i failed, retrying..."; git rebase --abort 2>/dev/null; sleep 10
+          done
+          echo "::error::Could not push. Set Settings > Actions > General > Workflow permissions to 'Read and write'."
+          exit 1
