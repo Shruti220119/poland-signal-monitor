@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T04:59:06.591732+00:00",
+ "generated": "2026-10-16T05:26:07.291935+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
   {
@@ -288,6 +288,28 @@
    ],
    "title": "Brazil hits 56 GW of connection headroom for battery auctions",
    "summary": "Brazil hits 56 GW of connection headroom for battery auctions pv magazine Global",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_fc5a5e9c81",
+   "date": "2026-09-29",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Energy-Storage.News",
+     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQeTNOQnBHUl9rdF9CNkR1M2NWSnZBb1ZtX1Z5eFRacWZIT24wajRtem80Q3JTWTZlZTZVTjRjZVpLUk1FTDJMeVNBUE84SjkzRGttSWFrV3hiZE8tQmsyaEFWNEZkSXRRTi1YLVZ2ZjVWckNjMWNzWWFuUXhvOHZvTm5VbjhQZlNIaUVhNmJYVWdFQXhDVVhGWW1US1ZpUk05YVFidnpXNVpkT2NMb0RCdFNUNkdXXzdvUnhVektGMTktRU93anRHeENBUDdjaS1WNlFfZkpwUmNVM1pSMHc?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Pace of regulatory change, predictable market rules and long-term flexibility roadmaps key to CEE market, IPP says - Energy-Storage.News",
+   "summary": "Pace of regulatory change, predictable market rules and long-term flexibility roadmaps key to CEE market, IPP says Energy-Storage.News",
    "cat": "project",
    "pillar": "company",
    "cos": [
