@@ -1,0 +1,16 @@
+{
+  "_note": "RSS/Atom feeds checked every 30 minutes. Add or remove feeds here - no code changes needed.",
+  "feeds": [
+    {"publisher": "CEEnergyNews",        "url": "https://ceenergynews.com/feed/",                  "lang": "en", "type": "press"},
+    {"publisher": "Notes From Poland",   "url": "https://notesfrompoland.com/feed/",               "lang": "en", "type": "press", "energy_only": true},
+    {"publisher": "Renewables Now",      "url": "https://renewablesnow.com/news/news_feed/?country=poland", "lang": "en", "type": "press"},
+    {"publisher": "Energetyka24",        "url": "https://energetyka24.com/rss",                    "lang": "pl", "type": "press"},
+    {"publisher": "Gram w Zielone",      "url": "https://www.gramwzielone.pl/rss",                "lang": "pl", "type": "press"},
+    {"publisher": "WNP.pl Energetyka",   "url": "https://www.wnp.pl/rss/serwis_rss_1.xml",         "lang": "pl", "type": "press", "energy_only": true},
+    {"publisher": "Google News (EN)",    "url": "https://news.google.com/rss/search?q=Poland+(energy+OR+power+OR+nuclear+OR+%22offshore+wind%22+OR+battery+OR+grid)+when:7d&hl=en-GB&gl=GB&ceid=GB:en", "lang": "en", "type": "press"},
+    {"publisher": "Google News (PL)",    "url": "https://news.google.com/rss/search?q=(energetyka+OR+%22magazyn+energii%22+OR+elektrownia+OR+%22rynek+mocy%22+OR+atom)+when:7d&hl=pl&gl=PL&ceid=PL:pl", "lang": "pl", "type": "press"}
+  ],
+  "relevance_keywords": ["energy","power","electric","grid","nuclear","smr","wind","solar","photovolta","battery","storage","bess","gas","ccgt","coal","lignite","hydrogen","capacity market","tariff","ure","pse","pge","orlen","tauron","enea","energa",
+    "energi","prąd","sieć","sieci","atom","jądrow","wiatr","fotowolt","magazyn","gaz","węgl","wodór","rynek mocy","taryf","elektrowni","offshore"],
+  "poland_keywords": ["poland","polish","polska","polski","polsk","pse","ure","pge","orlen","tauron","enea","energa","baltic power","bałtyk","warsaw","warszaw"]
+}
