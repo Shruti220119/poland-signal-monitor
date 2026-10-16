@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T02:22:47.287629+00:00",
+ "generated": "2026-10-16T02:57:48.221705+00:00",
  "note": "curated=true items are analyst-verified; auto=true items come from feed_fetcher.py",
  "signals": [
   {
@@ -332,6 +332,28 @@
    ],
    "title": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach?",
    "summary": "Próba kontroli poselskiej w Trzebini. Wizyta w elektrowni na specjalnych warunkach? Rzeczpospolita",
+   "cat": "project",
+   "pillar": "company",
+   "cos": [
+    "ALL"
+   ],
+   "region": "National"
+  },
+  {
+   "id": "auto_546dc81b61",
+   "date": "2026-09-24",
+   "auto": true,
+   "lang": "en",
+   "translated": false,
+   "links": [
+    {
+     "label": "Energy-Storage.News",
+     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOYm9WeWhKNFdTa2R0bWwySm1CQkY1Y1Q5b0VURkgtaUpuN2NoMG9oUHJOSmdvVWpHSHdIVXdNSHU5T1JySEdvaHVEaUp0emt1S0w3b3RZci1xb1FCMTNqY1QtWEppejd3cDJiU2RWV3hnMTh3UFBNTmdRdU1yb3JZVVI5VXUzUFZCbzRCUXlJREgwMDBJcWlIMldhNldGNDZLTS1vbFhiZGthOWxnU05YUFFiTGQzcEttUXhHUnlCdGRxS3c1cWxQRUoxUHNLUQ?oc=5",
+     "type": "press"
+    }
+   ],
+   "title": "Greenvolt starts building 2.4GWh, BYD-supplied Poland BESS; 900MWh progressed elsewhere in CEE/Baltics - Energy-Storage.News",
+   "summary": "Greenvolt starts building 2.4GWh, BYD-supplied Poland BESS; 900MWh progressed elsewhere in CEE/Baltics Energy-Storage.News",
    "cat": "project",
    "pillar": "company",
    "cos": [
